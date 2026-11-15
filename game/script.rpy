@@ -36,6 +36,19 @@ image chapter1_14 = Transform("images/scene/chpt1/14.png", xysize=(1920, 1080))
 image chapter1_15 = Transform("images/scene/chpt1/15.png", xysize=(1920, 1080))
 image chapter1_16 = Transform("images/scene/chpt1/16.png", xysize=(1920, 1080))
 
+image chapter2_1 = Transform("images/scene/chpt2/1.png", xysize=(1920, 1080))
+image chapter2_2 = Transform("images/scene/chpt2/2.png", xysize=(1920, 1080))
+image chapter2_3 = Transform("images/scene/chpt2/3.png", xysize=(1920, 1080))
+image chapter2_4 = Transform("images/scene/chpt2/4.png", xysize=(1920, 1080))
+image chapter2_5 = Transform("images/scene/chpt2/5.png", xysize=(1920, 1080))
+image chapter2_6 = Transform("images/scene/chpt2/6.png", xysize=(1920, 1080))
+image chapter2_7 = Transform("images/scene/chpt2/7.png", xysize=(1920, 1080))
+image chapter2_8 = Transform("images/scene/chpt2/8.png", xysize=(1920, 1080))
+image chapter2_9 = Transform("images/scene/chpt2/9.png", xysize=(1920, 1080))
+image chapter2_10 = Transform("images/scene/chpt2/10.png", xysize=(1920, 1080))
+image chapter2_11 = Transform("images/scene/chpt2/11.png", xysize=(1920, 1080))
+image chapter2_12 = Transform("images/scene/chpt2/12.png", xysize=(1920, 1080))
+
 image chapter3_1 = Transform("images/scene/chpt3/1.png", xysize=(1920, 1080))
 image chapter3_2 = Transform("images/scene/chpt3/2.png", xysize=(1920, 1080))
 image chapter3_3 = Transform("images/scene/chpt3/3.png", xysize=(1920, 1080))
@@ -224,30 +237,60 @@ label chapter_2:
     with fade
     centered "{size=+18}CHAPTER 2{/size}\nHELLO, MARS"
 
+    scene chapter2_1
+    with dissolve
     narrator "After nearly seven months in space, Opportunity reached Mars. Landing was dangerous. There was no runway. No one waiting below. Just a thin atmosphere, a parachute, rockets, and giant airbags."
 
+    scene chapter2_2
+    with dissolve
     oppy "Um... Earth?"
+
+    scene chapter2_3
+    with dissolve
     earth "We're here."
+
+    scene chapter2_4
+    with dissolve
     oppy "I think I'm falling!"
+
+    scene chapter2_5
+    with dissolve
     narrator "The rover bounced across the surface before finally coming to rest."
+
+    scene chapter2_6
+    with dissolve
     oppy "...Did I make it?"
     narrator "The lander petals opened. Opportunity saw Eagle Crater for the first time."
+
+    scene chapter2_7
+    with dissolve
     narrator "All around it stretched a world of dust, rocks, and distant horizons. A world no human had ever touched."
     oppy "Oh... It's beautiful."
+
+    scene chapter2_8
+    with dissolve
     oppy "Hello, Mars. My name is Opportunity. I hope you don't mind if I look around."
     earth "We received your pictures. And they're wonderful."
     oppy "Really?"
     earth "Really. Welcome to Mars, Oppy."
 
+    scene chapter2_9
+    with dissolve
     narrator "The player chooses what Opportunity investigates first:"
     menu:
         "Look at the horizon.":
             narrator "Opportunity takes a panoramic image and prepares to study the terrain."
         "Examine the rocks.":
+            scene chapter2_10
+            with dissolve
             narrator "Opportunity inspects the exposed bedrock and begins the search for ancient water."
         "Look at the ground.":
+            scene chapter2_11
+            with dissolve
             narrator "Opportunity studies the soil and the small round objects scattered across the landscape."
 
+    scene chapter2_12
+    with dissolve
     oppy "There's so much here! Where do I even begin?"
     earth "One step at a time."
     oppy "I have six wheels. Does that mean I can take six steps?"
