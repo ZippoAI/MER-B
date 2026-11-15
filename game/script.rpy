@@ -2,9 +2,9 @@
 
 # Character declarations
 
-define narrator = Character(None, color="#E8E1D3")
+define narrator = Character(None, color="#E8E1D3", callback=merb_keyboard_voice)
 define oppy = Character("Opportunity", color="#CBE8FF", callback=merb_keyboard_voice)
-define earth = Character("Earth", color="#86D7FF")
+define earth = Character("Earth", color="#86D7FF", callback=merb_keyboard_voice)
 define mission = Character("Mission Control", color="#F9D57B", callback=merb_keyboard_voice)
 
 define config.rollback_enabled = False
