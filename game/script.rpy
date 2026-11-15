@@ -118,6 +118,10 @@ image chapter8_18 = Transform("images/scene/chpt8/18.png", xysize=(1920, 1080))
 image chapter8_19 = Transform("images/scene/chpt8/19.png", xysize=(1920, 1080))
 image chapter8_20 = Transform("images/scene/chpt8/20.png", xysize=(1920, 1080))
 image chapter8_21 = Transform("images/scene/chpt8/21.png", xysize=(1920, 1080))
+image chapter9_1 = Transform("images/scene/chpt9/1.png", xysize=(1920, 1080))
+image chapter9_2 = Transform("images/scene/chpt9/2.png", xysize=(1920, 1080))
+image chapter9_3 = Transform("images/scene/chpt9/3.png", xysize=(1920, 1080))
+image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
 
 label start:
@@ -761,11 +765,22 @@ label chapter_9:
     with fade
     centered "{size=+18}CHAPTER 9{/size}\nEARTH IS STILL CALLING"
 
+    scene chapter9_1
+    with dissolve
     narrator "The next day came. Opportunity did not answer."
     mission "No response."
+
+    scene chapter9_2
+    with dissolve
     narrator "But on Earth, they did not give up. Engineers kept listening and sending commands, hoping to reach their little explorer."
     mission "Sending another command."
+
+    scene chapter9_3
+    with dissolve
     narrator "More than a thousand commands were sent in the effort to restore contact."
+
+    scene chapter9_4
+    with dissolve
     mission "Attempting contact."
     mission "No signal."
     narrator "On February 13, 2019, NASA officially declared Opportunity's mission complete."
