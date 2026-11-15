@@ -58,7 +58,7 @@ label start:
     scene expression Solid("#03070d")
     with fade
 
-    centered "{size=+22}MER-B The Last Signal{/size}"
+    centered "{size=+22}MER-B: The Last Signal{/size}"
 
     scene opening_1
     with dissolve
