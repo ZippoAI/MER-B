@@ -462,35 +462,44 @@ label chapter_5:
 
     scene chapter5_1
     with dissolve
+    voice "audio/narrator/chpt5/voice1.mp3"
     narrator "Mars was beautiful. But Mars was also unforgiving. In April 2005, Opportunity drove into soft sand and sank."
 
     scene chapter5_2
     with dissolve
     oppy "Okay... Let's try moving forward."
+    voice "audio/narrator/chpt5/voice2.mp3"
     narrator "The wheels spun. The rover barely moved."
     oppy "That's not good."
 
     scene chapter5_3
     with dissolve
     oppy "Earth? I think I need some help."
-    narrator "On Earth, engineers tested possible solutions using rover models and simulated Martian sand. Every movement had to be planned carefully."
+    voice "audio/narrator/chpt5/voice3.mp3"
+    narrator "On Earth, engineers tested possible solutions using rover models and simulated Martian sand."
+    voice "audio/narrator/chpt5/voice4.mp3"
+    narrator "Every movement had to be planned carefully."
 
     menu:
         "Drive forward slowly.":
             scene chapter5_4
             with dissolve
+            voice "audio/narrator/chpt5/voice5.mp3"
             narrator "Opportunity tries a careful recovery. The rover inches forward, then stops."
         "Back up and re-angle.":
             scene chapter5_5
             with dissolve
+            voice "audio/narrator/chpt5/voice6.mp3"
             narrator "The rover shifts its weight and tries a safer angle. The sand groans beneath it."
         "Wait and scan the ground.":
             scene chapter5_6
             with dissolve
+            voice "audio/narrator/chpt5/voice7.mp3"
             narrator "Opportunity gathers data and waits for Mission Control to find the best route."
 
     scene chapter5_7
     with dissolve
+    voice "audio/narrator/chpt5/voice8.mp3"
     narrator "After more than five weeks of careful work, Opportunity escaped the sand."
 
     scene chapter5_8
