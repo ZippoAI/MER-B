@@ -380,6 +380,7 @@ label chapter_2:
 
 
 label chapter_3:
+    play music "audio/bg-music/ancient.mp3" fadein 2.0 loop
     scene expression Solid("#6f3828")
     with fade
     centered "{size=+18}CHAPTER 3{/size}\nTHE MEMORY OF WATER"
@@ -452,6 +453,7 @@ label chapter_3:
     with dissolve
     oppy "Maybe I won't find anyone here. But I can help Earth learn who—or what—might have been here long ago."
 
+    stop music fadeout 2.0
     return
 
 
