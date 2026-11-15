@@ -1,13 +1,23 @@
-﻿# MER-B The Last Signal
+# MER-B The Last Signal
 
 # Character declarations
 
-define narrator = Character(None, color="#E8E1D3", callback=merb_keyboard_voice)
+define narrator = Character("Narrator", color="#E8E1D3", callback=merb_keyboard_voice)
 define oppy = Character("Opportunity", color="#CBE8FF", callback=merb_keyboard_voice)
 define earth = Character("Earth", color="#86D7FF", callback=merb_keyboard_voice)
 define mission = Character("Mission Control", color="#F9D57B", callback=merb_keyboard_voice)
 
 define config.rollback_enabled = False
+
+image opening_1 = Transform("images/1.png", xysize=(1920, 1080))
+image opening_2 = Transform("images/2.png", xysize=(1920, 1080))
+image opening_3 = Transform("images/3.png", xysize=(1920, 1080))
+image opening_4 = Transform("images/4.png", xysize=(1920, 1080))
+image opening_5 = Transform("images/5.png", xysize=(1920, 1080))
+image opening_6 = Transform("images/6.png", xysize=(1920, 1080))
+image opening_7 = Transform("images/7.png", xysize=(1920, 1080))
+image opening_8 = Transform("images/8.png", xysize=(1920, 1080))
+image opening_9 = Transform("images/9.png", xysize=(1920, 1080))
 
 
 label start:
@@ -16,22 +26,55 @@ label start:
 
     centered "{size=+22}MER-B The Last Signal{/size}"
 
+    scene opening_1
+    with dissolve
+
     narrator "Far away from everything we have ever called home..."
     narrator "On a world where no human has ever walked..."
     narrator "There is a little explorer."
+
+    scene opening_2
+    with dissolve
+
     narrator "It has six wheels. Two cameras that look almost like eyes. And a pair of solar panels that drink in the sunlight."
+
+    scene opening_3
+    with dissolve
+
     narrator "For nearly fifteen years, it has wandered across this world."
+
+    scene opening_4
+    with dissolve
+
     narrator "But today, the sunlight is fading."
+
+    scene opening_5
+    with dissolve
 
     oppy "That's strange..."
     oppy "It's getting dark already?"
+
+    scene opening_6
+    with dissolve
+
     oppy "Earth?"
     oppy "I think there's something wrong with the weather."
+
+    scene opening_7
+    with dissolve
+
     oppy "It's okay."
     oppy "We've been through storms before."
     oppy "I'll just save some power."
     oppy "And when the Sun comes back..."
+
+    scene opening_8
+    with dissolve
+
     narrator "...we can go exploring again."
+
+    scene opening_9
+    with dissolve
 
     narrator "But to understand this moment, we must go back to where it all began."
 
