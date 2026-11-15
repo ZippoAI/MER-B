@@ -97,6 +97,9 @@ style frame:
 
 screen say(who, what):
 
+    # Stop the dedicated reveal sound whenever dialogue leaves the screen.
+    on "hide" action Function(merb_keyboard_clear)
+
     window:
         id "window"
 
@@ -135,7 +138,9 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    # Scene-integrated dialogue: no full-width panel or textbox image.
+    background None
+    padding (0, 0)
 
 style namebox:
     xpos gui.name_xpos
@@ -144,13 +149,16 @@ style namebox:
     ypos gui.name_ypos
     ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
-    padding gui.namebox_borders.padding
+    background None
+    padding (0, 0)
 
 style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
     yalign 0.5
+    bold True
+    kerning 0.6
+    outlines [(1, "#07101cdd", 0, 0)]
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
@@ -159,7 +167,34 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+    # A fine glyph outline keeps light text readable on bright Mars scenes.
+    # Reveal timing is owned by Ren'Py/preferences, never a timer or CPS override.
+    color "#f2f4f7"
+    line_spacing 8
+    outlines [(1, "#07101cdd", 0, 0)]
     adjust_spacing False
+
+
+# Centered chapter/title/tribute cards share the typography, without typing
+# multiline headings or overriding their existing inline size tags and fades.
+style centered_window:
+    background None
+    padding (0, 0)
+    xalign 0.5
+    yalign 0.5
+    xsize 1640
+
+style centered_text:
+    font gui.heading_text_font
+    size 40
+    kerning 0.3
+    color "#f2f4f7"
+    line_spacing 16
+    outlines [(1, "#07101cdd", 0, 0)]
+    slow_cps False
+    xalign 0.5
+    textalign 0.5
+    xmaximum 1560
 
 ## Input screen ################################################################
 ##
@@ -228,6 +263,8 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+    line_spacing 6
+    outlines [(1, "#07101cdd", 0, 0)]
 
 
 ## Quick Menu screen ###########################################################
@@ -251,7 +288,7 @@ screen quick_menu():
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
+            textbutton _("Q.Save") action [Function(merb_keyboard_clear), QuickSave()]
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
 
@@ -276,6 +313,10 @@ style quick_button:
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
+    idle_color "#bac4d0"
+    hover_color "#f2f4f7"
+    selected_color "#cbe8ff"
+    outlines [(1, "#07101cdd", 0, 0)]
 
 
 ################################################################################
@@ -953,10 +994,14 @@ style history_name:
     xsize gui.history_name_width
 
 style history_name_text:
+    font gui.name_text_font
+    size gui.name_text_size
     min_width gui.history_name_width
     textalign gui.history_name_xalign
 
 style history_text:
+    font gui.text_font
+    line_spacing 8
     xpos gui.history_text_xpos
     ypos gui.history_text_ypos
     xanchor gui.history_text_xalign
@@ -1538,7 +1583,7 @@ screen quick_menu():
 
 style window:
     variant "small"
-    background "gui/phone/textbox.png"
+    background None
 
 style radio_button:
     variant "small"

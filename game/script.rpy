@@ -1,11 +1,11 @@
-﻿# Opportunity: One More Sunrise
+﻿# MER-B The Last Signal
 
 # Character declarations
 
 define narrator = Character(None, color="#E8E1D3")
-define oppy = Character("Opportunity", color="#CBE8FF")
+define oppy = Character("Opportunity", color="#CBE8FF", callback=merb_keyboard_voice)
 define earth = Character("Earth", color="#86D7FF")
-define mission = Character("Mission Control", color="#F9D57B")
+define mission = Character("Mission Control", color="#F9D57B", callback=merb_keyboard_voice)
 
 define config.rollback_enabled = False
 
@@ -14,7 +14,7 @@ label start:
     scene expression Solid("#03070d")
     with fade
 
-    centered "{size=+22}OPPORTUNITY{/size}\n{size=+8}ONE MORE SUNRISE{/size}"
+    centered "{size=+22}MER-B The Last Signal{/size}"
 
     narrator "Far away from everything we have ever called home..."
     narrator "On a world where no human has ever walked..."
