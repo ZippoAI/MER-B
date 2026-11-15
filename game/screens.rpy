@@ -103,7 +103,7 @@ screen say(who, what):
     window:
         id "window"
 
-        if who is not None:
+        if who is not None and who != "Narrator":
 
             window:
                 id "namebox"
