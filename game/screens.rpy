@@ -330,48 +330,64 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
-        style_prefix "navigation"
+    if main_menu:
+        vbox:
+            style_prefix "main_menu_navigation"
+            xalign 0.5
+            yalign 0.5
+            spacing gui.navigation_spacing
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+            if gui.show_name:
+                text "[config.name!t]":
+                    style "main_menu_title"
+                    xalign 0.5
+                    textalign 0.5
 
-        spacing gui.navigation_spacing
+                text "[config.version]":
+                    style "main_menu_version"
+                    xalign 0.5
+                    textalign 0.5
 
-        if main_menu:
+                null height 18
 
             textbutton _("Start") action Start()
+            textbutton _("Load") action ShowMenu("load")
+            textbutton _("Preferences") action ShowMenu("preferences")
+            textbutton _("About") action ShowMenu("about")
 
-        else:
+            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+                textbutton _("Help") action ShowMenu("help")
+
+            if renpy.variant("pc"):
+                textbutton _("Quit") action Quit(confirm=not main_menu)
+
+    else:
+        vbox:
+            style_prefix "navigation"
+            xpos gui.navigation_xpos
+            yalign 0.5
+            spacing gui.navigation_spacing
 
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+            textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+            textbutton _("Preferences") action ShowMenu("preferences")
 
-        if _in_replay:
+            if _in_replay:
+                textbutton _("End Replay") action EndReplay(confirm=True)
+            else:
+                textbutton _("Main Menu") action MainMenu()
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            textbutton _("About") action ShowMenu("about")
 
-        elif not main_menu:
+            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+                textbutton _("Help") action ShowMenu("help")
 
-            textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
-
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            if renpy.variant("pc"):
+                textbutton _("Quit") action Quit(confirm=True)
 
 
 style navigation_button is gui_button
@@ -383,6 +399,13 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
+
+style main_menu_navigation_button is navigation_button:
+    xalign 0.5
+
+style main_menu_navigation_button_text is navigation_button_text:
+    xalign 0.5
+    textalign 0.5
 
 
 ## Main Menu screen ############################################################
@@ -398,44 +421,14 @@ screen main_menu():
 
     add gui.main_menu_background
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
-
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
 
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
-
-
-style main_menu_frame is empty
-style main_menu_vbox is vbox
 style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
-
-style main_menu_frame:
-    xsize 420
-    yfill True
-
-    background "gui/overlay/main_menu.png"
-
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -514,7 +507,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
-    use navigation
+    if not main_menu:
+        use navigation
 
     textbutton _("Return"):
         style "return_button"
@@ -1596,10 +1590,6 @@ style check_button:
 style nvl_window:
     variant "small"
     background "gui/phone/nvl.png"
-
-style main_menu_frame:
-    variant "small"
-    background "gui/phone/overlay/main_menu.png"
 
 style game_menu_outer_frame:
     variant "small"
