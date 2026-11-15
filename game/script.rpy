@@ -19,6 +19,23 @@ image opening_7 = Transform("images/scene/start/7.png", xysize=(1920, 1080))
 image opening_8 = Transform("images/scene/start/8.png", xysize=(1920, 1080))
 image opening_9 = Transform("images/scene/start/9.png", xysize=(1920, 1080))
 
+image chapter1_1 = Transform("images/scene/chpt1/1.png", xysize=(1920, 1080))
+image chapter1_2 = Transform("images/scene/chpt1/2.png", xysize=(1920, 1080))
+image chapter1_3 = Transform("images/scene/chpt1/3.png", xysize=(1920, 1080))
+image chapter1_4 = Transform("images/scene/chpt1/4.png", xysize=(1920, 1080))
+image chapter1_5 = Transform("images/scene/chpt1/5.png", xysize=(1920, 1080))
+image chapter1_6 = Transform("images/scene/chpt1/6.png", xysize=(1920, 1080))
+image chapter1_7 = Transform("images/scene/chpt1/7.png", xysize=(1920, 1080))
+image chapter1_8 = Transform("images/scene/chpt1/8.png", xysize=(1920, 1080))
+image chapter1_9 = Transform("images/scene/chpt1/9.png", xysize=(1920, 1080))
+image chapter1_10 = Transform("images/scene/chpt1/10.png", xysize=(1920, 1080))
+image chapter1_11 = Transform("images/scene/chpt1/11.png", xysize=(1920, 1080))
+image chapter1_12 = Transform("images/scene/chpt1/12.png", xysize=(1920, 1080))
+image chapter1_13 = Transform("images/scene/chpt1/13.png", xysize=(1920, 1080))
+image chapter1_14 = Transform("images/scene/chpt1/14.png", xysize=(1920, 1080))
+image chapter1_15 = Transform("images/scene/chpt1/15.png", xysize=(1920, 1080))
+image chapter1_16 = Transform("images/scene/chpt1/16.png", xysize=(1920, 1080))
+
 
 label start:
     scene expression Solid("#03070d")
@@ -107,26 +124,72 @@ label chapter_1:
     with fade
     centered "{size=+18}CHAPTER 1{/size}\nA LITTLE ROBOT WITH A BIG DREAM"
 
+    scene chapter1_1
+    with dissolve
+    pause 3.0
+
+    scene chapter1_2
+    with dissolve
     narrator "There was once a little robot. Its name was Opportunity."
-    narrator "Its official designation was Mars Exploration Rover-B. But the people who built it had a shorter name. They called it Oppy."
+
+    scene chapter1_3
+    with dissolve
+    narrator "Its official designation was Mars Exploration Rover-B. But the people who built it had a shorter name."
+
+    scene chapter1_4
+    with dissolve
+    narrator "They called it Oppy."
+
+    scene chapter1_5
+    with dissolve
     narrator "Opportunity was not built to fight. It was not built to conquer. It was built to answer a question."
+
+    scene chapter1_6
+    with dissolve
     narrator "Long ago, was Mars a world of water? Could this cold, dusty planet once have been a place where life might survive?"
+
+    scene chapter1_7
+    with dissolve
     narrator "To find out, humans built two explorers. Spirit and Opportunity. They were twins, sent to opposite sides of Mars."
 
+    scene chapter1_8
+    with dissolve
     oppy "So... that's Mars?"
+
+    scene chapter1_9
+    with dissolve
     oppy "It looks pretty far away."
+
+    scene chapter1_10
+    with dissolve
     earth "It is. More than a hundred million kilometers away when you arrive."
+
+    scene chapter1_11
+    with dissolve
     oppy "That's a long way to travel. What will I find there?"
+
+    scene chapter1_12
+    with dissolve
     earth "We don't know yet. That's why we're sending you."
+
+    scene chapter1_13
+    with dissolve
     oppy "Oh. So... I'm supposed to find something nobody has seen before?"
     earth "Exactly."
+
+    scene chapter1_14
+    with dissolve
     oppy "Then I'll look really carefully. I promise."
 
-    narrator "Opportunity was designed for a mission lasting just 90 Martian days."
+    scene chapter1_15
+    with dissolve
+    narrator "Opportunity was designed for a mission lasting just 90 Martian days. Ninety sunrises. Ninety sunsets."
     oppy "Ninety days? What happens after that?"
     earth "We'll see how far you can go."
     oppy "Then I'd better make every day count!"
 
+    scene chapter1_16
+    with dissolve
     narrator "On July 7, 2003, Opportunity left Earth. It would never return. But its journey was only beginning."
     return
 
