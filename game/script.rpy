@@ -79,6 +79,15 @@ image chapter5_5 = Transform("images/scene/chpt5/5.png", xysize=(1920, 1080))
 image chapter5_6 = Transform("images/scene/chpt5/6.png", xysize=(1920, 1080))
 image chapter5_7 = Transform("images/scene/chpt5/7.png", xysize=(1920, 1080))
 image chapter5_8 = Transform("images/scene/chpt5/8.png", xysize=(1920, 1080))
+image chapter6_1 = Transform("images/scene/chpt6/1.png", xysize=(1920, 1080))
+image chapter6_2 = Transform("images/scene/chpt6/2.png", xysize=(1920, 1080))
+image chapter6_3 = Transform("images/scene/chpt6/3.png", xysize=(1920, 1080))
+image chapter6_4 = Transform("images/scene/chpt6/4.png", xysize=(1920, 1080))
+image chapter6_5 = Transform("images/scene/chpt6/5.png", xysize=(1920, 1080))
+image chapter6_6 = Transform("images/scene/chpt6/6.png", xysize=(1920, 1080))
+image chapter6_7 = Transform("images/scene/chpt6/7.png", xysize=(1920, 1080))
+image chapter6_8 = Transform("images/scene/chpt6/8.png", xysize=(1920, 1080))
+image chapter6_9 = Transform("images/scene/chpt6/9.png", xysize=(1920, 1080))
 
 
 label start:
@@ -515,16 +524,42 @@ label chapter_6:
     with fade
     centered "{size=+18}CHAPTER 6{/size}\nTHE STORM WE SURVIVED"
 
+    scene chapter6_1
+    with dissolve
     narrator "By 2007, Opportunity had traveled across the planet for more than three years. Then the sky began to darken. A planet-wide dust storm spread across Mars."
+
+    scene chapter6_2
+    with dissolve
     oppy "Earth? Where did the sunlight go?"
+
+    scene chapter6_3
+    with dissolve
     earth "A major dust storm is blocking the Sun. We need to conserve your power."
+
+    scene chapter6_4
+    with dissolve
     oppy "Does that mean no exploring today?"
+
+    scene chapter6_5
+    with dissolve
     earth "Not today."
+
+    scene chapter6_6
+    with dissolve
     oppy "All right. I can wait."
     narrator "The rover suspended its scientific activities. Its power dropped dangerously low. For weeks, the team waited for the skies to clear."
     narrator "Then a faint beam of sunlight broke through the dust."
+
+    scene chapter6_7
+    with dissolve
     oppy "Oh! There you are! I knew you'd come back, Sun."
+
+    scene chapter6_8
+    with dissolve
     earth "We've got more exploring to do, Oppy."
+
+    scene chapter6_9
+    with dissolve
     oppy "Just one more sunrise?"
     earth "One more sunrise."
     narrator "Opportunity survived. And that memory of survival became part of its extraordinary story."
