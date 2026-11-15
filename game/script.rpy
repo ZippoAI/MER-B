@@ -97,6 +97,27 @@ image chapter7_6 = Transform("images/scene/chpt7/6.png", xysize=(1920, 1080))
 image chapter7_7 = Transform("images/scene/chpt7/7.png", xysize=(1920, 1080))
 image chapter7_8 = Transform("images/scene/chpt7/8.png", xysize=(1920, 1080))
 image chapter7_9 = Transform("images/scene/chpt7/9.png", xysize=(1920, 1080))
+image chapter8_1 = Transform("images/scene/chpt8/1.png", xysize=(1920, 1080))
+image chapter8_2 = Transform("images/scene/chpt8/2.png", xysize=(1920, 1080))
+image chapter8_3 = Transform("images/scene/chpt8/3.png", xysize=(1920, 1080))
+image chapter8_4 = Transform("images/scene/chpt8/4.png", xysize=(1920, 1080))
+image chapter8_5 = Transform("images/scene/chpt8/5.png", xysize=(1920, 1080))
+image chapter8_6 = Transform("images/scene/chpt8/6.png", xysize=(1920, 1080))
+image chapter8_7 = Transform("images/scene/chpt8/7.png", xysize=(1920, 1080))
+image chapter8_8 = Transform("images/scene/chpt8/8.png", xysize=(1920, 1080))
+image chapter8_9 = Transform("images/scene/chpt8/9.png", xysize=(1920, 1080))
+image chapter8_10 = Transform("images/scene/chpt8/10.png", xysize=(1920, 1080))
+image chapter8_11 = Transform("images/scene/chpt8/11.png", xysize=(1920, 1080))
+image chapter8_12 = Transform("images/scene/chpt8/12.png", xysize=(1920, 1080))
+image chapter8_13 = Transform("images/scene/chpt8/13.png", xysize=(1920, 1080))
+image chapter8_14 = Transform("images/scene/chpt8/14.png", xysize=(1920, 1080))
+image chapter8_15 = Transform("images/scene/chpt8/15.png", xysize=(1920, 1080))
+image chapter8_16 = Transform("images/scene/chpt8/16.png", xysize=(1920, 1080))
+image chapter8_17 = Transform("images/scene/chpt8/17.png", xysize=(1920, 1080))
+image chapter8_18 = Transform("images/scene/chpt8/18.png", xysize=(1920, 1080))
+image chapter8_19 = Transform("images/scene/chpt8/19.png", xysize=(1920, 1080))
+image chapter8_20 = Transform("images/scene/chpt8/20.png", xysize=(1920, 1080))
+image chapter8_21 = Transform("images/scene/chpt8/21.png", xysize=(1920, 1080))
 
 
 label start:
@@ -642,29 +663,91 @@ label chapter_8:
     with fade
     centered "{size=+18}CHAPTER 8{/size}\nWHEN THE SUN DISAPPEARED"
 
+    scene chapter8_1
+    with dissolve
     narrator "By June 2018, Opportunity had traveled 45.16 kilometers on Mars. It was exploring Perseverance Valley. The name seemed fitting, because no one could have guessed how much perseverance this little machine would show."
+
+    scene chapter8_2
+    with dissolve
     oppy "Earth? Look at this place. It's beautiful. I think this might be one of my favorite views."
+
+    scene chapter8_3
+    with dissolve
     earth "We have more observations planned here."
+
+    scene chapter8_4
+    with dissolve
     oppy "Then let's get started!"
     narrator "Then a dust cloud rolled across the sky. The sunlight began to fade."
+
+    scene chapter8_5
+    with dissolve
     oppy "Earth? My batteries aren't charging the way they should."
+
+    scene chapter8_6
+    with dissolve
     earth "A major dust storm is blocking the Sun. We need to conserve power."
+
+    scene chapter8_7
+    with dissolve
     oppy "Another storm?"
+
+    scene chapter8_8
+    with dissolve
     earth "Yes. A very large one."
+
+    scene chapter8_9
+    with dissolve
     oppy "All right. I can wait."
+
+    scene chapter8_10
+    with dissolve
     narrator "The dust grew thicker. Opportunity's systems were designed to conserve power, but this storm was more severe than the one it had survived in 2007."
+
+    scene chapter8_11
+    with dissolve
     oppy "I can't see the Sun anymore."
+
+    scene chapter8_12
+    with dissolve
     oppy "It must still be up there. Just hidden."
+
+    scene chapter8_13
+    with dissolve
     oppy "I'll take one more picture. Maybe Earth can tell me what the sky looks like."
+
+    scene chapter8_14
+    with dissolve
     narrator "On June 10, 2018, Opportunity sent its final data to Earth."
+
+    scene chapter8_15
+    with dissolve
     oppy "Earth? Did you get my picture?"
+
+    scene chapter8_16
+    with dissolve
     oppy "I think I should save what power I have left."
+
+    scene chapter8_17
+    with dissolve
     oppy "We've done this before. Remember? The sky got dark. We waited. And the Sun came back."
+
+    scene chapter8_18
+    with dissolve
     oppy "So I'll wait again."
+
+    scene chapter8_19
+    with dissolve
     oppy "There's still so much I haven't seen. So many rocks. So many places to explore."
     oppy "And I still haven't shown Earth everything."
+
+    scene chapter8_20
+    with dissolve
     oppy "That's okay. It doesn't all have to happen today."
     oppy "I'll rest for a little while."
+
+    scene chapter8_21
+    with dissolve
     oppy "Just one more sunrise..."
     narrator "...and then we can go a little farther."
     scene black
