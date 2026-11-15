@@ -783,22 +783,28 @@ label chapter_9:
 
     scene chapter9_1
     with dissolve
+    voice "audio/narrator/chpt9/voice1.mp3"
     narrator "The next day came. Opportunity did not answer."
     mission "No response."
 
     scene chapter9_2
     with dissolve
-    narrator "But on Earth, they did not give up. Engineers kept listening and sending commands, hoping to reach their little explorer."
+    voice "audio/narrator/chpt9/voice2.mp3"
+    narrator "But on Earth, they did not give up."
+    voice "audio/narrator/chpt9/voice3.mp3"
+    narrator "Engineers kept listening and sending commands, hoping to reach their little explorer."
     mission "Sending another command."
 
     scene chapter9_3
     with dissolve
+    voice "audio/narrator/chpt9/voice4.mp3"
     narrator "More than a thousand commands were sent in the effort to restore contact."
 
     scene chapter9_4
     with dissolve
     mission "Attempting contact."
     mission "No signal."
+    voice "audio/narrator/chpt9/voice5.mp3"
     narrator "On February 13, 2019, NASA officially declared Opportunity's mission complete."
     centered "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
     return
