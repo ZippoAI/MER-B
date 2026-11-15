@@ -411,6 +411,7 @@ label chapter_4:
 
     scene chapter4_1
     with dissolve
+    voice "audio/narrator/chpt4/voice1.mp3"
     narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
 
     scene chapter4_2
@@ -441,6 +442,7 @@ label chapter_4:
     earth "Really."
     oppy "Then... Just one more sunrise?"
     earth "One more sunrise."
+    voice "audio/narrator/chpt4/voice2.mp3"
     narrator "It was supposed to be the end of a 90-day mission. Instead, it became the beginning of an extraordinary adventure."
     return
 
