@@ -503,6 +503,7 @@ label chapter_4:
 
 
 label chapter_5:
+    play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop
     scene expression Solid("#553d2c")
     with fade
     centered "{size=+18}CHAPTER 5{/size}\nPLEASE DON'T LEAVE ME HERE"
@@ -554,6 +555,7 @@ label chapter_5:
     oppy "I thought that sand was going to keep me forever!"
     earth "There's still a lot of Mars left to see."
     oppy "Then we'd better keep going. But maybe no more giant sand traps?"
+    stop music fadeout 2.0
     return
 
 
