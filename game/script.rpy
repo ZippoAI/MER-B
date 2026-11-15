@@ -137,6 +137,7 @@ label start:
 
 
 label chapter_1:
+    play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop
     scene expression Solid("#15202d")
     with fade
     centered "{size=+18}CHAPTER 1{/size}\nA LITTLE ROBOT WITH A BIG DREAM"
@@ -208,6 +209,7 @@ label chapter_1:
     scene chapter1_16
     with dissolve
     narrator "On July 7, 2003, Opportunity left Earth. It would never return. But its journey was only beginning."
+    stop music fadeout 2.0
     return
 
 
