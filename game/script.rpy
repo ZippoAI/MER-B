@@ -9,15 +9,15 @@ define mission = Character("Mission Control", color="#F9D57B", callback=merb_key
 
 define config.rollback_enabled = False
 
-image opening_1 = Transform("images/1.png", xysize=(1920, 1080))
-image opening_2 = Transform("images/2.png", xysize=(1920, 1080))
-image opening_3 = Transform("images/3.png", xysize=(1920, 1080))
-image opening_4 = Transform("images/4.png", xysize=(1920, 1080))
-image opening_5 = Transform("images/5.png", xysize=(1920, 1080))
-image opening_6 = Transform("images/6.png", xysize=(1920, 1080))
-image opening_7 = Transform("images/7.png", xysize=(1920, 1080))
-image opening_8 = Transform("images/8.png", xysize=(1920, 1080))
-image opening_9 = Transform("images/9.png", xysize=(1920, 1080))
+image opening_1 = Transform("images/scene/start/1.png", xysize=(1920, 1080))
+image opening_2 = Transform("images/scene/start/2.png", xysize=(1920, 1080))
+image opening_3 = Transform("images/scene/start/3.png", xysize=(1920, 1080))
+image opening_4 = Transform("images/scene/start/4.png", xysize=(1920, 1080))
+image opening_5 = Transform("images/scene/start/5.png", xysize=(1920, 1080))
+image opening_6 = Transform("images/scene/start/6.png", xysize=(1920, 1080))
+image opening_7 = Transform("images/scene/start/7.png", xysize=(1920, 1080))
+image opening_8 = Transform("images/scene/start/8.png", xysize=(1920, 1080))
+image opening_9 = Transform("images/scene/start/9.png", xysize=(1920, 1080))
 
 
 label start:
