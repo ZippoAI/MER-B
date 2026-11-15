@@ -88,6 +88,15 @@ image chapter6_6 = Transform("images/scene/chpt6/6.png", xysize=(1920, 1080))
 image chapter6_7 = Transform("images/scene/chpt6/7.png", xysize=(1920, 1080))
 image chapter6_8 = Transform("images/scene/chpt6/8.png", xysize=(1920, 1080))
 image chapter6_9 = Transform("images/scene/chpt6/9.png", xysize=(1920, 1080))
+image chapter7_1 = Transform("images/scene/chpt7/1.png", xysize=(1920, 1080))
+image chapter7_2 = Transform("images/scene/chpt7/2.png", xysize=(1920, 1080))
+image chapter7_3 = Transform("images/scene/chpt7/3.png", xysize=(1920, 1080))
+image chapter7_4 = Transform("images/scene/chpt7/4.png", xysize=(1920, 1080))
+image chapter7_5 = Transform("images/scene/chpt7/5.png", xysize=(1920, 1080))
+image chapter7_6 = Transform("images/scene/chpt7/6.png", xysize=(1920, 1080))
+image chapter7_7 = Transform("images/scene/chpt7/7.png", xysize=(1920, 1080))
+image chapter7_8 = Transform("images/scene/chpt7/8.png", xysize=(1920, 1080))
+image chapter7_9 = Transform("images/scene/chpt7/9.png", xysize=(1920, 1080))
 
 
 label start:
@@ -579,15 +588,41 @@ label chapter_7:
     with fade
     centered "{size=+18}CHAPTER 7{/size}\nTHE WORLD KEEPS GETTING BIGGER"
 
+    scene chapter7_1
+    with dissolve
     narrator "The days became months. The months became years. Opportunity crossed immense plains, studied crater walls, and followed the geological history of Mars."
+
+    scene chapter7_2
+    with dissolve
     narrator "In 2011, it arrived at the rim of Endeavour Crater and found white veins of gypsum and clay minerals, evidence of ancient environments with water."
+
+    scene chapter7_3
+    with dissolve
     oppy "Earth? I think Mars is telling us an even bigger story."
+
+    scene chapter7_4
+    with dissolve
     earth "It is. And you found another piece of it."
+
+    scene chapter7_5
+    with dissolve
     oppy "Do you think people will remember all these places?"
     earth "Your pictures are already helping people understand a world they've never visited."
+
+    scene chapter7_6
+    with dissolve
     narrator "Opportunity became the first rover to travel more than 42 kilometers on another world. And it kept going."
+
+    scene chapter7_8
+    with dissolve
     oppy "There's still something beautiful over there. Could we go a little farther?"
+
+    scene chapter7_9
+    with dissolve
     earth "We'll find a safe path."
+
+    scene chapter7_7
+    with dissolve
     narrator "Children who were born when Opportunity landed were now teenagers. Students who followed the mission were becoming scientists and engineers. The little rover had spent almost an entire generation exploring another world."
     return
 
