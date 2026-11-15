@@ -560,6 +560,7 @@ label chapter_5:
 
 
 label chapter_6:
+    play music "audio/bg-music/storm.mp3" fadein 2.0 loop
     scene expression Solid("#1f2a2f")
     with fade
     centered "{size=+18}CHAPTER 6{/size}\nTHE STORM WE SURVIVED"
@@ -611,6 +612,7 @@ label chapter_6:
     earth "One more sunrise."
     voice "audio/narrator/chpt6/voice6.mp3"
     narrator "Opportunity survived. And that memory of survival became part of its extraordinary story."
+    stop music fadeout 2.0
     return
 
 
