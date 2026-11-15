@@ -329,6 +329,7 @@ label chapter_3:
 
     scene chapter3_1
     with dissolve
+    voice "audio/narrator/chpt3/voice1.mp3"
     narrator "Opportunity examined layered rock and discovered small round stones scattered across the ground."
 
     scene chapter3_2
@@ -345,10 +346,14 @@ label chapter_3:
 
     scene chapter3_5
     with dissolve
-    narrator "The scientists nicknamed them blueberries. They were not fruit. They were small spheres containing hematite, an iron mineral formed in environments involving water."
+    voice "audio/narrator/chpt3/voice2.mp3"
+    narrator "The scientists nicknamed them blueberries. They were not fruit."
+    voice "audio/narrator/chpt3/voice3.mp3"
+    narrator "They were small spheres containing hematite, an iron mineral formed in environments involving water."
 
     scene chapter3_6
     with dissolve
+    voice "audio/narrator/chpt3/voice4.mp3"
     narrator "Opportunity's instruments studied minerals and sedimentary rock. Together, these clues revealed a world of ancient water."
 
     scene chapter3_7
@@ -381,7 +386,10 @@ label chapter_3:
 
     scene chapter3_14
     with dissolve
-    narrator "Opportunity did not discover living Martians. It did not prove life had existed there. But it helped show that ancient Mars had environments shaped by liquid water."
+    voice "audio/narrator/chpt3/voice5.mp3"
+    narrator "Opportunity did not discover living Martians."
+    voice "audio/narrator/chpt3/voice6.mp3"
+    narrator "It did not prove life had existed there. But it helped show that ancient Mars had environments shaped by liquid water."
 
     scene chapter3_15
     with dissolve
