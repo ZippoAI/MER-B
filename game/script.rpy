@@ -36,6 +36,23 @@ image chapter1_14 = Transform("images/scene/chpt1/14.png", xysize=(1920, 1080))
 image chapter1_15 = Transform("images/scene/chpt1/15.png", xysize=(1920, 1080))
 image chapter1_16 = Transform("images/scene/chpt1/16.png", xysize=(1920, 1080))
 
+image chapter3_1 = Transform("images/scene/chpt3/1.png", xysize=(1920, 1080))
+image chapter3_2 = Transform("images/scene/chpt3/2.png", xysize=(1920, 1080))
+image chapter3_3 = Transform("images/scene/chpt3/3.png", xysize=(1920, 1080))
+image chapter3_4 = Transform("images/scene/chpt3/4.png", xysize=(1920, 1080))
+image chapter3_5 = Transform("images/scene/chpt3/5.png", xysize=(1920, 1080))
+image chapter3_6 = Transform("images/scene/chpt3/6.png", xysize=(1920, 1080))
+image chapter3_7 = Transform("images/scene/chpt3/7.png", xysize=(1920, 1080))
+image chapter3_8 = Transform("images/scene/chpt3/8.png", xysize=(1920, 1080))
+image chapter3_9 = Transform("images/scene/chpt3/9.png", xysize=(1920, 1080))
+image chapter3_10 = Transform("images/scene/chpt3/10.png", xysize=(1920, 1080))
+image chapter3_11 = Transform("images/scene/chpt3/11.png", xysize=(1920, 1080))
+image chapter3_12 = Transform("images/scene/chpt3/12.png", xysize=(1920, 1080))
+image chapter3_13 = Transform("images/scene/chpt3/13.png", xysize=(1920, 1080))
+image chapter3_14 = Transform("images/scene/chpt3/14.png", xysize=(1920, 1080))
+image chapter3_15 = Transform("images/scene/chpt3/15.png", xysize=(1920, 1080))
+image chapter3_16 = Transform("images/scene/chpt3/16.png", xysize=(1920, 1080))
+
 
 label start:
     scene expression Solid("#03070d")
@@ -235,23 +252,70 @@ label chapter_3:
     with fade
     centered "{size=+18}CHAPTER 3{/size}\nTHE MEMORY OF WATER"
 
+    scene chapter3_1
+    with dissolve
     narrator "Opportunity examined layered rock and discovered small round stones scattered across the ground."
+
+    scene chapter3_2
+    with dissolve
     oppy "Earth? I've found something strange."
+
+    scene chapter3_3
+    with dissolve
     earth "What have you got?"
+
+    scene chapter3_4
+    with dissolve
     oppy "Little round stones. They're everywhere! They look like tiny blueberries!"
+
+    scene chapter3_5
+    with dissolve
     narrator "The scientists nicknamed them blueberries. They were not fruit. They were small spheres containing hematite, an iron mineral formed in environments involving water."
+
+    scene chapter3_6
+    with dissolve
     narrator "Opportunity's instruments studied minerals and sedimentary rock. Together, these clues revealed a world of ancient water."
 
+    scene chapter3_7
+    with dissolve
     oppy "Wait... Mars wasn't always like this?"
+
+    scene chapter3_8
+    with dissolve
     earth "No. Long ago, water affected these rocks."
+
+    scene chapter3_9
+    with dissolve
     oppy "Water? Like the oceans on Earth?"
+
+    scene chapter3_10
+    with dissolve
     earth "Not necessarily oceans here. But this place preserves evidence of ancient water."
+
+    scene chapter3_11
+    with dissolve
     oppy "So these rocks... They're telling us a story?"
+
+    scene chapter3_12
+    with dissolve
     earth "They are. And you're helping us read it."
+
+    scene chapter3_13
+    with dissolve
     oppy "Then I'll remember every little detail. Every rock. Every mark. Every clue."
 
+    scene chapter3_14
+    with dissolve
     narrator "Opportunity did not discover living Martians. It did not prove life had existed there. But it helped show that ancient Mars had environments shaped by liquid water."
+
+    scene chapter3_15
+    with dissolve
     oppy "Maybe I won't find anyone here. But I can help Earth learn who—or what—might have been here long ago."
+
+    scene chapter3_16
+    with dissolve
+    narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
+
     return
 
 
@@ -260,7 +324,6 @@ label chapter_4:
     with fade
     centered "{size=+18}CHAPTER 4{/size}\nTHE NINETIETH SUNRISE"
 
-    narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
     oppy "Earth?"
     earth "Yes, Oppy?"
     oppy "I think... I've finished my mission."
