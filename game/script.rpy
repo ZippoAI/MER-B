@@ -71,6 +71,14 @@ image chapter4_4 = Transform("images/scene/chpt4/4.png", xysize=(1920, 1080))
 image chapter4_5 = Transform("images/scene/chpt4/5.png", xysize=(1920, 1080))
 image chapter4_6 = Transform("images/scene/chpt4/6.png", xysize=(1920, 1080))
 image chapter4_7 = Transform("images/scene/chpt4/7.png", xysize=(1920, 1080))
+image chapter5_1 = Transform("images/scene/chpt5/1.png", xysize=(1920, 1080))
+image chapter5_2 = Transform("images/scene/chpt5/2.png", xysize=(1920, 1080))
+image chapter5_3 = Transform("images/scene/chpt5/3.png", xysize=(1920, 1080))
+image chapter5_4 = Transform("images/scene/chpt5/4.png", xysize=(1920, 1080))
+image chapter5_5 = Transform("images/scene/chpt5/5.png", xysize=(1920, 1080))
+image chapter5_6 = Transform("images/scene/chpt5/6.png", xysize=(1920, 1080))
+image chapter5_7 = Transform("images/scene/chpt5/7.png", xysize=(1920, 1080))
+image chapter5_8 = Transform("images/scene/chpt5/8.png", xysize=(1920, 1080))
 
 
 label start:
@@ -452,22 +460,41 @@ label chapter_5:
     with fade
     centered "{size=+18}CHAPTER 5{/size}\nPLEASE DON'T LEAVE ME HERE"
 
+    scene chapter5_1
+    with dissolve
     narrator "Mars was beautiful. But Mars was also unforgiving. In April 2005, Opportunity drove into soft sand and sank."
+
+    scene chapter5_2
+    with dissolve
     oppy "Okay... Let's try moving forward."
     narrator "The wheels spun. The rover barely moved."
     oppy "That's not good."
+
+    scene chapter5_3
+    with dissolve
     oppy "Earth? I think I need some help."
     narrator "On Earth, engineers tested possible solutions using rover models and simulated Martian sand. Every movement had to be planned carefully."
 
     menu:
         "Drive forward slowly.":
+            scene chapter5_4
+            with dissolve
             narrator "Opportunity tries a careful recovery. The rover inches forward, then stops."
         "Back up and re-angle.":
+            scene chapter5_5
+            with dissolve
             narrator "The rover shifts its weight and tries a safer angle. The sand groans beneath it."
         "Wait and scan the ground.":
+            scene chapter5_6
+            with dissolve
             narrator "Opportunity gathers data and waits for Mission Control to find the best route."
 
+    scene chapter5_7
+    with dissolve
     narrator "After more than five weeks of careful work, Opportunity escaped the sand."
+
+    scene chapter5_8
+    with dissolve
     oppy "I thought that sand was going to keep me forever!"
     earth "There's still a lot of Mars left to see."
     oppy "Then we'd better keep going. But maybe no more giant sand traps?"
