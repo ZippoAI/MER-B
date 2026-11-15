@@ -51,7 +51,7 @@ image chapter3_12 = Transform("images/scene/chpt3/12.png", xysize=(1920, 1080))
 image chapter3_13 = Transform("images/scene/chpt3/13.png", xysize=(1920, 1080))
 image chapter3_14 = Transform("images/scene/chpt3/14.png", xysize=(1920, 1080))
 image chapter3_15 = Transform("images/scene/chpt3/15.png", xysize=(1920, 1080))
-image chapter3_16 = Transform("images/scene/chpt3/16.png", xysize=(1920, 1080))
+image chapter4_1 = Transform("images/scene/chpt4/1.png", xysize=(1920, 1080))
 
 
 label start:
@@ -314,10 +314,6 @@ label chapter_3:
     with dissolve
     oppy "Maybe I won't find anyone here. But I can help Earth learn who—or what—might have been here long ago."
 
-    scene chapter3_16
-    with dissolve
-    narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
-
     return
 
 
@@ -325,6 +321,10 @@ label chapter_4:
     scene expression Solid("#3d4e5c")
     with fade
     centered "{size=+18}CHAPTER 4{/size}\nTHE NINETIETH SUNRISE"
+
+    scene chapter4_1
+    with dissolve
+    narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
 
     oppy "Earth?"
     earth "Yes, Oppy?"
