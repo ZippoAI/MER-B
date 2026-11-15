@@ -458,6 +458,7 @@ label chapter_3:
 
 
 label chapter_4:
+    play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop
     scene expression Solid("#3d4e5c")
     with fade
     centered "{size=+18}CHAPTER 4{/size}\nTHE NINETIETH SUNRISE"
@@ -497,6 +498,7 @@ label chapter_4:
     earth "One more sunrise."
     voice "audio/narrator/chpt4/voice2.mp3"
     narrator "It was supposed to be the end of a 90-day mission. Instead, it became the beginning of an extraordinary adventure."
+    stop music fadeout 2.0
     return
 
 
