@@ -809,12 +809,19 @@ label epilogue:
     with fade
     centered "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
 
+    voice "audio/narrator/epilogue/voice1.mp3"
     narrator "Opportunity was built to survive 90 Martian days. It explored Mars for nearly fifteen years."
+    voice "audio/narrator/epilogue/voice2.mp3"
     narrator "It traveled 45.16 kilometers. It studied ancient rocks. It found evidence of water. And it helped us understand that Mars had once been a very different world."
+    voice "audio/narrator/epilogue/voice3.mp3"
     narrator "It survived freezing nights, difficult terrain, broken components, and storms that nearly ended its journey. Every time it survived, it gave us another chance to discover something new."
+    voice "audio/narrator/epilogue/voice4.mp3"
     narrator "But there was one thing the little explorer could never do. It could never come home."
+    voice "audio/narrator/epilogue/voice5.mp3"
     narrator "It was never meant to."
+    voice "audio/narrator/epilogue/voice6.mp3"
     narrator "We gave it a name. Opportunity. We gave it six wheels. And ninety days. It gave us almost fifteen years."
+    voice "audio/narrator/epilogue/voice7.mp3"
     narrator "And somewhere on Mars, under the same sky it studied for so long, our little explorer remains."
 
     centered "{size=+12}To Opportunity — MER-B{/size}\nJanuary 25, 2004 – June 10, 2018\nDesigned for 90 Martian days.\nExplored for almost 15 years.\n45.16 kilometers traveled.\nOne extraordinary journey."
