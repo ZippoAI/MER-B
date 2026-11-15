@@ -29,23 +29,33 @@ label start:
     scene opening_1
     with dissolve
 
+    voice "audio/narrator/voice1.mp3"
     narrator "Far away from everything we have ever called home..."
+    voice "audio/narrator/voice2.mp3"
     narrator "On a world where no human has ever walked..."
+    voice "audio/narrator/voice3.mp3"
     narrator "There is a little explorer."
 
     scene opening_2
     with dissolve
 
-    narrator "It has six wheels. Two cameras that look almost like eyes. And a pair of solar panels that drink in the sunlight."
+    voice "audio/narrator/voice4.mp3"
+    narrator "It has six wheels."
+    voice "audio/narrator/voice5.mp3"
+    narrator "Two cameras that look almost like eyes."
+    voice "audio/narrator/voice6.mp3"
+    narrator "And a pair of solar panels that drink in the sunlight."
 
     scene opening_3
     with dissolve
 
+    voice "audio/narrator/voice7.mp3"
     narrator "For nearly fifteen years, it has wandered across this world."
 
     scene opening_4
     with dissolve
 
+    voice "audio/narrator/voice8.mp3"
     narrator "But today, the sunlight is fading."
 
     scene opening_5
