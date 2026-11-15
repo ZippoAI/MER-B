@@ -233,6 +233,7 @@ label chapter_1:
 
 
 label chapter_2:
+    play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop
     scene expression Solid("#8b452d")
     with fade
     centered "{size=+18}CHAPTER 2{/size}\nHELLO, MARS"
@@ -295,6 +296,7 @@ label chapter_2:
     earth "One step at a time."
     oppy "I have six wheels. Does that mean I can take six steps?"
     narrator "And just like that, the little explorer began its journey."
+    stop music fadeout 2.0
     return
 
 
