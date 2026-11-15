@@ -65,6 +65,12 @@ image chapter3_13 = Transform("images/scene/chpt3/13.png", xysize=(1920, 1080))
 image chapter3_14 = Transform("images/scene/chpt3/14.png", xysize=(1920, 1080))
 image chapter3_15 = Transform("images/scene/chpt3/15.png", xysize=(1920, 1080))
 image chapter4_1 = Transform("images/scene/chpt4/1.png", xysize=(1920, 1080))
+image chapter4_2 = Transform("images/scene/chpt4/2.png", xysize=(1920, 1080))
+image chapter4_3 = Transform("images/scene/chpt4/3.png", xysize=(1920, 1080))
+image chapter4_4 = Transform("images/scene/chpt4/4.png", xysize=(1920, 1080))
+image chapter4_5 = Transform("images/scene/chpt4/5.png", xysize=(1920, 1080))
+image chapter4_6 = Transform("images/scene/chpt4/6.png", xysize=(1920, 1080))
+image chapter4_7 = Transform("images/scene/chpt4/7.png", xysize=(1920, 1080))
 
 
 label start:
@@ -407,13 +413,30 @@ label chapter_4:
     with dissolve
     narrator "Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end."
 
+    scene chapter4_2
+    with dissolve
     oppy "Earth?"
+
+    scene chapter4_3
+    with dissolve
     earth "Yes, Oppy?"
     oppy "I think... I've finished my mission."
+
+    scene chapter4_4
+    with dissolve
     oppy "I did everything I could. Does that mean... I have to stop now?"
+
+    scene chapter4_5
+    with dissolve
     earth "Your systems are still working. And there is still so much to explore."
+
+    scene chapter4_6
+    with dissolve
     oppy "Wait... You mean I can keep going?"
     earth "Yes."
+
+    scene chapter4_7
+    with dissolve
     oppy "Really?!"
     earth "Really."
     oppy "Then... Just one more sunrise?"
