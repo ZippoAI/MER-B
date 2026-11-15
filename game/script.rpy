@@ -30,7 +30,7 @@ label start:
     with dissolve
 
     voice "audio/narrator/voice1.mp3"
-    narrator "Far away from everything we have ever called home...re"
+    narrator "Far away from everything we have ever called home..."
     voice "audio/narrator/voice2.mp3"
     narrator "On a world where no human has ever walked..."
     voice "audio/narrator/voice3.mp3"
