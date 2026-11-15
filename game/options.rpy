@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("MER_B")
+define config.name = _("MER-B The Last Signal")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,6 +30,9 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Typography: {a=https://github.com/adobe-fonts/source-sans}Source Sans 3{/a} by Adobe, and {a=https://github.com/floriankarsten/space-grotesk}Space Grotesk{/a} by the Space Grotesk Project Authors.
+
+Both families are licensed under the SIL Open Font License 1.1. Full copyright notices and license texts are included in game/fonts/.
 """)
 
 
@@ -120,7 +123,11 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+# Native text reveal preserves click-to-complete, skip, auto, and the speed slider.
+# The speed slider remains available; no character forces a per-line CPS value.
+# Changing this default migrates the old persisted value once (including stale
+# slow test settings). Later player choices remain preference-controlled.
+default preferences.text_cps = 48
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0

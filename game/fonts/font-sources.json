@@ -1,0 +1,56 @@
+[
+  {
+    "file": "SourceSans3-Regular.ttf",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/TTF/SourceSans3-Regular.ttf",
+    "sha256": "4644c81b86ec9caaa76b634889968ed3c4f4f52f054855933acc7c2b21e53b0f",
+    "bytes": 431196
+  },
+  {
+    "file": "SourceSans3-Bold.ttf",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/TTF/SourceSans3-Bold.ttf",
+    "sha256": "9214b9d95e4231c609802815c2646c98174e2102d0d37f88978a7f8e71006e6a",
+    "bytes": 428176
+  },
+  {
+    "file": "SourceSans3-It.ttf",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/TTF/SourceSans3-It.ttf",
+    "sha256": "192afd78f0f54a3c69eaf02d43f4d9a821e9d6110e41d3d25d61a7385cd580e4",
+    "bytes": 315812
+  },
+  {
+    "file": "SourceSans3-BoldIt.ttf",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/TTF/SourceSans3-BoldIt.ttf",
+    "sha256": "7978291fc1bf314db887e0366853b33c5cf2e964c7b95cfb9ce403a6ec46a842",
+    "bytes": 318700
+  },
+  {
+    "file": "SourceSans3-Semibold.ttf",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/TTF/SourceSans3-Semibold.ttf",
+    "sha256": "a3f4f8dcf343a8f24dc61951de93f3ba1558b15cd250ba24af8a40e957081b7d",
+    "bytes": 425904
+  },
+  {
+    "file": "SpaceGrotesk-Medium.ttf",
+    "url": "https://raw.githubusercontent.com/floriankarsten/space-grotesk/03507d024a01282884232081fc6011c09ff4e849/fonts/ttf/static/SpaceGrotesk-Medium.ttf",
+    "sha256": "3183b7eb0b4241476360e2cd8e527868616cc16d3ce332c4376505989b772b44",
+    "bytes": 116664
+  },
+  {
+    "file": "SpaceGrotesk-Bold.ttf",
+    "url": "https://raw.githubusercontent.com/floriankarsten/space-grotesk/03507d024a01282884232081fc6011c09ff4e849/fonts/ttf/static/SpaceGrotesk-Bold.ttf",
+    "sha256": "7209bbb75fc0f5c546a5f5773b0db74ffc6abf04c2148c1105cace5765a96bdb",
+    "bytes": 116056
+  },
+  {
+    "file": "SourceSans3-OFL.txt",
+    "url": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/LICENSE.md",
+    "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+    "bytes": 4486
+  },
+  {
+    "file": "SpaceGrotesk-OFL.txt",
+    "url": "https://raw.githubusercontent.com/floriankarsten/space-grotesk/03507d024a01282884232081fc6011c09ff4e849/OFL.txt",
+    "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+    "bytes": 4495
+  }
+]
