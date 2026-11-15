@@ -4,7 +4,7 @@
 
 define merb_keyboard_file = "audio/sfx/Keyboard-Sound.mp3"
 define merb_keyboard_channel = "merb_keyboard"
-define merb_keyboard_volume = 0.18
+define merb_keyboard_volume = 0.70
 
 # Defaults keep older saves loadable. This flag is cleared after loading;
 # it never grants a restored audio loop permission to resume by itself.
