@@ -55,6 +55,7 @@ image chapter4_1 = Transform("images/scene/chpt4/1.png", xysize=(1920, 1080))
 
 
 label start:
+    play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop
     scene expression Solid("#03070d")
     with fade
 
@@ -63,33 +64,33 @@ label start:
     scene opening_1
     with dissolve
 
-    voice "audio/narrator/voice1.mp3"
+    voice "audio/narrator/start/voice1.mp3"
     narrator "Far away from everything we have ever called home..."
-    voice "audio/narrator/voice2.mp3"
+    voice "audio/narrator/start/voice2.mp3"
     narrator "On a world where no human has ever walked..."
-    voice "audio/narrator/voice3.mp3"
+    voice "audio/narrator/start/voice3.mp3"
     narrator "There is a little explorer."
 
     scene opening_2
     with dissolve
 
-    voice "audio/narrator/voice4.mp3"
+    voice "audio/narrator/start/voice4.mp3"
     narrator "It has six wheels."
-    voice "audio/narrator/voice5.mp3"
+    voice "audio/narrator/start/voice5.mp3"
     narrator "Two cameras that look almost like eyes."
-    voice "audio/narrator/voice6.mp3"
+    voice "audio/narrator/start/voice6.mp3"
     narrator "And a pair of solar panels that drink in the sunlight."
 
     scene opening_3
     with dissolve
 
-    voice "audio/narrator/voice7.mp3"
+    voice "audio/narrator/start/voice7.mp3"
     narrator "For nearly fifteen years, it has wandered across this world."
 
     scene opening_4
     with dissolve
 
-    voice "audio/narrator/voice8.mp3"
+    voice "audio/narrator/start/voice8.mp3"
     narrator "But today, the sunlight is fading."
 
     scene opening_5
@@ -120,8 +121,13 @@ label start:
     scene opening_9
     with dissolve
 
-    narrator "But to understand this moment, we must go back to where it all began."
+    voice "audio/narrator/start/voice9.mp3"
+    narrator "But to understand this moment..."
 
+    voice "audio/narrator/start/voice10.mp3"
+    narrator "We must go back to where it all began."
+
+    stop music fadeout 2.0
     call chapter_1
     call chapter_2
     call chapter_3
