@@ -239,6 +239,19 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+# Standalone cinematic interaction: native advance keys/click, with game-menu
+# access retained for saving/loading. Skip/auto cannot dismiss this screen.
+screen merb_chapter_intro_wait():
+    modal True
+    zorder 110
+
+    key "dismiss" action Return()
+    key "game_menu" action ShowMenu()
+    key "skip" action NullAction()
+    key "toggle_skip" action NullAction()
+    key "fast_skip" action NullAction()
+
+
 screen choice(items):
     style_prefix "choice"
 
@@ -277,7 +290,7 @@ screen quick_menu():
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    if quick_menu and not _merb_chapter_intro_active:
 
         hbox:
             style_prefix "quick"
@@ -1563,7 +1576,7 @@ screen quick_menu():
 
     zorder 100
 
-    if quick_menu:
+    if quick_menu and not _merb_chapter_intro_active:
 
         hbox:
             style "quick_menu"

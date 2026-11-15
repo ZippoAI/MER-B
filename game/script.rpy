@@ -212,11 +212,33 @@ label start:
     return
 
 
+# A saved default keeps menus/loads on a chapter card cinematic as well.
+default _merb_chapter_intro_active = False
+
+label merb_chapter_intro(card_image):
+    $ _merb_chapter_intro_active = True
+    $ merb_keyboard_clear()
+    stop voice
+    $ renpy.stop_skipping()
+    window hide
+
+    scene black
+    show expression Transform(card_image, xysize=(config.screen_width, config.screen_height), fit="contain", xalign=0.5, yalign=0.5) as merb_chapter_card
+    with Fade(0.4, 0.0, 0.6)
+
+    # No say/centered statement, auto-forward timer, or timed pause.
+    call screen merb_chapter_intro_wait
+
+    scene black
+    with Dissolve(0.4)
+    $ _merb_chapter_intro_active = False
+    window auto
+    return
+
+
 label chapter_1:
     play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop
-    scene expression Solid("#15202d")
-    with fade
-    centered "{size=+18}CHAPTER 1{/size}\nA LITTLE ROBOT WITH A BIG DREAM"
+    call merb_chapter_intro("images/ch/Slide1.PNG") from merb_chapter_intro_1
 
     scene chapter1_1
     with dissolve
@@ -301,9 +323,7 @@ label chapter_1:
 
 label chapter_2:
     play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop
-    scene expression Solid("#8b452d")
-    with fade
-    centered "{size=+18}CHAPTER 2{/size}\nHELLO, MARS"
+    call merb_chapter_intro("images/ch/Slide2.PNG") from merb_chapter_intro_2
 
     scene chapter2_1
     with dissolve
@@ -381,9 +401,7 @@ label chapter_2:
 
 label chapter_3:
     play music "audio/bg-music/ancient.mp3" fadein 2.0 loop
-    scene expression Solid("#6f3828")
-    with fade
-    centered "{size=+18}CHAPTER 3{/size}\nTHE MEMORY OF WATER"
+    call merb_chapter_intro("images/ch/Slide3.PNG") from merb_chapter_intro_3
 
     scene chapter3_1
     with dissolve
@@ -459,9 +477,7 @@ label chapter_3:
 
 label chapter_4:
     play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop
-    scene expression Solid("#3d4e5c")
-    with fade
-    centered "{size=+18}CHAPTER 4{/size}\nTHE NINETIETH SUNRISE"
+    call merb_chapter_intro("images/ch/Slide4.PNG") from merb_chapter_intro_4
 
     scene chapter4_1
     with dissolve
@@ -504,9 +520,7 @@ label chapter_4:
 
 label chapter_5:
     play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop
-    scene expression Solid("#553d2c")
-    with fade
-    centered "{size=+18}CHAPTER 5{/size}\nPLEASE DON'T LEAVE ME HERE"
+    call merb_chapter_intro("images/ch/Slide5.PNG") from merb_chapter_intro_5
 
     scene chapter5_1
     with dissolve
@@ -561,9 +575,7 @@ label chapter_5:
 
 label chapter_6:
     play music "audio/bg-music/storm.mp3" fadein 2.0 loop
-    scene expression Solid("#1f2a2f")
-    with fade
-    centered "{size=+18}CHAPTER 6{/size}\nTHE STORM WE SURVIVED"
+    call merb_chapter_intro("images/ch/Slide6.PNG") from merb_chapter_intro_6
 
     scene chapter6_1
     with dissolve
@@ -617,9 +629,7 @@ label chapter_6:
 
 
 label chapter_7:
-    scene expression Solid("#4c2d20")
-    with fade
-    centered "{size=+18}CHAPTER 7{/size}\nTHE WORLD KEEPS GETTING BIGGER"
+    call merb_chapter_intro("images/ch/Slide7.PNG") from merb_chapter_intro_7
 
     scene chapter7_1
     with dissolve
@@ -671,9 +681,7 @@ label chapter_7:
 
 
 label chapter_8:
-    scene expression Solid("#0d0e11")
-    with fade
-    centered "{size=+18}CHAPTER 8{/size}\nWHEN THE SUN DISAPPEARED"
+    call merb_chapter_intro("images/ch/Slide8.PNG") from merb_chapter_intro_8
 
     scene chapter8_1
     with dissolve
@@ -779,9 +787,7 @@ label chapter_8:
 
 
 label chapter_9:
-    scene expression Solid("#141719")
-    with fade
-    centered "{size=+18}CHAPTER 9{/size}\nEARTH IS STILL CALLING"
+    call merb_chapter_intro("images/ch/Slide9.PNG") from merb_chapter_intro_9
 
     scene chapter9_1
     with dissolve
