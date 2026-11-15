@@ -134,6 +134,7 @@ style window:
     xfill True
     yalign gui.textbox_yalign
     ysize gui.textbox_height
+    padding (30, 28, 30, 26)
 
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
@@ -146,18 +147,27 @@ style namebox:
 
     background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
+    xpadding 20
+    ypadding 8
 
 style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
     yalign 0.5
+    text_color gui.accent_color
+    bold True
+    line_spacing 2
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
+    color gui.text_color
+    font gui.text_font
+    size gui.text_size
 
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
+    line_spacing 7
 
     adjust_spacing False
 
