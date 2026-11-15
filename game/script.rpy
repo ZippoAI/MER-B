@@ -675,7 +675,10 @@ label chapter_8:
 
     scene chapter8_1
     with dissolve
-    narrator "By June 2018, Opportunity had traveled 45.16 kilometers on Mars. It was exploring Perseverance Valley. The name seemed fitting, because no one could have guessed how much perseverance this little machine would show."
+    voice "audio/narrator/chpt8/voice1.mp3"
+    narrator "By June 2018, Opportunity had traveled 45.16 kilometers on Mars. It was exploring Perseverance Valley."
+    voice "audio/narrator/chpt8/voice2.mp3"
+    narrator "The name seemed fitting, because no one could have guessed how much perseverance this little machine would show."
 
     scene chapter8_2
     with dissolve
@@ -688,6 +691,7 @@ label chapter_8:
     scene chapter8_4
     with dissolve
     oppy "Then let's get started!"
+    voice "audio/narrator/chpt8/voice3.mp3"
     narrator "Then a dust cloud rolled across the sky. The sunlight began to fade."
 
     scene chapter8_5
@@ -712,7 +716,10 @@ label chapter_8:
 
     scene chapter8_10
     with dissolve
-    narrator "The dust grew thicker. Opportunity's systems were designed to conserve power, but this storm was more severe than the one it had survived in 2007."
+    voice "audio/narrator/chpt8/voice4.mp3"
+    narrator "The dust grew thicker."
+    voice "audio/narrator/chpt8/voice5.mp3"
+    narrator "Opportunity's systems were designed to conserve power, but this storm was more severe than the one it had survived in 2007."
 
     scene chapter8_11
     with dissolve
@@ -728,6 +735,7 @@ label chapter_8:
 
     scene chapter8_14
     with dissolve
+    voice "audio/narrator/chpt8/voice6.mp3"
     narrator "On June 10, 2018, Opportunity sent its final data to Earth."
 
     scene chapter8_15
@@ -759,9 +767,11 @@ label chapter_8:
     scene chapter8_21
     with dissolve
     oppy "Just one more sunrise..."
+    voice "audio/narrator/chpt8/voice7.mp3"
     narrator "...and then we can go a little farther."
     scene black
     with fade
+    voice "audio/narrator/chpt8/voice8.mp3"
     narrator "The rover fell silent beneath the dust."
     return
 
