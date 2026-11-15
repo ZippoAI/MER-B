@@ -590,10 +590,14 @@ label chapter_7:
 
     scene chapter7_1
     with dissolve
-    narrator "The days became months. The months became years. Opportunity crossed immense plains, studied crater walls, and followed the geological history of Mars."
+    voice "audio/narrator/chpt7/voice1.mp3"
+    narrator "The days became months. The months became years."
+    voice "audio/narrator/chpt7/voice2.mp3"
+    narrator "Opportunity crossed immense plains, studied crater walls, and followed the geological history of Mars."
 
     scene chapter7_2
     with dissolve
+    voice "audio/narrator/chpt7/voice3.mp3"
     narrator "In 2011, it arrived at the rim of Endeavour Crater and found white veins of gypsum and clay minerals, evidence of ancient environments with water."
 
     scene chapter7_3
@@ -611,6 +615,7 @@ label chapter_7:
 
     scene chapter7_6
     with dissolve
+    voice "audio/narrator/chpt7/voice4.mp3"
     narrator "Opportunity became the first rover to travel more than 42 kilometers on another world. And it kept going."
 
     scene chapter7_8
@@ -623,7 +628,12 @@ label chapter_7:
 
     scene chapter7_7
     with dissolve
-    narrator "Children who were born when Opportunity landed were now teenagers. Students who followed the mission were becoming scientists and engineers. The little rover had spent almost an entire generation exploring another world."
+    voice "audio/narrator/chpt7/voice5.mp3"
+    narrator "Children who were born when Opportunity landed were now teenagers."
+    voice "audio/narrator/chpt7/voice6.mp3"
+    narrator "Students who followed the mission were becoming scientists and engineers."
+    voice "audio/narrator/chpt7/voice7.mp3"
+    narrator "The little rover had spent almost an entire generation exploring another world."
     return
 
 
