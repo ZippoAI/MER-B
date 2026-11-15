@@ -1,371 +1,646 @@
-# MER-B The Last Signal — Complete Project Context
+# MER-B The Last Signal — Complete Current Project Context
 
-Repository inspection date: 15 November 2026. This document describes the files on disk at inspection time, not proposed work. Paths below are relative to the Git/Ren’Py root `D:/MER-B-Game/MER-B/` unless explicitly stated otherwise. Line references are one-based and refer to the inspected source revision.
+Inspection: **16 November 2026**, Asia/Calcutta. Git/Ren’Py root: **D:/MER-B-Game/MER-B/**. Paths below are relative to that root unless stated otherwise. This document contains spoilers and replaces the obsolete context describing an artless, silent prototype.
 
-Status vocabulary: **IMPLEMENTED** = present in source or files; **PARTIAL** = some relevant implementation exists but the wider goal is unfinished; **MISSING** = absent from the inspected repository; **UNKNOWN** = not established by this inspection. Source presence does not establish successful runtime behavior.
+**IMPLEMENTED** = present in source/files, not necessarily runtime-tested. **PARTIAL** = limited coverage of a broader capability. **MISSING** = absent from this checkout, not automatically required. **UNVERIFIED** = insufficient evidence or testing. Recommendations are not existing features.
 
-## 1. Project Overview and NASA Challenge
+## 1. Project purpose and current status
 
-The official public-facing title is **MER-B The Last Signal**. The project brief supplied by the owner identifies this educational visual novel as an entry for the NASA Space Apps Challenge 2026, “Abandoned but not Forgotten: Storytelling about NASA’s Discarded Equipment on the Moon and Mars.” The supplied brief describes a school-age audience and asks for engaging explanations of retired equipment, why it was sent, its work, and scientific discoveries. This challenge attribution and wording are **owner-provided context, UNVERIFIED externally**; no README, challenge specification, or submission materials exist in the inspected repository.
+The owner describes **MER-B The Last Signal** as a nearly complete educational visual novel for NASA Space Apps Challenge 2026. The earlier context preserves a project brief naming **“Abandoned but not Forgotten: Storytelling about NASA’s Discarded Equipment on the Moon and Mars”**, aimed at school-age learners. The current request confirms the event/year but does not supply an official challenge page. Exact wording, eligibility, judging requirements and official URL remain **UNVERIFIED externally**. No authoritative challenge specification or submission package exists in this checkout.
 
-**Rename update (15 November 2026):** the source heading (`game/script.rpy:1`), opening title card (`start`, line 17), and `config.name` (`game/options.rpy:15`) now use exactly **MER-B The Last Signal**. Main menu (`game/screens.rpy:373`), About screen (line 561), and engine window title derive their title from `config.name`; no hardcoded old title was found in screens. Previously the source heading was “Opportunity: One More Sunrise,” the opening card was “OPPORTUNITY / ONE MORE SUNRISE,” and the displayed application title was `MER_B`; these names are recorded here only as rename history. The dialogue motif “one more sunrise” is preserved. Internal `build.name = "MER_B"` and `config.save_directory = "MER_B-1794736084"` remain unchanged for build naming and existing-save compatibility. Version remains **1.0**.
+The game tells Opportunity’s purpose, scientific discoveries, adversities, final communication and legacy through accessible narration and imagined rover–Earth conversations. Curiosity, teamwork, endurance, distance, loss and remembrance are its themes. The “one more sunrise” motif links extensions, storm survival and final hope. It teaches ancient-water evidence, solar power and remote engineering. It does not simulate rover operations or establish that life was discovered.
 
-The implemented story follows NASA’s Opportunity rover, MER-B, from its purpose and launch through discoveries, survival, final silence, and Earth’s remembrance. It combines third-person educational narration with fictional conversations between Opportunity and Earth. The recurring “one more sunrise” phrase links curiosity, endurance, hope, and loss. The epilogue explicitly states that the rover remains on Mars and cannot return home. The emotional treatment is gentle and anthropomorphic rather than a technical simulation.
+**IMPLEMENTED:** prologue, nine chapters, epilogue, two three-option menus, 110 story illustrations, 78 narrator recordings, seven BGM tracks, typing sound, custom typography and standard VN UI. **PARTIAL:** narration coverage, music coverage, educational interaction, attribution and release preparation. **UNVERIFIED:** current full playthrough, lint, save compatibility, audio balance, responsive/accessibility behavior and packaged delivery. Source has a complete narrative sequence; that is not release certification.
 
-Challenge coverage is **PARTIAL**: the text explains mission purpose, scientific clues, continued exploration, loss of contact, and legacy. It does not include a challenge introduction, references, detailed instrument explanations, learning assessment, or an explicit account of why recovery/retrieval was not undertaken. Other discarded equipment on the Moon or Mars is not covered; the subject is Opportunity.
+## 2. Repository state, technology and setup
 
-## 2. Technology Stack and Execution Instructions
+Initial Git status was clean. Branch **development**, HEAD **7777828** (“Merge pull request #2 from ZippoAI/development”), remote **https://github.com/ZippoAI/MER-B.git**. Recent commits: d9d9c70 chapter 6 BGM; b450dd9 centered intro menu; 58e20bf chapter 9 voices; ea55d65 epilogue voices; 93608d6 chapter 8 voices; e024619 keyboard sound; 25e9aa6 chapter 5 BGM. Earlier context’s two-commit history and absence-of-media statements are obsolete. No branch/commit/push/fetch operations were performed.
 
-- **IMPLEMENTED:** Ren’Py `.rpy` narrative and screen language, with small Python initialization blocks in the GUI/options/screens. Four project `.rpy` files exist: `script.rpy`, `screens.rpy`, `gui.rpy`, and `options.rpy`.
-- **Observed runtime evidence:** existing ignored `log.txt:1–4` records Windows 11 and **Ren’Py 8.5.3.26051504**. It records script initialization and a GL2 renderer at virtual resolution 1920 × 1080. This is an earlier launch log, not a clean test of the current complete story.
-- **IMPLEMENTED:** `game/gui.rpy:7–12` initializes a **1920 × 1080** virtual canvas. Touch/small-screen adaptations are present, but a mobile build is **UNKNOWN**.
-- **MISSING:** bundled Ren’Py SDK/runtime, standalone executable, packaged build, dependency manifest, build instructions, and automated test suite. No external libraries are installed in `game/libs/`; its only file is explanatory `libs.txt`.
-- **Font dependency:** `DejaVuSans.ttf` is referenced in `game/gui.rpy:60–66` and the skip indicator style. It is not a repository file; it is expected from the Ren’Py engine distribution. Treat this as an engine dependency, not automatically as a broken custom asset.
+All six authored scripts were read: script.rpy (838 lines), screens.rpy (1656), gui.rpy (486), options.rpy (216), typing_audio.rpy (74), typography.rpy (13). No other authored .rpy file was found. The common.rpym file is a common engine-string scaffold, not an alternate-language story. game/libs/libs.txt is explanatory; there are no added third-party libraries, package-manager dependencies or automated test suite.
 
-Suggested execution for a future authorized runtime session: use a compatible Ren’Py SDK, preferably the version recorded above; configure the launcher’s projects directory as `D:/MER-B-Game`, select the project folder `MER-B`, and launch. Use the SDK’s lint/check-script facility and then play from Start through both menus to the ending. Build distributions through the launcher after validation. These are suggested instructions, **not commands executed during this inspection**. The subsequent rename check located the SDK at `D:/Renpy/renpy-8.5.3-sdk/`; supported release platforms remain **UNKNOWN**.
-
-Launching or linting may write compiled scripts, caches, logs, saves, and script backups. The original analysis deliberately did not launch the project or run Ren’Py lint, to respect its read-only constraint. During the subsequent authorized rename, lint was attempted on a temporary source/assets copy using both the SDK Python entry point and `renpy.exe`. Windows prevented both executables from starting with “Illegal System DLL Relocation,” so no lint result or runtime validation was obtained. Static checks confirmed that the changed Ren’Py string literals and configuration assignment are valid, the diff has no whitespace errors, and source changes are limited to the intended title replacements. No dependencies were installed.
-
-## 3. Repository Structure (annotated tree)
-
-The supplied working directory `D:/MER-B-Game/` is a parent folder, **not** the Git root. Its child `MER-B/` contains both `.git/` and `game/` and is the actual repository/project root. No `README*` or `AGENTS.md` files were found in the inspected project/workspace.
-
-```text
-D:/MER-B-Game/
-└── MER-B/                         # actual Git + Ren’Py project root
-    ├── .git/                      # version-control metadata
-    ├── .gitignore                 # excludes runtime/generated files
-    ├── .vscode/settings.json       # hides compiled files/archives/cache in editor
-    ├── PROJECT_CONTEXT_FOR_CHATGPT.md  # this analysis document
-    ├── log.txt                    # local ignored launch log, not tracked source
-    └── game/
-        ├── script.rpy             # entire authored story; 11 labels
-        ├── screens.rpy            # standard-style Ren’Py screens + variants
-        ├── gui.rpy                # layout, fonts, colors, 1920×1080 setup
-        ├── options.rpy            # app/build name, audio flags, preferences
-        ├── gui/                   # 80 tracked PNG UI assets; no story art
-        │   ├── bar/, button/, overlay/, scrollbar/, slider/
-        │   └── phone/             # small-screen UI equivalents
-        ├── libs/libs.txt          # library loading explanation only
-        ├── tl/None/common.rpym    # engine/common UI string translation scaffold
-        ├── cache/                 # ignored generated analysis/bytecode/shader files
-        ├── saves/                 # ignored local autosave + persistent state
-        └── *.rpyc / *.rpymc       # local compiled files; ignored
-```
-
-No `game/images/` or `game/audio/` directories were present. There are no story JPGs, custom fonts, movies, music files, SFX, or voice recordings in the inspected tree.
-
-Git context: the working tree was clean before this document was created. Current local history has two commits: `433ccfd` — `feat: story script` (15 November 2026), and `1ae95e2` — `init` (15 November 2026). HEAD’s change is confined to `game/script.rpy` (282 insertions, 17 deletions). Local branch is `main`; a remote-tracking reference named `origin/feat/improve-script-design` exists, but its name is not evidence that its work is implemented in the inspected checkout. This document describes local HEAD/source only. No fetch, checkout, commit, or push was performed.
-
-## 4. Current Implementation Status
-
-| Area | Status | Actual evidence / limit |
-| --- | --- | --- |
-| Beginning-to-ending story | IMPLEMENTED in source | `script.rpy:13–298`: opening, nine chapters, epilogue, final return |
-| Overall mission chronology | IMPLEMENTED as written narrative | Launch → landing → water clues → extensions → hazards → silence → tribute; factual verification pending |
-| Player choices | IMPLEMENTED, limited | Two menus, three options each; chapter 2 and chapter 5 |
-| Lasting branches / multiple endings | MISSING | No story variables, conditional routes, jumps, scoring, or alternate ending |
-| Educational delivery | PARTIAL | Explanatory dialogue; no quiz, fact cards, clickable investigation, glossary, timeline, or codex |
-| Backgrounds | PARTIAL | Chapter-specific `Solid(...)` color fields; no illustrated locations |
-| Characters | PARTIAL | Four dialogue definitions; no sprites, side images, expressions, or character art |
-| Music / SFX / recorded voice | MISSING | No audio files, audio declarations, or narrative playback commands |
-| General UI | IMPLEMENTED in source | Dialogue, choices, main/game menus, saves, preferences, history, help, confirmation |
-| Project branding / credits | PARTIAL | Official title consistently `MER-B The Last Signal`; template-like menu and empty `gui.about` remain |
-| Localization | PARTIAL scaffold only | `tl/None/common.rpym` contains common engine strings; no alternate-language story translation |
-| Runtime completion / release readiness | UNKNOWN | Existing initialization log only; no playthrough or lint performed here |
-
-“Complete story” means the source has a beginning and ending, not that art, educational design, historical review, accessibility QA, or packaging is complete.
-
-## 5. Complete Narrative Summary (chronological, based on actual scripts)
-
-**Framing order:** the game first shows a future storm scene, then explicitly rewinds to the beginning. The following summary gives the actual play order and identifies that flash-forward.
-
-1. **Opening / flash-forward — `start`, `script.rpy:13–49`.** A near-black blue field and title introduce a small six-wheeled explorer far from home. Narration says it has traveled for nearly fifteen years. Sunlight fades; Oppy asks Earth about the weather, reassures itself that storms have happened before, and plans to save power until exploration can resume. The narrator then takes the audience back to the beginning. The script does not date this opening explicitly; its relationship to the final storm is an inference from the later chapter. `start` calls every chapter in sequence and then the epilogue.
-
-2. **Purpose, twins, departure — `chapter_1`, lines 52–78, “A LITTLE ROBOT WITH A BIG DREAM.”** Opportunity is introduced as Mars Exploration Rover-B, nicknamed Oppy. It was built to investigate whether Mars once had water and potentially life-supporting conditions, rather than to conquer. Spirit is mentioned as its twin but never speaks. Earth explains that unknown discoveries justify the long journey. Opportunity hears that the nominal mission lasts ninety Martian days and vows to make them count. The final line dates its departure from Earth to July 7, 2003. There is no animated launch, engineering scene, or launch choice.
-
-3. **Landing and first investigation — `chapter_2`, lines 81–114, “HELLO, MARS.”** After nearly seven months, the narration describes entry/landing equipment: thin atmosphere, parachute, rockets, and airbags. Opportunity falls, bounces, rests, and sees Eagle Crater as the lander petals open. It greets Mars; Earth celebrates receiving images. A menu allows looking at the horizon, rocks, or ground. Each produces one explanatory line, after which all paths resume with Oppy’s enthusiasm and a joke about six wheels taking six steps. The landing date itself is not stated in this chapter; the tribute supplies it later.
-
-4. **Reading rocks for ancient water — `chapter_3`, lines 117–139, “THE MEMORY OF WATER.”** Opportunity finds layered rock and small rounded objects nicknamed blueberries. Narration explains hematite-containing spheres and mineral/sedimentary clues associated with water. Earth carefully says the local evidence does not necessarily mean oceans. Oppy learns to see rocks as a story. Narration explicitly says the rover neither found living Martians nor proved that life had existed. No specimen-selection mechanic or instrument simulation occurs.
-
-5. **Mission extension — `chapter_4`, lines 142–160, “THE NINETIETH SUNRISE.”** At the end of its original ninety-sol mission, Oppy wonders whether it must stop. Earth says the systems still work and exploration can continue. Their exchange introduces the recurring request for “one more sunrise.” The ninety-day endpoint becomes a beginning rather than a shutdown. No player choice controls the extension.
-
-6. **Sand entrapment and recovery — `chapter_5`, lines 163–187, “PLEASE DON’T LEAVE ME HERE.”** In April 2005, Oppy becomes stuck in soft sand; wheels turn without useful progress. Engineers on Earth test rover models in simulated sand and plan carefully. The player chooses to drive forward slowly, back up and re-angle, or wait and scan. Each receives one descriptive response. Regardless of selection, the narration says Opportunity escapes after more than five weeks; the scene ends with relief and a wish to avoid further giant sand traps. The script does not name this trap or model a historical recovery procedure.
-
-7. **Surviving an earlier storm — `chapter_6`, lines 190–208, “THE STORM WE SURVIVED.”** In 2007, a planet-wide storm blocks sunlight. Earth instructs Oppy to conserve power; science stops as the team waits for weeks. Sunlight eventually returns. Oppy and Earth repeat the sunrise exchange. This fixed survival event provides emotional context for the later hope that another storm will pass.
-
-8. **Long exploration and discoveries — `chapter_7`, lines 211–226, “THE WORLD KEEPS GETTING BIGGER.”** A montage in words covers plains, crater walls, and years of geology. A single sentence links 2011 arrival at Endeavour Crater with gypsum veins and clay minerals; this compressed chronology needs review. Oppy asks whether people will remember its places; Earth says the images already help people understand Mars. The text states a first-rover milestone of more than 42 km. Children born at landing have become teenagers, emphasizing the mission’s length and inspiration. No actual panorama, route map, gallery, or moving montage is implemented.
-
-9. **Final storm and last transmission — `chapter_8`, lines 229–262, “WHEN THE SUN DISAPPEARED.”** By June 2018, the script gives 45.16 km traveled and places Oppy in Perseverance Valley. Exploration plans are interrupted by dust and declining solar charging. Earth again orders conservation. Oppy hopes for a repeat of the 2007 survival and says it will take another picture. Narration dates the final data to June 10, 2018. Oppy asks whether Earth received its picture, reflects on unexplored places, and rests while hoping for one more sunrise. The scene fades to `black` at line 259; narration states the rover fell silent. These spoken thoughts are fictional, not a transcript of actual rover messages. The source does not identify the instrument/image represented by the imagined final picture.
-
-10. **Earth’s attempts and mission closure — `chapter_9`, lines 265–279, “EARTH IS STILL CALLING.”** Opportunity does not answer the next day. Mission Control’s short lines punctuate ongoing listening and command attempts. Narration says more than a thousand commands were sent and gives February 13, 2019 as the date NASA declared the mission complete. A centered closure card repeats that date. There is no rescue branch or player action in this chapter.
-
-11. **Legacy / single ending — `epilogue`, lines 282–298, “YOU WERE NEVER FORGOTTEN.”** A warm pale field accompanies a retrospective: ninety days became nearly fifteen years, with 45.16 km of travel, water evidence, hazards, and discoveries. The inability to return home provides the emotional conclusion. A tribute card gives January 25, 2004–June 10, 2018, ninety Martian days planned, almost fifteen years explored, and the distance. The final idea is that discoveries bring the universe closer even when explorers never return. `return` resumes `start`, whose own `return` ends the game. No credits sequence, postgame screen, unlocked gallery, or alternate ending is authored.
-
-## 6. Characters, Narrators, and Dialogue System
-
-All definitions are in `game/script.rpy:5–8`, using Ren’Py `Character` objects without an `image` attribute or sprite association.
-
-| Variable | Displayed speaker | Configured color | Role |
-| --- | --- | --- | --- |
-| `narrator` | None / unnamed | `#E8E1D3` | Third-person framing, scientific exposition, chronology, reflection |
-| `oppy` | Opportunity | `#CBE8FF` | Curious, vulnerable fictional rover voice; emotional center |
-| `earth` | Earth | `#86D7FF` | Personified response from home/team, reassurance and explanation |
-| `mission` | Mission Control | `#F9D57B` | Short operational phrases in chapter 9 |
-
-These are configured `Character(color=...)` values, not evidence that the entire dialogue body changes color; the general dialogue text color is white in `gui.rpy:53`. Spirit and scientists/engineers are mentioned in narration but have no separate character definitions. There is no player-named protagonist, relationship system, or player dialogue persona.
-
-The standard ADV-style `say(who, what)` screen (`screens.rpy:98`) creates the dialogue window, conditional namebox, and required `what` text. It supports `SideImage()` outside the small-screen variant, but no side-image assets or declarations exist. Centered cards provide title/chapter/tribute text using inline size tags. NVL and bubble screens exist as generic UI support (`screens.rpy:1307`, `1427`), but the story does not use NVL or bubbles. There are no voice statements or recordings.
-
-The conversations, emotions, jokes, and sunrise refrain are fictionalized dramatization. There is no in-game disclaimer separating them from mission telemetry, historical quotations, or real-time Earth–Mars communication. A future assistant should not present any Oppy/Earth dialogue as NASA’s words.
-
-## 7. Player Choices, Branches, and Gameplay Interactions
-
-The complete narrative has exactly **two menus with three choices each**:
-
-| Location | Exact choice | Immediate response summary | Persistent effect |
-| --- | --- | --- | --- |
-| `chapter_2`, lines 102–108 | “Look at the horizon.” | Panorama and terrain preparation | None |
-| Same | “Examine the rocks.” | Exposed bedrock and ancient-water search | None |
-| Same | “Look at the ground.” | Soil and round objects | None |
-| `chapter_5`, lines 175–181 | “Drive forward slowly.” | Careful attempt inches forward, stops | None |
-| Same | “Back up and re-angle.” | Described shift/safer-angle attempt | None |
-| Same | “Wait and scan the ground.” | Data gathering while Mission Control plans | None |
-
-Each choice emits a single narrator statement and rejoins the next shared statement. No choice assigns a variable, tests a condition, changes scene, invokes another label, or alters a later line. There are nine possible combinations of selections, but only one chapter order and one ending. There are no failure states, retries, resource gauges, actual driving controls, correct-answer feedback, or unlocks. Chapter 5’s options are story abstractions, not validated rover-driving advice.
-
-Educational interaction is therefore **PARTIAL**: the menus encourage attention to terrain/science and recovery planning, but do not test understanding. Normal VN interactions—advance dialogue, choose an option, save/load, history, skip, auto-forward—are supplied by screen definitions. Rollback is disabled globally (`script.rpy:10`), despite UI/help still advertising Back/rollback; see section 12.
-
-## 8. Scene-by-Scene Asset Requirements (table with scene/label, required visual, required music/SFX, current file/reference, and missing status)
-
-“Required” in this table means **suggested production coverage to illustrate the actual script**, not a hidden code requirement or existing art brief. No story image/audio filenames have been chosen in source. Music/SFX ideas are recommendations only; every chapter currently has no programmed audio. One chapter can reuse an image and color/lighting variations for a limited-time production.
-
-| Scene / label | Required visual coverage for polish | Required music / SFX proposal | Current file/reference | Missing status |
-| --- | --- | --- | --- | --- |
-| Opening `start` (13–37) | Lonely rover under darkening Martian sky; opening title | Restrained ominous ambience, dust wind | `Solid("#03070d")`; centered title | Story art/audio MISSING; color field IMPLEMENTED; no broken filename |
-| `chapter_1` (52–78) | Rover construction/twins, Earth departure or launch | Curious hopeful theme; optional launch cue | `Solid("#15202d")` | Art/audio MISSING; no filename reference |
-| `chapter_2` (81–114) | Airbag landing/lander petals; Eagle Crater panorama, bedrock and soil views for choices | Landing cues, gentle arrival theme | `Solid("#8b452d")` | Art/audio MISSING; menu does not display actual investigation images |
-| `chapter_3` (117–139) | Layered bedrock and close-up hematite “blueberries”; optional factual diagram | Quiet discovery theme, optional instrument cue | `Solid("#6f3828")` | Art/audio MISSING; no mineral illustrations or sample image paths |
-| `chapter_4` (142–160) | Sunrise/working rover or mission-extension screen | Hopeful sunrise motif | `Solid("#3d4e5c")` | Art/audio MISSING |
-| `chapter_5` (163–187) | Wheels in sand, test/recovery context, freed rover | Tension-to-relief music; subdued wheel/soil cues | `Solid("#553d2c")` | Art/audio MISSING; no visible recovery changes between options |
-| `chapter_6` (190–208) | Dust-obscured rover then clearing sunlight | Storm ambience, low-power mood, recovery of hopeful motif | `Solid("#1f2a2f")` | Art/audio MISSING; no storm or light animation |
-| `chapter_7` (211–226) | Plains/crater journey, Endeavour rim, gypsum/clay science close-ups; optional distance map | Expansive exploration reprise | `Solid("#4c2d20")` | Art/audio MISSING; no montage/map implementation |
-| `chapter_8` (229–258) | Perseverance Valley; escalating dust, dim solar panels, quiet rover | Fading theme, restrained wind; deliberate silence at end | `Solid("#0d0e11")` | Art/audio MISSING; no actual final-photo asset |
-| `chapter_8` silence (259–262) | Blackout | Silence, or carefully faded ambience if added later | `scene black` with `fade` | Blackout IMPLEMENTED using engine image; no external art needed for blackout itself |
-| `chapter_9` (265–279) | Listening team or abstract Earth–Mars communication, mission-complete card | Sparse reflective motif; optional transmission attempts | `Solid("#141719")`; centered closure card | Art/audio MISSING; text card IMPLEMENTED |
-| `epilogue` (282–298) | Rover memorial/last resting place under Mars sky; tribute | Warm elegiac reprise | `Solid("#d9c5a9")`; centered tribute | Art/audio MISSING; text tribute IMPLEMENTED |
-| Main/game menus | Branded title/menu and legible overlay | Optional main-menu theme | `gui/main_menu.png`, `gui/game_menu.png`; `gui.rpy:90–91` | UI files PRESENT, visually flat dark fields; branded story imagery MISSING |
-| Characters across chapters | Consistent rover design; optional Earth/Mission Control visual language | Optional voices, not necessary for MVP | Character definitions only; `SideImage()` support unused | Sprites/expressions/portraits/recorded voices MISSING; no broken sprite filenames |
-
-There are **no active missing custom story image or audio filename references** in `script.rpy`. Missing media reduces presentation completeness but is not, by itself, evidence of an asset-loading crash. The commented examples `sample-sound.ogg`, `sample-voice.ogg`, and `main-menu-theme.ogg` in `options.rpy:57–64` are inactive template suggestions, not required files.
-
-## 9. Existing Assets and Exact File Paths
-
-All 80 existing PNGs are GUI resources under `game/gui/`; none is a story background or rover character image. `gui/main_menu.png` and `gui/game_menu.png` were visually inspected: both are plain dark, desaturated green/gray fields without Mars/rover artwork. The remaining GUI files were inventoried, not all visually reviewed. Default-looking filenames and screen structure suggest a generated/template GUI; custom authorship and licensing provenance are **UNKNOWN**.
-
-Exact PNG paths, relative to the repository root (each line names one existing file):
-
-```text
-game/gui/bar/bottom.png
-game/gui/bar/left.png
-game/gui/bar/right.png
-game/gui/bar/top.png
-game/gui/bubble.png
-game/gui/button/check_foreground.png
-game/gui/button/check_selected_foreground.png
-game/gui/button/choice_hover_background.png
-game/gui/button/choice_idle_background.png
-game/gui/button/hover_background.png
-game/gui/button/idle_background.png
-game/gui/button/quick_hover_background.png
-game/gui/button/quick_idle_background.png
-game/gui/button/radio_foreground.png
-game/gui/button/radio_selected_foreground.png
-game/gui/button/slot_hover_background.png
-game/gui/button/slot_idle_background.png
-game/gui/frame.png
-game/gui/game_menu.png
-game/gui/main_menu.png
-game/gui/namebox.png
-game/gui/notify.png
-game/gui/nvl.png
-game/gui/overlay/confirm.png
-game/gui/overlay/game_menu.png
-game/gui/overlay/main_menu.png
-game/gui/phone/bar/bottom.png
-game/gui/phone/bar/left.png
-game/gui/phone/bar/right.png
-game/gui/phone/bar/top.png
-game/gui/phone/button/check_foreground.png
-game/gui/phone/button/check_selected_foreground.png
-game/gui/phone/button/choice_hover_background.png
-game/gui/phone/button/choice_idle_background.png
-game/gui/phone/button/hover_background.png
-game/gui/phone/button/idle_background.png
-game/gui/phone/button/radio_foreground.png
-game/gui/phone/button/radio_selected_foreground.png
-game/gui/phone/button/slot_hover_background.png
-game/gui/phone/button/slot_idle_background.png
-game/gui/phone/nvl.png
-game/gui/phone/overlay/game_menu.png
-game/gui/phone/overlay/main_menu.png
-game/gui/phone/scrollbar/horizontal_hover_bar.png
-game/gui/phone/scrollbar/horizontal_hover_thumb.png
-game/gui/phone/scrollbar/horizontal_idle_bar.png
-game/gui/phone/scrollbar/horizontal_idle_thumb.png
-game/gui/phone/scrollbar/vertical_hover_bar.png
-game/gui/phone/scrollbar/vertical_hover_thumb.png
-game/gui/phone/scrollbar/vertical_idle_bar.png
-game/gui/phone/scrollbar/vertical_idle_thumb.png
-game/gui/phone/slider/horizontal_hover_bar.png
-game/gui/phone/slider/horizontal_hover_thumb.png
-game/gui/phone/slider/horizontal_idle_bar.png
-game/gui/phone/slider/horizontal_idle_thumb.png
-game/gui/phone/slider/vertical_hover_bar.png
-game/gui/phone/slider/vertical_hover_thumb.png
-game/gui/phone/slider/vertical_idle_bar.png
-game/gui/phone/slider/vertical_idle_thumb.png
-game/gui/phone/textbox.png
-game/gui/scrollbar/horizontal_hover_bar.png
-game/gui/scrollbar/horizontal_hover_thumb.png
-game/gui/scrollbar/horizontal_idle_bar.png
-game/gui/scrollbar/horizontal_idle_thumb.png
-game/gui/scrollbar/vertical_hover_bar.png
-game/gui/scrollbar/vertical_hover_thumb.png
-game/gui/scrollbar/vertical_idle_bar.png
-game/gui/scrollbar/vertical_idle_thumb.png
-game/gui/skip.png
-game/gui/slider/horizontal_hover_bar.png
-game/gui/slider/horizontal_hover_thumb.png
-game/gui/slider/horizontal_idle_bar.png
-game/gui/slider/horizontal_idle_thumb.png
-game/gui/slider/vertical_hover_bar.png
-game/gui/slider/vertical_hover_thumb.png
-game/gui/slider/vertical_idle_bar.png
-game/gui/slider/vertical_idle_thumb.png
-game/gui/textbox.png
-game/gui/thoughtbubble.png
-game/gui/window_icon.png
-```
-
-Other local files include compiled `.rpyc` files for the four scripts, `game/tl/None/common.rpymc`, `game/cache/bytecode-312.rpyb`, `game/cache/py3analysis.rpyb`, `game/cache/screens.rpyb`, `game/cache/shaders.txt`, `game/saves/auto-1-LT1.save`, and `game/saves/persistent`. These are generated/local state, not reusable story assets; they are ignored by Git. Save contents were not inspected or changed. There are no audio assets to list.
-
-## 10. Screens, UI, Transitions, and Visual Style
-
-`game/gui.rpy` initializes at offset -2; `game/screens.rpy` at offset -1. The GUI provides the shared layout and screen styles; the story does not define custom educational screens.
-
-| Screen / area | Source location | Implemented behavior |
-| --- | --- | --- |
-| Dialogue `say` / input | `screens.rpy:98`, `174` | Bottom textbox, optional namebox; generic input support unused by story |
-| `choice` | `screens.rpy:207` | Vertical textbuttons dispatch each menu item’s action |
-| Desktop `quick_menu` | `screens.rpy:238–264` | Back, History, Skip, Auto, Save, Q.Save, Q.Load, Prefs; enabled by default |
-| `navigation`, `main_menu` | `screens.rpy:290`, `353` | Start at main menu; Load, Preferences, About; platform-dependent Help/Quit; title/version |
-| `game_menu` | `screens.rpy:418` | Shared background, navigation, content/scroll area, Return |
-| About | `screens.rpy:548` | App/version + Ren’Py credit/license; project-specific `gui.about` empty |
-| Saves/loads | `screens.rpy:588–602` | Screenshot/time/name slots; editable page label; page navigation; delete action; conditional sync controls |
-| Preferences | `screens.rpy:733` | Window/fullscreen where applicable, skipping, transitions, text speed, auto time, music/sound/voice volume, mute |
-| History | `screens.rpy:893` | Scrollable prior dialogue, speaker names/colors, filtered tags; configured history length 250 |
-| Help | `screens.rpy:981–1084` | Keyboard/mouse/gamepad instructions, self-voicing/accessibility shortcuts |
-| Confirm/skip/notify | `screens.rpy:1149`, `1212`, `1268` | Modal yes/no, animated skip triangles, timed notifications |
-| NVL/bubble | `screens.rpy:1307`, `1427` | Generic support exists, unused by story |
-| Touch/small variants | `screens.rpy:1522` onward; `gui.rpy` mobile section | Larger controls, simplified quick menu, phone-specific UI resources |
-
-Desktop UI uses white text, teal accent `#00cc99`, teal hover `#66e0c1`, and gray inactive/default button text (`gui.rpy:28–54`). Main dialogue font is DejaVu Sans at 33 px; character names 45 px; interface 33 px; title 75 px (`gui.rpy:60–84`). The textbox is 278 px high at the bottom; dialogue starts at x=402, y=75 within that layout and has width 1116 (`gui.rpy:100–141`). Choice buttons have width 1185, centered text, and spacing 33 (`gui.rpy:207–215`, `260`). Desktop save pages use three columns × two rows, with 384 × 216 screenshots (`gui.rpy:236–241`). Small variants increase type/button sizes and use two × two save slots.
-
-Story visuals are color fields with chapter cards and fades. Every label begins with `scene expression Solid(...)` followed by `with fade`; chapter 8 also fades to `black`. No custom story transforms, camera moves, sprites, particles, or transitions tied to choices exist. Menu enter/exit/intra transitions use `dissolve`; dialogue windows use 0.2-second dissolves and auto visibility (`options.rpy:76–115`). Text displays instantly by default (`preferences.text_cps = 0`, line 123); auto-forward timing defaults to 15 (line 129).
-
-The `scene black` reference is not declared locally, but is a standard Ren’Py engine-provided image. GUI widget prefixes such as `[prefix_]` are dynamic style-state substitutions, not literal missing filenames. The confirm frame offers `gui/confirm_frame.png` followed by `gui/frame.png` as a fallback list (`screens.rpy:1189`); the first is absent and the fallback exists. This is not an established crash. Runtime behavior of all style-state fallbacks remains untested.
-
-## 11. Historical Facts and Scientific Content in the Scripts
-
-**Verification boundary:** no external NASA or other authoritative sources were consulted in this read-only repository analysis. Every historical/scientific assertion below is **SCRIPT-STATED / UNVERIFIED**, not independently confirmed. The repository includes no factual bibliography. The table records what a later reviewer should verify, without silently treating story narration as authority.
-
-| Script-stated content | Source | Review consideration |
-| --- | --- | --- |
-| Official MER-B designation; Spirit/Opportunity twin explorers sent to opposite sides of Mars | `chapter_1`, lines 57–60 | Verify designation, mission purpose, landing-site description |
-| Search for evidence of past water and possible life-supporting conditions | `chapter_1`, lines 59–60 | Distinguish habitability from detecting life |
-| More than 100 million km from Earth on arrival | `chapter_1`, line 65 | Verify distance/date; do not confuse separation with total cruise distance |
-| Planned ninety-Martian-day mission | `chapter_1:72`, `chapter_4`, `epilogue` | Explain “sol” versus Earth day; script also uses “90-day” shorthand |
-| Launch July 7, 2003; nearly seven months of cruise | `chapter_1:77`, `chapter_2:86` | Verify chronology/time-zone convention |
-| Parachute, rockets, airbags; Eagle Crater landing | `chapter_2:86–93` | Verify landing sequence; narration compresses hardware roles |
-| Landing January 25, 2004 | `epilogue:295` | Date appears in tribute, not landing chapter; clarify UTC/local convention |
-| Hematite-containing “blueberries,” layered sedimentary rocks, ancient liquid-water clues | `chapter_3:122–137` | Verify mineral/formation explanation; avoid implying every hematite occurrence requires water |
-| No discovery of living Martians or proof of past life | `chapter_3:137` | Preserve distinction between evidence of water and evidence of life |
-| Sand entrapment in April 2005; escape after more than five weeks | `chapter_5:168–183` | Verify exact event/duration; script does not name the site |
-| 2007 planet-wide storm, science suspension, low power and recovery | `chapter_6:195–207` | Verify duration and operational details |
-| Endeavour rim arrival in 2011, gypsum and clay evidence | `chapter_7:217` | High-priority chronological review: one sentence may imply all discoveries happened in 2011; verify each discovery separately |
-| First rover to exceed 42 km on another world | `chapter_7:222` | Verify milestone/date and distinction from lunar vehicle distance records |
-| 45.16 km by June 2018, Perseverance Valley | `chapter_8:234`, `epilogue:288–295` | Verify rounding/location; no route data included |
-| Last data June 10, 2018 during dust storm | `chapter_8:244–248` | Verify timeline; imagined “last picture” lines do not establish actual last telemetry contents |
-| More than one thousand recovery commands | `chapter_9:274` | Verify exact terminology: commands versus attempts/signals |
-| NASA declared mission complete February 13, 2019 | `chapter_9:277–278` | Distinguish administrative end from last communication |
-| Nearly/almost fifteen years of exploration; broken components endured | `start`, `chapter_7`, `epilogue` | Rounded narrative duration; specific failures are not explained |
-
-The educational text teaches solar-power vulnerability, dust storms, remote engineering, evidence-based geology, and the difference between water and life. It does not name scientific instruments or teach how particular measurements produce the stated conclusions. Imagined immediate Earth replies omit communication delay. “Two cameras that look almost like eyes” (`start:22`) is an anthropomorphic visual description, not a complete camera inventory. “Traveled across the planet” (`chapter_6:195`) should not be illustrated as circumnavigation. These are clarity risks for educational presentation, not externally verified corrections.
-
-## 12. Missing Features, Bugs, and Technical Risks
-
-1. **IMPLEMENTED UI inconsistency:** rollback is disabled (`script.rpy:10`), while desktop/touch quick menus still offer Back (`screens.rpy:249`, `1533`) and Help advertises rollback keys/wheel/gamepad. Players may expect an unavailable action. The source conflict is established; exact enabled/disabled appearance requires runtime inspection.
-2. **MISSING story media:** every story scene uses a plain color field, with no sprites, music, SFX, or recordings. Audio mixer flags are all true (`options.rpy:49–51`), so visible volume controls do not establish audible content.
-3. **PARTIAL educational gameplay:** two immediate-response menus have no lasting effect. Do not advertise branching endings, a rover simulator, science minigames, or quizzes as implemented.
-4. **PARTIAL factual presentation:** no citations or fiction disclaimer; chapter 7’s combined discovery chronology and chapter 8’s imagined picture deserve review. Historical claims remain UNVERIFIED. Mission purpose is explained, but equipment/instrument detail and retrieval context are limited.
-5. **PARTIAL branding and credits:** public-facing title is now consistently `MER-B The Last Signal`; internal build/save identifiers remain unchanged. About content is still empty. No team, challenge, media credits, project-specific license, source bibliography, or distribution README was found.
-6. **UNKNOWN runtime quality:** no fresh lint/playthrough. Existing log shows initialization, not full completion or choice verification; it contains a “Could not open 'cache/shaders.txt'” message, but no traceback is shown in that inspected log. A local shader file now exists. This alone does not establish a fatal issue.
-7. **UNKNOWN layout/accessibility quality:** long lines, centered cards, low default choice-text contrast, fixed-height history entries, small screens, self-voicing flow, and the pale epilogue background need visual testing. Their settings exist; clipping or unreadability was not demonstrated.
-8. **No obvious unresolved authored label/character references found:** all ten labels called from `start` exist and return; four speakers are defined. No custom story asset filenames are unresolved. This static finding does not replace engine lint. `black`, standard actions, transitions, font, and GUI functions depend on Ren’Py.
-9. **UNKNOWN packaging:** no tested desktop/web/mobile build, platform target, SDK location, build artifacts, or submission instructions. Default-style build settings exist (`options.rpy` init Python block); commented archive/itch/Google Play examples are inactive.
-10. **Local generated state is not source evidence:** compiled scripts/cache/save files may come from earlier runs; the autosave does not prove completion. Do not distribute personal save/persistent data as project content.
-
-The original analysis applied no source fixes. The subsequent naming-only update changed the source heading, opening card, and `config.name`, and updated this document. Story dialogue, chapter structure, choices, gameplay, assets, audio, internal build name, and save directory are unchanged. No confirmed fatal source error was established by the original static inspection.
-
-## 13. Recommended Next Steps (prioritized for limited hackathon time)
-
-These are future recommendations, **not completed changes or an authorization to implement**.
-
-1. **Validate the existing vertical slice first.** In a writable development session, run Ren’Py lint and play the opening, both options menus, final fade, and return from epilogue. Check save/load and a small-screen layout. Resolve any actual blockers before adding features.
-2. **Make the educational framing trustworthy.** Review dates, distances, storm/recovery details, and especially Endeavour/gypsum/clay chronology against NASA/JPL primary sources. Add concise citations and a clear fictional-dialogue disclaimer. Explain “sol” and distinguish last contact from mission closure.
-3. **Add a small, coherent art set.** Prioritize Mars/rover establishing view, Eagle Crater, blueberry close-up, sand trap, Endeavour view, dust-storm variant, and memorial. Reuse backgrounds with lighting changes. Compose for 1920 × 1080 and preserve the bottom dialogue area; keep Opportunity’s shape consistent. Use section 8 as coverage guidance, not as evidence of existing filenames.
-4. **Finish credits and resolve the rollback mismatch.** The official title is now `MER-B The Last Signal`; add team/source credits and decide whether Back should work or be removed from guidance. Keep changes focused on demonstrated user confusion.
-5. **Use restrained audio if time allows.** A hopeful exploration cue, storm tension cue, and reflective ending cue can cover most chapters; allow silence at final loss. Add explicit playback/fade behavior and proper credits. SFX and full voice acting are optional scope.
-6. **Add one small learning interaction only after the core is polished.** For example, a water-evidence explanation following the existing chapter 2 choice, with accurate feedback. A large branching system is lower priority than factual clarity, art, and stable delivery.
-7. **Prepare the actual submission.** Test the chosen distribution platform, add execution/controls instructions and challenge/team/source credits, confirm media rights, and time a school-age playthrough. Do not infer a suitable runtime length from source length alone.
-
-## 14. Important Files and Labels to Inspect Next
-
-| File / location | Why it matters |
+| Setting | Actual value / implications |
 | --- | --- |
-| `game/script.rpy:5–10` | Speaker definitions and rollback policy |
-| `game/script.rpy:13`, `start` | Entry point, title, framing, complete chapter call order |
-| `game/script.rpy:52`, `chapter_1` | Mission purpose and launch facts |
-| `game/script.rpy:81`, `chapter_2` | Landing and first choice, menu lines 102–108 |
-| `game/script.rpy:117`, `chapter_3` | Core water-evidence explanation |
-| `game/script.rpy:142`, `chapter_4` | Mission extension and sunrise motif |
-| `game/script.rpy:163`, `chapter_5` | Sand recovery and second menu, lines 175–181 |
-| `game/script.rpy:190`, `chapter_6` | 2007 storm and narrative setup for later loss |
-| `game/script.rpy:211`, `chapter_7` | Discovery chronology and distance milestone |
-| `game/script.rpy:229`, `chapter_8` | Last contact, fictional final-picture framing, blackout |
-| `game/script.rpy:265`, `chapter_9` | Command attempts and formal mission end |
-| `game/script.rpy:282`, `epilogue` | Tribute facts and final return |
-| `game/gui.rpy:12`, `60–141`, `207–241` | Canvas, typography, dialogue safe area, choice/save layout |
-| `game/screens.rpy:98`, `207`, `238`, `1522` | Dialogue, choice, desktop/touch quick controls |
-| `game/screens.rpy:353`, `548`, `733` | Title/menu, credits, preferences |
-| `game/options.rpy:15–64`, `109–153` | Naming/version, empty About, audio switches, text/save/icon defaults |
-| `game/gui/` | Existing UI-only assets; exact inventory in section 9 |
-| `game/tl/None/common.rpym` | Common engine string scaffold, not authored story content |
-| `.gitignore`, `.vscode/settings.json`, `log.txt` | Generated-file handling/editor visibility and limited earlier runtime evidence |
+| Runtime baseline | Existing local log/traceback identify **Ren’Py 8.5.3.26051504**, Windows 11; SDK exists at D:/Renpy/renpy-8.5.3-sdk |
+| Technologies | Ren’Py narrative/screen language, Python initialization/callbacks, PNG, MP3, TTF |
+| Virtual canvas | gui.init(1920, 1080); GL2 initialization recorded in log |
+| Identity | config.name = MER-B The Last Signal; version 1.0; opening card says “MER-B: The Last Signal” |
+| Distribution | build.name = MER_B |
+| Save directory | config.save_directory = MER_B-1794736084; preserve this identifier |
+| Rollback | config.rollback_enabled = False in script.rpy |
+| Text defaults | preferences.text_cps = 48; preferences.afm_time = 15; later player preferences remain adjustable |
+| Audio | has_sound / has_music / has_voice = True; no main-menu music configured |
+| Dialogue window | auto; show/hide Dissolve(.2) |
+| Menu transitions | enter/exit/intra = dissolve; after-load/end-game transitions None |
+| History | 250 blocks, variable height, spacing 24 |
+| Build rules | Ignore backup/hidden/temp patterns; image archiving examples inactive; documentation patterns only *.html and *.txt |
+| Icon | game/gui/window_icon.png; visually a template-style mascot |
+| Localization | gui.language = unicode; English story, no alternate-language story files |
 
-## 15. Questions or Unknowns
+gui.rpy initializes at offset -2, screens.rpy at -1; typing channel registration occurs at init -5 and callback installation at init 10. typography.rpy maps designed font faces. Authored code has no network-based gameplay/data fetch; About/font/Help hyperlinks and conditional engine sync controls are separate.
 
-- Resolved: the final official title is exactly **MER-B The Last Signal**. Future splash, credits, or promotional titles should use that spelling and capitalization.
-- What are the official challenge URL, exact requirements, evaluation criteria, team details, and target submission platform? The supplied challenge brief is not independently verified here.
-- What learner ages, expected reading level, desired playtime, and classroom outcome should guide polish?
-- Is non-branching exploration the intended design, or should the existing choices teach distinct information through richer feedback?
-- Are artwork/music planned or stored outside this checkout? No story media is available here; external asset ownership, licenses, and attributions are UNKNOWN.
-- Should Earth remain an abstract voice, a personification, or a visual representation of the mission team?
-- Is rollback deliberately disabled for emotional pacing? If so, UI/help should reflect that decision in future work.
-- Which NASA/JPL sources will support the fact review and any actual mission imagery? No references are currently included.
-- Should recovery commands, light-delay, instrument operation, and the inability to bring Opportunity home receive brief explanations?
-- Has anyone completed a recent playthrough, lint run, release build, mobile test, or accessibility review? The repository does not establish those results.
-- What runtime SDK and distribution environment should be documented for collaborators? Only the older local launch log supplies a version.
+**Setup:** obtain/extract the 8.5.3 SDK; point launcher Preferences → projects directory to the project root’s parent (here D:/MER-B-Game); select MER-B; Launch Project → Start. Use Check Script (Lint), then playthrough/save/audio checks, then Build Distributions. The installed SDK’s doc/quickstart.html confirms launcher lint/build actions; renpy/common/00build.rpy defines PC Windows/Linux, Linux, Macintosh and Windows packages. These are SDK capabilities, not proof of tested project platform support. No project web/mobile build or successful release artifact is established. Do not execute .rpy with bare system Python. No download or installation was performed.
 
-Original inspection scope: repository/source reads, Git status/history reads, file inventory, and visual inspection of the two menu PNGs. Historical verification and runtime testing were not performed in that analysis; its only filesystem change was creation of this document. A subsequent user-authorized naming update modified this document, `game/script.rpy`, and `game/options.rpy` to standardize the public-facing title. No commit or push was performed.
+## 3. Annotated project structure
+
+```text
+D:/MER-B-Game/                    # workspace parent, not repository
+└── MER-B/                        # Git + Ren’Py root
+    ├── .git/                     # preserved branch/history
+    ├── .gitignore                # saves/cache/compiled/generated/log exclusions
+    ├── .vscode/settings.json     # hides compiled/archive/cache files in editor
+    ├── README.md                 # public overview/setup/credits
+    ├── PROJECT_CONTEXT_FOR_CHATGPT.md # this handoff
+    ├── GAME_POLISH_CHECKLIST.md   # prioritized acceptance criteria
+    ├── log.txt                   # ignored prior startup log
+    ├── traceback.txt             # ignored prior load exception
+    └── game/
+        ├── script.rpy            # four speakers, 110 image definitions, 11 labels
+        ├── screens.rpy           # say/choices/menu/save/history/help/preferences
+        ├── gui.rpy               # fonts/layout/colors/resolution/device variants
+        ├── options.rpy           # identity/preferences/build/save configuration
+        ├── typography.rpy        # actual bold/italic replacement mappings
+        ├── typing_audio.rpy      # reveal sound lifecycle and mixer
+        ├── images/scene/
+        │   ├── start/            # 9 PNGs
+        │   ├── chpt1/            # 16 PNGs
+        │   ├── chpt2/            # 12 PNGs
+        │   ├── chpt3/            # 15 PNGs
+        │   ├── chpt4/            # 7 PNGs
+        │   ├── chpt5/            # 8 PNGs
+        │   ├── chpt6/            # 9 PNGs
+        │   ├── chpt7/            # 9 PNGs
+        │   ├── chpt8/            # 21 PNGs
+        │   └── chpt9/            # 4 PNGs
+        ├── audio/
+        │   ├── bg-music/         # 7 MP3s
+        │   ├── narrator/         # 78 MP3s, start/chpt1–9/epilogue subdirectories
+        │   └── sfx/              # Keyboard-Sound.mp3 only
+        ├── fonts/                # 7 TTFs, README, provenance JSON, 2 OFLs
+        ├── gui/                  # 80 desktop/phone PNGs
+        │   ├── bar/, button/, overlay/, scrollbar/, slider/
+        │   └── phone/            # small-device equivalents
+        ├── libs/libs.txt         # library-loading explanatory stub
+        ├── tl/None/common.rpym   # common engine UI string scaffold
+        ├── cache/                # ignored generated analysis/bytecode/shaders
+        ├── saves/                # ignored local saves/persistent state
+        └── *.rpyc                # ignored compiled scripts
+```
+
+No separate character-sprite, movie, animated-background or epilogue-art directory exists. An exact media inventory and per-shot mapping follow below.
+
+## 4. Characters, narrative style and control flow
+
+| Speaker | Source identity | Personality / implementation |
+| --- | --- | --- |
+| narrator | Character("Narrator", color="#FF0000", callback=merb_keyboard_voice) | Gentle third-person explanation, history/science and memorial reflection; say screen hides Narrator namebox; most lines have recordings |
+| oppy | Opportunity, #CBE8FF, same callback | Curious, earnest, playful and vulnerable; personifies the robot; no recorded character voice |
+| earth | Earth, #86D7FF, same callback | Reassuring abstract human connection/guide; no named operator identity or recorded voice |
+| mission | Mission Control, #F9D57B, same callback | Brief procedural communication in chapter 9; text-only |
+
+Spirit is mentioned but has no speaking declaration. Human figures, rover expressions, Earth/Mars and monitors are baked into scene PNGs. SideImage support exists in the say screen but no story side-image assets are declared. No separate sprites, expression layers, lip-sync or character animation exists.
+
+start presents the prologue, calls chapter_1 through chapter_9 and epilogue sequentially, then returns. Each called label returns. All ten calls resolve to labels; eleven labels exist in total. There are no route variables, alternate endings, scores, resources, chapter select, map navigation, minigames, driving mechanics or conditional later story changes. Two menus allow immediate narrative alternatives and rejoin the same history.
+
+### Complete narrative and chapter presentation
+
+Ranges below mean inclusive existing filenames. BGM basenames are under game/audio/bg-music/. Voice ranges are under game/audio/narrator/. Typing SFX applies to dialogue in every chapter.
+
+| Chapter / label | Detailed narrative summary | Exact backgrounds / character implementation | Music / voice | Transitions and interactions | Coverage / limitations |
+| --- | --- | --- | --- | --- | --- |
+| Prologue / start | Far from home, a six-wheeled explorer watches sunlight fade after almost fifteen years. Oppy asks Earth about weather, remembers earlier storms, plans to save power, and hopes to explore again. Narrator rewinds to the beginning. | game/images/scene/start/1.png–9.png; rover embedded in landscapes; image 9 is black | The+Quiet+Between+Stars.mp3; start/voice1.mp3–voice10.mp3; one uncued narrator line | Solid #03070d, opening centered card, dissolves; advance only | IMPLEMENTED art/audio; no separate storm SFX |
+| 1, A Little Robot with a Big Dream / chapter_1 | Introduces MER-B/Oppy and Spirit, asks whether ancient Mars had water and habitable conditions. Earth explains exploration despite uncertainty. Oppy promises careful observation, hears its nominal 90-sol duration, leaves Earth July 7 2003. | game/images/scene/chpt1/1.png–16.png; launch site/workshop/planets/rover/operators baked in | Beyond+the+Horizon.mp3; chpt1/voice1.mp3–voice9.mp3 | Solid #15202d, card/dissolves, 3-second pause on image 1 | IMPLEMENTED; launch illustration’s “Space Force Station” wording needs historical review |
+| 2, Hello, Mars / chapter_2 | Seven-month cruise, dangerous parachute/rocket/airbag landing, opened lander at Eagle Crater. Oppy admires Mars, shares pictures, chooses a first investigation; six-wheels/six-steps joke ends arrival. | game/images/scene/chpt2/1.png–12.png; image 9 menu, branch images 10/11, common 12 | Beyond+the+Red+Horizon.mp3; chpt2/1.mp3–10.mp3 (no voice prefix); uncued menu-introduction line | Solid #8b452d, card/dissolves, three choices | IMPLEMENTED immediate branches; no persistent investigation |
+| 3, The Memory of Water / chapter_3 | Layered rock and round hematite “blueberries” reveal ancient-water environments. Earth says not necessarily local oceans; Oppy learns to read rocks as a story. Explicitly no discovery of living Martians or proof of past life. | game/images/scene/chpt3/1.png–15.png; rock closeups, expressive rover, Earth/control imagery | ancient.mp3; chpt3/voice1.mp3–voice6.mp3 | Solid #6f3828, card/dissolves; advance only | IMPLEMENTED; no instrument/sample simulation; source and scale explanation pending |
+| 4, The Ninetieth Sunrise / chapter_4 | Original 90-sol mission ends. Oppy worries it must stop; Earth confirms healthy systems and much left to explore. Another sunrise begins an extended adventure. | game/images/scene/chpt4/1.png–7.png; rover/operator art, some reuse | sunrise.mp3; chpt4/voice1.mp3–voice2.mp3 | Solid #3d4e5c, card/dissolves | IMPLEMENTED; 90-sol versus 90-day shorthand needs clarity |
+| 5, Please Don’t Leave Me Here / chapter_5 | April 2005 sand trap: spinning wheels and little movement. Engineers test simulated terrain; player chooses a response. After more than five weeks Oppy escapes and hopes to avoid giant sand traps. | game/images/scene/chpt5/1.png–8.png; menu branches 4/5/6, rejoins 7; 4 and 5 byte-identical | dont-leave-me.mp3; chpt5/voice1.mp3–voice8.mp3 | Solid #553d2c, card/dissolves, three-choice menu | IMPLEMENTED; all recover; no real recovery calculation/failure state |
+| 6, The Storm We Survived / chapter_6 | 2007 planet-wide storm darkens sky. Science stops to conserve solar power; weeks of waiting end in sunlight and another sunrise. | game/images/scene/chpt6/1.png–9.png; storm, rover, team, light-return images | storm.mp3; chpt6/voice1.mp3–voice6.mp3 | Solid #1f2a2f, card/dissolves | IMPLEMENTED; storm is static art, no wind/particles |
+| 7, The World Keeps Getting Bigger / chapter_7 | Years of plains/crater exploration, 2011 Endeavour arrival, gypsum/clay water evidence, over-42-km milestone. Oppy wants to go farther; children grow into teenagers and students into scientists. | game/images/scene/chpt7/1.png–9.png; explicit scene order 1,2,3,4,5,6,8,9,7 | No BGM command; chapter 6 stops music; chpt7/voice1.mp3–voice7.mp3 | Solid #4c2d20, card/dissolves | Narration/art IMPLEMENTED; music coverage MISSING, intent UNVERIFIED; compressed discovery chronology |
+| 8, When the Sun Disappeared / chapter_8 | June 2018, 45.16 km, Perseverance Valley. Dust blocks charging; Oppy remembers 2007, tries one more picture, conserves power, waits and rests. Narrator dates final data June 10 2018. Rover falls silent. | game/images/scene/chpt8/1.png–21.png, then engine black; progressively dusty expressive rover | No BGM/wind cue; chpt8/voice1.mp3–voice8.mp3 | Solid #0d0e11, card/dissolves; scene black with fade | IMPLEMENTED; imaginary picture/words are not last-telemetry evidence; typing/voice still audible |
+| 9, Earth Is Still Calling / chapter_9 | No answer next day. Engineers continue commands/listening; more than 1,000 commands. NASA declares mission complete February 13 2019. | game/images/scene/chpt9/1.png–4.png; control-room/rover art; completion card over image 4 | No BGM/transmission cue; chpt9/voice1.mp3–voice5.mp3; Mission Control text only | Solid #141719, chapter card/dissolves and centered completion/date | IMPLEMENTED; no communication simulation or source bibliography |
+| Epilogue, You Were Never Forgotten / epilogue | Recalls 90 sols, nearly fifteen years, 45.16 km, water evidence, survival and inability to return. Named tribute dates January 25 2004–June 10 2018. Final line says discoveries bring the universe closer. | Solid #d9c5a9, no dedicated epilogue illustration | No BGM; epilogue/voice1.mp3–voice7.mp3; final reflection uncued | Fade, centered chapter/tribute cards; final return | IMPLEMENTED ending; pale-background readability UNVERIFIED |
+
+### Every choice and actual effect
+
+| Label | Option | Immediate asset and response | Persistent effect |
+| --- | --- | --- | --- |
+| chapter_2 | Look at the horizon. | Keeps chapter2_9; voice audio/narrator/chpt2/7.mp3; panoramic image and terrain narration | None; rejoins chapter2_12 |
+| chapter_2 | Examine the rocks. | chapter2_10 dissolve; chpt2/8.mp3; bedrock/ancient-water narration | Same |
+| chapter_2 | Look at the ground. | chapter2_11 dissolve; chpt2/9.mp3; soil/round-object narration | Same |
+| chapter_5 | Drive forward slowly. | chapter5_4 dissolve; chpt5/voice5.mp3; inches forward and stops | None; rejoins chapter5_7 |
+| chapter_5 | Back up and re-angle. | chapter5_5 dissolve; chpt5/voice6.mp3; weight/angle narration; art identical to image 4 | Same |
+| chapter_5 | Wait and scan the ground. | chapter5_6 dissolve; chpt5/voice7.mp3; gather data/wait for plan | Same |
+
+Nine combinations, one ending. No correctness feedback, variable assignment, unlock or later dialogue effect. Recovery choices are dramatized abstractions, not validated driving instructions.
+
+## 5. UI, typography and controls
+
+Main menu uses plain dark green-gray game/gui/main_menu.png with centered title/version/navigation: Start, Load, Preferences, About; Help on PC/nonmobile web, Quit on PC. No main-menu music. Game menu uses game/gui/game_menu.png and overlay with side navigation. Main-menu subpages omit that side navigation and provide Return. Branding artwork is absent from menus, though title typography is customized.
+
+Say window and namebox have **background None**. Desktop dialogue region: bottom 340 px; speaker x=290/y=24, dialogue x=290/y=72, width 1340. Narrator namebox is hidden by displayed name check; narrator remains identified in history. Text #f2f4f7, Source Sans 3 Regular 38 px, line spacing 8, 1 px dark outline. Names Space Grotesk 28 px, bold mapped to actual Bold, tracking 0.6. An outline is not a guarantee of contrast on every artwork/pale epilogue.
+
+Choices: width 1185, near y=405, centered, spacing 33; Source Sans 3 Semibold 38 px, line spacing 6. Centered cards: Space Grotesk Medium 40 px base with inline title-size tags, line spacing 16, 1640-wide window/1560 max text; slow_cps False so cards appear immediately. Main title 75, interface body 33, headings 36, quick controls 22. Teal accent #00cc99/hover #66e0c1 with gray idle/white selected colors.
+
+typography.rpy maps SourceSans3-Regular bold/italic/bold-italic to Bold/It/BoldIt TTFs, SpaceGrotesk-Medium bold to Bold. Small variant: dialogue 48, names 34, choices 45, quick controls 30, textbox 400, dialogue x=135/width=1650. No system font installation needed. DejaVuSans.ttf is engine-provided for skip triangles only. No custom text animation timer: native preference-based reveal defaults to 48 cps, preserving click-to-complete, skip, auto.
+
+Desktop quick menu: Back, History, Skip, Auto, Save, Q.Save, Q.Load, Prefs. Touch: Back, Skip, Auto, Menu. Global rollback is disabled, conflicting with Back and Help rollback entries. Runtime appearance/enabled state is unverified; History is separate from rollback.
+
+Save/load: screenshot/time/name, page naming, page navigation and delete action; 3×2 desktop slots or 2×2 small slots; 384×216 thumbnails. Auto/quick pages and upload/download sync controls are conditional on engine configuration; no sync-service usage is established. Save-directory identifier must remain stable, but identifier alone does not guarantee old script saves load.
+
+Preferences: window/fullscreen on applicable variants, skipping unseen/after choices/transitions, text speed, auto time, music/SFX/voice volume and mute-all. Sample sound/voice tests are commented out. History: 250 variable-height entries; narrator name retained there. Help describes Enter/Space/click, arrows, Escape/right-click, Ctrl/Tab skip, H/middle-click hide, S screenshot, V self-voicing, Shift+A accessibility, conditional gamepad calibration. Rollback instructions contradict configuration. Runtime/accessibility compliance is UNVERIFIED.
+
+Input, NVL and speech-bubble screens are generic framework support unused by story. Confirm is modal. Skip triangles animate with delayed_blink; notifications fade via notify_appear and expire after 3.25 seconds. These UI ATL effects are not rover/story animation.
+
+## 6. Audio and cinematic behavior
+
+**Music:** prologue and chapters 1–6 each play their track with fadein 2.0 loop, and stop music fadeout 2.0 before chapter return/calls. Chapters 7–9 and epilogue have no music commands. After chapter 6’s fade there is no programmed BGM; music-free does not mean silent because typing/voice remain. Loop seams, fades, balance and pacing need listening tests.
+
+**Narration:** 78 explicit voice cues/files; all files referenced, including alternate-menu clips. Source has 81 narrator statements including mutually exclusive branches; a playthrough hears fewer. Three uncued statements: start “...we can go exploring again.”; chapter_2 “The player chooses what Opportunity investigates first:”; epilogue “Some explorers never return home. But their discoveries bring the universe closer to us.” No Oppy/Earth/Mission Control recordings, voice replay button, or custom voice timing. Actor/provider identity, production method and licensing unverified.
+
+**Typing audio:** all four Character objects use merb_keyboard_voice, including narrator and Earth. game/audio/sfx/Keyboard-Sound.mp3 loops on custom channel merb_keyboard, mixer **sfx**, relative volume **0.70**, tight loop and 0.01-second fade-in/out. This is a recording during reveal, not per-character synthesized keystrokes. show_done marks reveal active; slow_done/interact_done/end clear it. Every speaker boundary clears stale state. Sync checks actual say text.slow, cps > 0, self-voicing off, SFX unmuted/nonzero, no skip/rollback/menu/main-menu/hidden UI. Context callbacks stop playback; before/after load and fast skip clear it; Q.Save explicitly clears first. Default _merb_keyboard_revealing=False is intended for older-save compatibility, not proof. Comments suggesting silent Earth/narrator do not supersede actual shared callback assignments.
+
+Narration, music and typing can overlap on separate channels. Audio interruption, native voice behavior when advancing, text-speed/auto interaction, menu transitions, loading, mute, self-voicing and hidden-interface behavior need runtime verification. No explicit landing/wheel/wind/transmission/UI-click SFX commands exist. Only custom SFX is typing.
+
+Story cinematics are built-in fade/dissolve, static image replacements, colored title cards, chapter 1’s 3-second pause and chapter 8 blackout. No video, camera pan/zoom, particles, parallax, moving sprites or story ATL. All image declarations force xysize=(1920,1080).
+
+## 7. Asset inspection and provenance
+
+All 190 PNGs were decoded into an **in-memory** contact sheet (110 story/80 GUI); four representative originals were also viewed. Artwork is stylized illustrative Mars/space/mission-control imagery with expressive rover closeups. The story’s 110 files contain **80 unique SHA-256 hashes**; reused files are not automatically missing assets. Chapter 5 images 4/5 are byte-identical. Chapter 7’s 1–6,8,9,7 order is explicit and must not be automatically numerically reordered.
+
+Story dimensions vary: 55 at 1672×941, 24 at 1671×941, 7 at 1670×941; others include 1536×1024, 1535×1024, 1448×1086 and smaller near-widescreen sizes; one 1920×1080. Forced sizing stretches non-16:9 artwork rather than preserving aspect or cropping. This is confirmed geometry, not a demonstrated runtime cropping error. Story media total **242,700,918 bytes** (~231.5 MiB), audio **41,699,496 bytes** (~39.8 MiB), GUI **463,061 bytes**; these are source totals, not package/decoded-memory sizes.
+
+Chapter 1 image 1 visibly says “Cape Canaveral Space Force Station” in the launch setting dated 2003 by the story: confirmed image text, historical suitability requires authoritative review. Rover proportions/details, rock scale and scientific visual cues need consistency review; illustrative images should not be presented as authenticated hardware/mission photography.
+
+**MISSING provenance:** NASA/JPL bibliography/dataset IDs, authenticated photo sources, artwork/music/SFX licenses/creator names, narrator provider/actor permissions, team roles, broad project license, AI-production disclosure. This does not establish infringement or AI origin. **IMPLEMENTED font provenance:** Adobe Source Sans 3 and Space Grotesk Project Authors; SIL OFL 1.1 notices bundled, pinned official upstream URLs/lengths/SHA-256 recorded in font-sources.json. All nine manifest entries (7 TTFs/2 notices) matched. About currently credits fonts plus Ren’Py/version/license, not the full project team/media. These three docs disclose ChatGPT/Codex assistance; prior story/code/media production remains owner confirmation.
+
+## 8. Historical/scientific review map
+
+These are **script-stated and externally UNVERIFIED in this review**. No NASA source was consulted or retroactively described as actually used. Obtain the team’s genuine references, then verify.
+
+| Label | Claims presented | Review focus |
+| --- | --- | --- |
+| start | Six wheels, eye-like cameras, solar panels, almost 15 years | Eye metaphor is not complete camera inventory; art not engineering documentation |
+| chapter_1 | MER-B/Oppy, Spirit twin, past water/habitability, >100 million km on arrival, nominal 90 Martian days, July 7 2003 launch | Separation versus cruise distance; sol duration; launch date and imagery |
+| chapter_2 | Seven-month cruise, parachute/rockets/airbags, Eagle Crater, lander petals | Landing chronology/hardware; immediate Earth replies omit signal delay |
+| chapter_3 | Hematite spheres, layered rocks/minerals, water environments; no proof of life | Mineral formation in context, no universal hematite=water shortcut; distinguish habitability/biology |
+| chapter_4 | Original mission extension, “90-day” shorthand | Sol versus Earth-day precision |
+| chapter_5 | April 2005 sand entrapment, tests, >5-week escape | Event dates/duration; hypothetical choices versus actual commands |
+| chapter_6 | 2007 planet-wide storm, science pause/low power/recovery | Duration and operations; “across the planet” must not suggest circumnavigation |
+| chapter_7 | 2011 Endeavour arrival plus gypsum/clay, first rover beyond 42 km elsewhere | Separate discovery dates compressed into one sentence; milestone terminology |
+| chapter_8 | June 2018, Perseverance Valley, 45.16 km, final data June 10 | Last contact versus fictional picture/words; distance rounding; storm severity |
+| chapter_9 | >1,000 commands, mission complete February 13 2019 | Commands versus attempts/signals; administrative closure versus last contact |
+| epilogue | 90 sols, almost 15 years, distance/water/broken components; tribute Jan 25 2004–June 10 2018 | Rounded duration; surface-contact interval versus launch–closure interval |
+
+No in-game dramatization disclaimer or source bibliography exists. The README now supplies the distinction, but in-game claims still need citations. Instrument names/measurements, communication delay, and why recovery/retrieval was not undertaken are limited or absent. No fact cards, glossary, timeline, quiz or NASA data viewer is implemented.
+
+## 9. Validation, known limitations and priorities
+
+**Performed:** full authored source review; existing docs/logs/traceback/Git inspection; all-image decoding/contact-sheet review; PNG signature/end-marker/dimension scan; MP3 header scan (all 86 contain a recognized MPEG frame); literal-reference/call checks; font-manifest byte-length/SHA-256 verification. All 110 declared story images are used; all ten calls resolve; all 78 narrator files are referenced. No missing active story image/music/voice/custom-font path was found.
+
+The broad literal-reference scan found optional gui/confirm_frame.png absent, but its fallback list contains existing gui/frame.png. Dynamic [prefix_] style paths, engine black and engine DejaVuSans.ttf are not literal missing custom files. Header/reference checks do not prove complete MP3 decoding or Ren’Py parsing.
+
+**Not run:** fresh Ren’Py lint/compile/launch, full playthrough, save/load, listening/transcription, current UI render, build, web/mobile or accessibility tests. These operations can generate files outside the three authorized Markdown outputs, so they were not invoked. No downloads, installs, temporary files, new images or reports were created. Contact sheets existed only in memory.
+
+Existing ignored log.txt begins **2026-11-15 23:05:13 UTC** (16 November 04:35 IST), records 8.5.3 initialization/GL2/RTX 4060 display setup, and does not prove completion. Existing traceback.txt, dated 15 November 18:05, records **“Could not load the game. Perhaps the script changed in an incompatible way.”** Stack reaches a load action at an older chapter 2 menu; its source line numbers differ from current source. This establishes a historical save incompatibility, not a current fresh-start crash. Preserve saves; test legacy/new saves separately. The old context additionally reports earlier SDK launch attempts failing with “Illegal System DLL Relocation”; that was not reproduced here and must not be reported as a new result.
+
+**Confirmed issues:** rollback Help/UI mismatch; heterogeneous aspect ratios forced to widescreen; incomplete source/media/team/AI credits and no in-game fiction disclaimer. **Coverage decisions:** no late BGM, three uncued narrator lines, no character voice/animation, flat menu, solid epilogue, reused choice art. Their desirability depends on intent; they are not automatically bugs. **UNVERIFIED risks:** overflow/contrast, audio overlap/cutoffs/loop seams, text-speed migration, typing lifecycle, load performance, current/legacy saves, platform packaging.
+
+Keep the existing game and polish it. Priorities: lint/playthrough; new/legacy save checks; official challenge and NASA fact verification; rights/team/AI credits; audio readback/mix; readability and aspect-ratio review; separately authorized rollback-message fix; intentional late-chapter music/voice decisions; target build testing; demo and submission package. No gameplay/source/media modification was authorized here.
+
+For future ChatGPT work, preserve build/save IDs, call order, common historical outcomes and existing saves. Request owner-only facts: official challenge link/criteria, team identities, actual NASA sources, media creators/rights, AI tools used, target release platforms and intentional audio coverage. Do not resurrect obsolete claims that story media/custom fonts are absent.
+
+## 10. Individual illustration / shot mapping
+
+This table follows script order, including mutually exclusive menu branches. Each row describes the statements following that scene until the next scene or label. Dialogue is excerpted as a scene locator; the chapter summaries above provide the narrative context. All images are IMPLEMENTED static PNGs at forced 1920×1080 size; no separate character sprite is attached. Every listed change uses dissolve. SFX is the shared typing callback on speaker lines. Chapter BGM continues according to section 4; voice paths below are relative to game/. Runtime timing, readability and audio quality remain UNVERIFIED. Menus/conditional branch boundaries can span adjacent rows. No row implies an additional label exists.
+
+| Label / image | Exact image path | Narrative/dialogue locator | Speakers / voice files (game-relative) | Interaction / coverage note |
+| --- | --- | --- | --- | --- |
+| start / opening_1 | `game/images/scene/start/1.png` | Far away from everything we have ever called home... / On a world where no human has ever walked... | narrator; `audio/narrator/start/voice1.mp3`, `audio/narrator/start/voice2.mp3`, `audio/narrator/start/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| start / opening_2 | `game/images/scene/start/2.png` | It has six wheels. / Two cameras that look almost like eyes. | narrator; `audio/narrator/start/voice4.mp3`, `audio/narrator/start/voice5.mp3`, `audio/narrator/start/voice6.mp3` | Advance dialogue; no standalone sprite/animation |
+| start / opening_3 | `game/images/scene/start/3.png` | For nearly fifteen years, it has wandered across this world. | narrator; `audio/narrator/start/voice7.mp3` | Advance dialogue; no standalone sprite/animation |
+| start / opening_4 | `game/images/scene/start/4.png` | But today, the sunlight is fading. | narrator; `audio/narrator/start/voice8.mp3` | Advance dialogue; no standalone sprite/animation |
+| start / opening_5 | `game/images/scene/start/5.png` | That's strange... / It's getting dark already? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| start / opening_6 | `game/images/scene/start/6.png` | Earth? / I think there's something wrong with the weather. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| start / opening_7 | `game/images/scene/start/7.png` | It's okay. / We've been through storms before. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| start / opening_8 | `game/images/scene/start/8.png` | ...we can go exploring again. | narrator; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| start / opening_9 | `game/images/scene/start/9.png` | But to understand this moment... / We must go back to where it all began. | narrator; `audio/narrator/start/voice9.mp3`, `audio/narrator/start/voice10.mp3` | Black PNG; narrator rewind, then sequential chapter calls |
+| chapter_1 / chapter1_1 | `game/images/scene/chpt1/1.png` | Establishing image / pause | none; no voice cue in this shot | 3-second pause; establishing launch illustration; historical signage review |
+| chapter_1 / chapter1_2 | `game/images/scene/chpt1/2.png` | There was once a little robot. Its name was Opportunity. | narrator; `audio/narrator/chpt1/voice1.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_3 | `game/images/scene/chpt1/3.png` | Its official designation was Mars Exploration Rover-B. But the people who built it had a shorter name. | narrator; `audio/narrator/chpt1/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_4 | `game/images/scene/chpt1/4.png` | They called it Oppy. | narrator; `audio/narrator/chpt1/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_5 | `game/images/scene/chpt1/5.png` | Opportunity wasn't built to fight. It wasn't built to conquer. It was built to answer a question. | narrator; `audio/narrator/chpt1/voice4.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_6 | `game/images/scene/chpt1/6.png` | Long ago, was Mars a world of water? / Could this cold, dusty planet once have been a place where life might survive? | narrator; `audio/narrator/chpt1/voice5.mp3`, `audio/narrator/chpt1/voice6.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_7 | `game/images/scene/chpt1/7.png` | To find out, humans built two explorers. Spirit... And Opportunity. They were twins, sent to opposite sides of Mars. | narrator; `audio/narrator/chpt1/voice7.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_8 | `game/images/scene/chpt1/8.png` | So... that's Mars? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_9 | `game/images/scene/chpt1/9.png` | It looks pretty far away. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_10 | `game/images/scene/chpt1/10.png` | It is. More than a hundred million kilometers away when you arrive. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_11 | `game/images/scene/chpt1/11.png` | That's a long way to travel. What will I find there? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_12 | `game/images/scene/chpt1/12.png` | We don't know yet. That's why we're sending you. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_13 | `game/images/scene/chpt1/13.png` | Oh. So... I'm supposed to find something nobody has seen before? / Exactly. | oppy, earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_14 | `game/images/scene/chpt1/14.png` | Then I'll look really carefully. I promise. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_15 | `game/images/scene/chpt1/15.png` | Opportunity was designed for a mission lasting just 90 Martian days. / Ninety days? What happens after that? | narrator, oppy, earth; `audio/narrator/chpt1/voice8.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_1 / chapter1_16 | `game/images/scene/chpt1/16.png` | On July 7, 2003, Opportunity left Earth. It would never return. But its journey was only beginning. | narrator; `audio/narrator/chpt1/voice9.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_1 | `game/images/scene/chpt2/1.png` | After nearly seven months in space, Opportunity reached Mars. / Landing was dangerous. There was no runway. | narrator; `audio/narrator/chpt2/1.mp3`, `audio/narrator/chpt2/2.mp3`, `audio/narrator/chpt2/3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_2 | `game/images/scene/chpt2/2.png` | Um... Earth? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_3 | `game/images/scene/chpt2/3.png` | We're here. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_4 | `game/images/scene/chpt2/4.png` | I think I'm falling! | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_5 | `game/images/scene/chpt2/5.png` | The rover bounced across the surface before finally coming to rest. | narrator; `audio/narrator/chpt2/4.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_6 | `game/images/scene/chpt2/6.png` | ...Did I make it? / The lander petals opened. Opportunity saw Eagle Crater for the first time. | oppy, narrator; `audio/narrator/chpt2/5.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_7 | `game/images/scene/chpt2/7.png` | All around it stretched a world of dust, rocks, and distant horizons. A world no human had ever touched. / Oh... It's beautiful. | narrator, oppy; `audio/narrator/chpt2/6.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_8 | `game/images/scene/chpt2/8.png` | Hello, Mars. My name is Opportunity. I hope you don't mind if I look around. / We received your pictures. And they're wonderful. | oppy, earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_2 / chapter2_9 | `game/images/scene/chpt2/9.png` | The player chooses what Opportunity investigates first: / Opportunity takes a panoramic image and prepares to study the terrain. | narrator; `audio/narrator/chpt2/7.mp3` | First investigation menu / option-specific response; rejoins image 12 |
+| chapter_2 / chapter2_10 | `game/images/scene/chpt2/10.png` | Opportunity inspects the exposed bedrock and begins the search for ancient water. | narrator; `audio/narrator/chpt2/8.mp3` | First investigation menu / option-specific response; rejoins image 12 |
+| chapter_2 / chapter2_11 | `game/images/scene/chpt2/11.png` | Opportunity studies the soil and the small round objects scattered across the landscape. | narrator; `audio/narrator/chpt2/9.mp3` | First investigation menu / option-specific response; rejoins image 12 |
+| chapter_2 / chapter2_12 | `game/images/scene/chpt2/12.png` | There's so much here! Where do I even begin? / One step at a time. | oppy, earth, narrator; `audio/narrator/chpt2/10.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_1 | `game/images/scene/chpt3/1.png` | Opportunity examined layered rock and discovered small round stones scattered across the ground. | narrator; `audio/narrator/chpt3/voice1.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_2 | `game/images/scene/chpt3/2.png` | Earth? I've found something strange. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_3 | `game/images/scene/chpt3/3.png` | What have you got? | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_4 | `game/images/scene/chpt3/4.png` | Little round stones. They're everywhere! They look like tiny blueberries! | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_5 | `game/images/scene/chpt3/5.png` | The scientists nicknamed them blueberries. They were not fruit. / They were small spheres containing hematite, an iron mineral formed in environments involving water. | narrator; `audio/narrator/chpt3/voice2.mp3`, `audio/narrator/chpt3/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_6 | `game/images/scene/chpt3/6.png` | Opportunity's instruments studied minerals and sedimentary rock. Together, these clues revealed a world of ancient water. | narrator; `audio/narrator/chpt3/voice4.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_7 | `game/images/scene/chpt3/7.png` | Wait... Mars wasn't always like this? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_8 | `game/images/scene/chpt3/8.png` | No. Long ago, water affected these rocks. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_9 | `game/images/scene/chpt3/9.png` | Water? Like the oceans on Earth? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_10 | `game/images/scene/chpt3/10.png` | Not necessarily oceans here. But this place preserves evidence of ancient water. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_11 | `game/images/scene/chpt3/11.png` | So these rocks... They're telling us a story? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_12 | `game/images/scene/chpt3/12.png` | They are. And you're helping us read it. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_13 | `game/images/scene/chpt3/13.png` | Then I'll remember every little detail. Every rock. Every mark. Every clue. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_14 | `game/images/scene/chpt3/14.png` | Opportunity did not discover living Martians. / It did not prove life had existed there. But it helped show that ancient Mars had environments shaped by liquid water. | narrator; `audio/narrator/chpt3/voice5.mp3`, `audio/narrator/chpt3/voice6.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_3 / chapter3_15 | `game/images/scene/chpt3/15.png` | Maybe I won't find anyone here. But I can help Earth learn whoâ€”or whatâ€”might have been here long ago. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_1 | `game/images/scene/chpt4/1.png` | Time passed. Opportunity explored rocks and studied the landscape. Then one day, its original 90-sol mission came to an end. | narrator; `audio/narrator/chpt4/voice1.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_2 | `game/images/scene/chpt4/2.png` | Earth? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_3 | `game/images/scene/chpt4/3.png` | Yes, Oppy? / I think... I've finished my mission. | earth, oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_4 | `game/images/scene/chpt4/4.png` | I did everything I could. Does that mean... I have to stop now? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_5 | `game/images/scene/chpt4/5.png` | Your systems are still working. And there is still so much to explore. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_6 | `game/images/scene/chpt4/6.png` | Wait... You mean I can keep going? / Yes. | oppy, earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_4 / chapter4_7 | `game/images/scene/chpt4/7.png` | Really?! / Really. | oppy, earth, narrator; `audio/narrator/chpt4/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_5 / chapter5_1 | `game/images/scene/chpt5/1.png` | Mars was beautiful. But Mars was also unforgiving. In April 2005, Opportunity drove into soft sand and sank. | narrator; `audio/narrator/chpt5/voice1.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_5 / chapter5_2 | `game/images/scene/chpt5/2.png` | Okay... Let's try moving forward. / The wheels spun. The rover barely moved. | oppy, narrator; `audio/narrator/chpt5/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_5 / chapter5_3 | `game/images/scene/chpt5/3.png` | Earth? I think I need some help. / On Earth, engineers tested possible solutions using rover models and simulated Martian sand. | oppy, narrator; `audio/narrator/chpt5/voice3.mp3`, `audio/narrator/chpt5/voice4.mp3` | Recovery menu / option-specific response; rejoins image 7 |
+| chapter_5 / chapter5_4 | `game/images/scene/chpt5/4.png` | Opportunity tries a careful recovery. The rover inches forward, then stops. | narrator; `audio/narrator/chpt5/voice5.mp3` | Recovery menu / option-specific response; rejoins image 7; images 4/5 identical |
+| chapter_5 / chapter5_5 | `game/images/scene/chpt5/5.png` | The rover shifts its weight and tries a safer angle. The sand groans beneath it. | narrator; `audio/narrator/chpt5/voice6.mp3` | Recovery menu / option-specific response; rejoins image 7; images 4/5 identical |
+| chapter_5 / chapter5_6 | `game/images/scene/chpt5/6.png` | Opportunity gathers data and waits for Mission Control to find the best route. | narrator; `audio/narrator/chpt5/voice7.mp3` | Recovery menu / option-specific response; rejoins image 7 |
+| chapter_5 / chapter5_7 | `game/images/scene/chpt5/7.png` | After more than five weeks of careful work, Opportunity escaped the sand. | narrator; `audio/narrator/chpt5/voice8.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_5 / chapter5_8 | `game/images/scene/chpt5/8.png` | I thought that sand was going to keep me forever! / There's still a lot of Mars left to see. | oppy, earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_1 | `game/images/scene/chpt6/1.png` | By 2007, Opportunity had traveled across the planet for more than three years. / Then the sky began to darken. A planet-wide dust storm spread across Mars. | narrator; `audio/narrator/chpt6/voice1.mp3`, `audio/narrator/chpt6/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_2 | `game/images/scene/chpt6/2.png` | Earth? Where did the sunlight go? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_3 | `game/images/scene/chpt6/3.png` | A major dust storm is blocking the Sun. We need to conserve your power. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_4 | `game/images/scene/chpt6/4.png` | Does that mean no exploring today? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_5 | `game/images/scene/chpt6/5.png` | Not today. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_6 | `game/images/scene/chpt6/6.png` | All right. I can wait. / The rover suspended its scientific activities. Its power dropped dangerously low. | oppy, narrator; `audio/narrator/chpt6/voice3.mp3`, `audio/narrator/chpt6/voice4.mp3`, `audio/narrator/chpt6/voice5.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_7 | `game/images/scene/chpt6/7.png` | Oh! There you are! I knew you'd come back, Sun. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_8 | `game/images/scene/chpt6/8.png` | We've got more exploring to do, Oppy. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_6 / chapter6_9 | `game/images/scene/chpt6/9.png` | Just one more sunrise? / One more sunrise. | oppy, earth, narrator; `audio/narrator/chpt6/voice6.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_1 | `game/images/scene/chpt7/1.png` | The days became months. The months became years. / Opportunity crossed immense plains, studied crater walls, and followed the geological history of Mars. | narrator; `audio/narrator/chpt7/voice1.mp3`, `audio/narrator/chpt7/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_2 | `game/images/scene/chpt7/2.png` | In 2011, it arrived at the rim of Endeavour Crater and found white veins of gypsum and clay minerals, evidence of ancient environments with water. | narrator; `audio/narrator/chpt7/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_3 | `game/images/scene/chpt7/3.png` | Earth? I think Mars is telling us an even bigger story. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_4 | `game/images/scene/chpt7/4.png` | It is. And you found another piece of it. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_5 | `game/images/scene/chpt7/5.png` | Do you think people will remember all these places? / Your pictures are already helping people understand a world they've never visited. | oppy, earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_6 | `game/images/scene/chpt7/6.png` | Opportunity became the first rover to travel more than 42 kilometers on another world. And it kept going. | narrator; `audio/narrator/chpt7/voice4.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_8 | `game/images/scene/chpt7/8.png` | There's still something beautiful over there. Could we go a little farther? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_9 | `game/images/scene/chpt7/9.png` | We'll find a safe path. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_7 / chapter7_7 | `game/images/scene/chpt7/7.png` | Children who were born when Opportunity landed were now teenagers. / Students who followed the mission were becoming scientists and engineers. | narrator; `audio/narrator/chpt7/voice5.mp3`, `audio/narrator/chpt7/voice6.mp3`, `audio/narrator/chpt7/voice7.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_1 | `game/images/scene/chpt8/1.png` | By June 2018, Opportunity had traveled 45.16 kilometers on Mars. It was exploring Perseverance Valley. / The name seemed fitting, because no one could have guessed how much perseverance this little machine would show. | narrator; `audio/narrator/chpt8/voice1.mp3`, `audio/narrator/chpt8/voice2.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_2 | `game/images/scene/chpt8/2.png` | Earth? Look at this place. It's beautiful. I think this might be one of my favorite views. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_3 | `game/images/scene/chpt8/3.png` | We have more observations planned here. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_4 | `game/images/scene/chpt8/4.png` | Then let's get started! / Then a dust cloud rolled across the sky. The sunlight began to fade. | oppy, narrator; `audio/narrator/chpt8/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_5 | `game/images/scene/chpt8/5.png` | Earth? My batteries aren't charging the way they should. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_6 | `game/images/scene/chpt8/6.png` | A major dust storm is blocking the Sun. We need to conserve power. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_7 | `game/images/scene/chpt8/7.png` | Another storm? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_8 | `game/images/scene/chpt8/8.png` | Yes. A very large one. | earth; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_9 | `game/images/scene/chpt8/9.png` | All right. I can wait. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_10 | `game/images/scene/chpt8/10.png` | The dust grew thicker. / Opportunity's systems were designed to conserve power, but this storm was more severe than the one it had survived in 2007. | narrator; `audio/narrator/chpt8/voice4.mp3`, `audio/narrator/chpt8/voice5.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_11 | `game/images/scene/chpt8/11.png` | I can't see the Sun anymore. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_12 | `game/images/scene/chpt8/12.png` | It must still be up there. Just hidden. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_13 | `game/images/scene/chpt8/13.png` | I'll take one more picture. Maybe Earth can tell me what the sky looks like. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_14 | `game/images/scene/chpt8/14.png` | On June 10, 2018, Opportunity sent its final data to Earth. | narrator; `audio/narrator/chpt8/voice6.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_15 | `game/images/scene/chpt8/15.png` | Earth? Did you get my picture? | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_16 | `game/images/scene/chpt8/16.png` | I think I should save what power I have left. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_17 | `game/images/scene/chpt8/17.png` | We've done this before. Remember? The sky got dark. We waited. And the Sun came back. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_18 | `game/images/scene/chpt8/18.png` | So I'll wait again. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_19 | `game/images/scene/chpt8/19.png` | There's still so much I haven't seen. So many rocks. So many places to explore. / And I still haven't shown Earth everything. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_20 | `game/images/scene/chpt8/20.png` | That's okay. It doesn't all have to happen today. / I'll rest for a little while. | oppy; no voice cue in this shot | Advance dialogue; no standalone sprite/animation |
+| chapter_8 / chapter8_21 | `game/images/scene/chpt8/21.png` | Just one more sunrise... / ...and then we can go a little farther. | oppy, narrator; `audio/narrator/chpt8/voice7.mp3` | Last illustrated shot, then separate black fade and voice8.mp3 |
+| chapter_9 / chapter9_1 | `game/images/scene/chpt9/1.png` | The next day came. Opportunity did not answer. / No response. | narrator, mission; `audio/narrator/chpt9/voice1.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_9 / chapter9_2 | `game/images/scene/chpt9/2.png` | But on Earth, they did not give up. / Engineers kept listening and sending commands, hoping to reach their little explorer. | narrator, mission; `audio/narrator/chpt9/voice2.mp3`, `audio/narrator/chpt9/voice3.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_9 / chapter9_3 | `game/images/scene/chpt9/3.png` | More than a thousand commands were sent in the effort to restore contact. | narrator; `audio/narrator/chpt9/voice4.mp3` | Advance dialogue; no standalone sprite/animation |
+| chapter_9 / chapter9_4 | `game/images/scene/chpt9/4.png` | Attempting contact. / No signal. | mission, narrator; `audio/narrator/chpt9/voice5.mp3` | Mission-complete centered card over current illustration |
+
+### Non-illustration beats
+
+| Label / beat | Visual and media | Interaction / status |
+| --- | --- | --- |
+| start opening title | Solid #03070d, centered title; prologue BGM starts first | Advance; IMPLEMENTED |
+| chapter_1–chapter_9 title cards | Chapter-specific Solid colors listed in section 4; fade then centered heading/subtitle | Advance; IMPLEMENTED; no separate title-card images |
+| chapter_8 after image 21 | engine black with fade; audio/narrator/chpt8/voice8.mp3, “The rover fell silent beneath the dust.” | Advance; IMPLEMENTED; no BGM cue |
+| chapter_9 conclusion | centered MISSION COMPLETE / FEBRUARY 13, 2019 over chapter9_4 | Advance; IMPLEMENTED |
+| epilogue | Solid #d9c5a9 with fade, chapter card, seven voice cues, centered tribute, uncued final narrator line | Advance to final return; IMPLEMENTED; background-art coverage MISSING, runtime contrast UNVERIFIED |
+
+## 11. Exact media and font inventory
+
+All paths are repository-relative. This inventory excludes caches, compiled scripts, saves and Git metadata. A numeric filename in chapter 2 audio intentionally lacks the voice prefix. No additional animations or movie assets were found. MP3 headers were recognized, but no complete decode/listening test was performed.
+
+### game/images/scene
+
+| File | Bytes | Dimensions / note |
+| --- | ---: | --- |
+| `game/images/scene/chpt1/1.png` | 2,477,892 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/10.png` | 2,119,242 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/11.png` | 1,195,359 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/12.png` | 2,358,130 | 1536 × 1024; static PNG |
+| `game/images/scene/chpt1/13.png` | 2,198,968 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/14.png` | 2,198,968 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/15.png` | 1,195,359 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/16.png` | 2,134,147 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/2.png` | 2,720,458 | 1670 × 941; static PNG |
+| `game/images/scene/chpt1/3.png` | 2,689,240 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/4.png` | 3,095,886 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/5.png` | 2,316,716 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/6.png` | 2,420,647 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/7.png` | 2,302,309 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/8.png` | 2,313,381 | 1672 × 941; static PNG |
+| `game/images/scene/chpt1/9.png` | 1,160,586 | 1090 × 628; static PNG |
+| `game/images/scene/chpt2/1.png` | 2,846,103 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/10.png` | 3,342,425 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/11.png` | 2,811,589 | 1671 × 941; static PNG |
+| `game/images/scene/chpt2/12.png` | 2,433,885 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/2.png` | 2,173,761 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/3.png` | 2,150,001 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/4.png` | 3,029,123 | 1448 × 1086; static PNG |
+| `game/images/scene/chpt2/5.png` | 2,388,161 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/6.png` | 2,925,712 | 1672 × 941; static PNG |
+| `game/images/scene/chpt2/7.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt2/8.png` | 2,225,906 | 1671 × 941; static PNG |
+| `game/images/scene/chpt2/9.png` | 3,059,731 | 1672 × 941; static PNG |
+| `game/images/scene/chpt3/1.png` | 1,618,991 | 1121 × 632; static PNG |
+| `game/images/scene/chpt3/10.png` | 1,804,603 | 1260 × 724; static PNG |
+| `game/images/scene/chpt3/11.png` | 1,990,519 | 1261 × 706; static PNG |
+| `game/images/scene/chpt3/12.png` | 1,778,817 | 1262 × 713; static PNG |
+| `game/images/scene/chpt3/13.png` | 1,879,229 | 1263 × 705; static PNG |
+| `game/images/scene/chpt3/14.png` | 1,900,486 | 1258 × 708; static PNG |
+| `game/images/scene/chpt3/15.png` | 1,606,367 | 1266 × 709; static PNG |
+| `game/images/scene/chpt3/2.png` | 1,756,942 | 1264 × 707; static PNG |
+| `game/images/scene/chpt3/3.png` | 1,647,520 | 1248 × 708; static PNG |
+| `game/images/scene/chpt3/4.png` | 1,785,791 | 1284 × 707; static PNG |
+| `game/images/scene/chpt3/5.png` | 1,810,963 | 1265 × 703; static PNG |
+| `game/images/scene/chpt3/6.png` | 1,886,335 | 1260 × 704; static PNG |
+| `game/images/scene/chpt3/7.png` | 1,817,107 | 1262 × 710; static PNG |
+| `game/images/scene/chpt3/8.png` | 1,770,465 | 1257 × 707; static PNG |
+| `game/images/scene/chpt3/9.png` | 1,769,734 | 1264 × 707; static PNG |
+| `game/images/scene/chpt4/1.png` | 1,541,920 | 1262 × 706; static PNG |
+| `game/images/scene/chpt4/2.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt4/3.png` | 2,225,906 | 1671 × 941; static PNG |
+| `game/images/scene/chpt4/4.png` | 2,358,130 | 1536 × 1024; static PNG |
+| `game/images/scene/chpt4/5.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt4/6.png` | 2,190,882 | 1670 × 941; static PNG |
+| `game/images/scene/chpt4/7.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt5/1.png` | 2,864,150 | 1672 × 941; static PNG |
+| `game/images/scene/chpt5/2.png` | 2,694,713 | 1672 × 941; static PNG |
+| `game/images/scene/chpt5/3.png` | 1,880,338 | 1535 × 1024; static PNG |
+| `game/images/scene/chpt5/4.png` | 2,348,688 | 1672 × 941; static PNG |
+| `game/images/scene/chpt5/5.png` | 2,348,688 | 1672 × 941; static PNG |
+| `game/images/scene/chpt5/6.png` | 2,428,017 | 1671 × 941; static PNG |
+| `game/images/scene/chpt5/7.png` | 2,916,711 | 1672 × 941; static PNG |
+| `game/images/scene/chpt5/8.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt6/1.png` | 2,026,348 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/2.png` | 2,150,001 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/3.png` | 2,101,661 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/4.png` | 2,150,001 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/5.png` | 1,905,615 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/6.png` | 2,071,331 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/7.png` | 2,179,658 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/8.png` | 2,035,321 | 1672 × 941; static PNG |
+| `game/images/scene/chpt6/9.png` | 2,179,658 | 1672 × 941; static PNG |
+| `game/images/scene/chpt7/1.png` | 2,327,081 | 1672 × 941; static PNG |
+| `game/images/scene/chpt7/2.png` | 2,640,329 | 1671 × 941; static PNG |
+| `game/images/scene/chpt7/3.png` | 2,190,882 | 1670 × 941; static PNG |
+| `game/images/scene/chpt7/4.png` | 2,225,906 | 1671 × 941; static PNG |
+| `game/images/scene/chpt7/5.png` | 3,286,376 | 1672 × 941; static PNG |
+| `game/images/scene/chpt7/6.png` | 3,059,731 | 1672 × 941; static PNG |
+| `game/images/scene/chpt7/7.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt7/8.png` | 2,358,130 | 1536 × 1024; static PNG |
+| `game/images/scene/chpt7/9.png` | 2,424,711 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/1.png` | 2,468,983 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/10.png` | 1,811,824 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/11.png` | 2,312,984 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/12.png` | 1,956,414 | 1670 × 941; static PNG |
+| `game/images/scene/chpt8/13.png` | 2,312,984 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/14.png` | 2,072,621 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/15.png` | 2,240,885 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/16.png` | 2,312,984 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/17.png` | 1,811,824 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/18.png` | 1,694,325 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/19.png` | 2,312,984 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/2.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/20.png` | 1,956,414 | 1670 × 941; static PNG |
+| `game/images/scene/chpt8/21.png` | 1,583,719 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/3.png` | 2,225,906 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/4.png` | 2,018,478 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/5.png` | 2,190,882 | 1670 × 941; static PNG |
+| `game/images/scene/chpt8/6.png` | 2,358,130 | 1536 × 1024; static PNG |
+| `game/images/scene/chpt8/7.png` | 2,225,906 | 1671 × 941; static PNG |
+| `game/images/scene/chpt8/8.png` | 2,161,249 | 1672 × 941; static PNG |
+| `game/images/scene/chpt8/9.png` | 2,297,591 | 1671 × 941; static PNG |
+| `game/images/scene/chpt9/1.png` | 2,081,698 | 1671 × 941; static PNG |
+| `game/images/scene/chpt9/2.png` | 2,172,847 | 1670 × 941; static PNG |
+| `game/images/scene/chpt9/3.png` | 2,124,953 | 1672 × 941; static PNG |
+| `game/images/scene/chpt9/4.png` | 2,100,155 | 1672 × 941; static PNG |
+| `game/images/scene/start/1.png` | 2,269,704 | 1671 × 941; static PNG |
+| `game/images/scene/start/2.png` | 2,391,897 | 1672 × 941; static PNG |
+| `game/images/scene/start/3.png` | 2,688,530 | 1672 × 941; static PNG |
+| `game/images/scene/start/4.png` | 2,424,711 | 1672 × 941; static PNG |
+| `game/images/scene/start/5.png` | 2,722,870 | 1672 × 941; static PNG |
+| `game/images/scene/start/6.png` | 2,343,538 | 1672 × 941; static PNG |
+| `game/images/scene/start/7.png` | 2,276,263 | 1671 × 941; static PNG |
+| `game/images/scene/start/8.png` | 2,468,983 | 1671 × 941; static PNG |
+| `game/images/scene/start/9.png` | 6,108 | 1920 × 1080; static PNG |
+### game/audio
+
+| File | Bytes | Dimensions / note |
+| --- | ---: | --- |
+| `game/audio/bg-music/ancient.mp3` | 7,128,179 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/Beyond+the+Horizon.mp3` | 2,675,242 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/Beyond+the+Red+Horizon.mp3` | 5,482,255 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/dont-leave-me.mp3` | 4,296,923 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/storm.mp3` | 6,497,060 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/sunrise.mp3` | 4,734,108 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/bg-music/The+Quiet+Between+Stars.mp3` | 5,593,433 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice1.mp3` | 47,739 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice2.mp3` | 89,000 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice3.mp3` | 25,622 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice4.mp3` | 86,968 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice5.mp3` | 40,238 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice6.mp3` | 64,562 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice7.mp3` | 98,414 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice8.mp3` | 58,838 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt1/voice9.mp3` | 96,923 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/1.mp3` | 53,493 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/10.mp3` | 48,512 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/2.mp3` | 40,824 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/3.mp3` | 79,915 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/4.mp3` | 56,674 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/5.mp3` | 57,847 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/6.mp3` | 87,191 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/7.mp3` | 63,140 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/8.mp3` | 64,661 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt2/9.mp3` | 72,893 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice1.mp3` | 73,106 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice2.mp3` | 48,479 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice3.mp3` | 83,150 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice4.mp3` | 98,451 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice5.mp3` | 40,962 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt3/voice6.mp3` | 90,354 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt4/voice1.mp3` | 108,540 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt4/voice2.mp3` | 92,838 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice1.mp3` | 112,668 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice2.mp3` | 41,496 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice3.mp3` | 74,340 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice4.mp3` | 50,732 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice5.mp3` | 63,134 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice6.mp3` | 64,128 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice7.mp3` | 59,682 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt5/voice8.mp3` | 61,971 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice1.mp3` | 69,403 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice2.mp3` | 68,530 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice3.mp3` | 66,222 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice4.mp3` | 43,425 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice5.mp3` | 43,025 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt6/voice6.mp3` | 83,789 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice1.mp3` | 52,946 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice2.mp3` | 80,108 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice3.mp3` | 121,571 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice4.mp3` | 88,085 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice5.mp3` | 52,862 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice6.mp3` | 51,728 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt7/voice7.mp3` | 60,983 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice1.mp3` | 105,284 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice2.mp3` | 70,658 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice3.mp3` | 66,212 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice4.mp3` | 22,268 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice5.mp3` | 90,707 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice6.mp3` | 63,155 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice7.mp3` | 47,432 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt8/voice8.mp3` | 27,287 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt9/voice1.mp3` | 48,521 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt9/voice2.mp3` | 33,185 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt9/voice3.mp3` | 63,638 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt9/voice4.mp3` | 57,122 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/chpt9/voice5.mp3` | 84,521 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice1.mp3` | 78,659 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice2.mp3` | 134,207 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice3.mp3` | 140,309 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice4.mp3` | 60,257 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice5.mp3` | 23,204 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice6.mp3` | 93,146 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/epilogue/voice7.mp3` | 79,172 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice1.mp3` | 50,053 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice10.mp3` | 35,978 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice2.mp3` | 51,825 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice3.mp3` | 33,734 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice4.mp3` | 28,452 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice5.mp3` | 35,285 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice6.mp3` | 58,348 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice7.mp3` | 57,862 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice8.mp3` | 36,970 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/narrator/start/voice9.mp3` | 36,607 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+| `game/audio/sfx/Keyboard-Sound.mp3` | 198,076 | MP3; recognized MPEG frame header; sound quality UNVERIFIED |
+### game/fonts
+
+| File | Bytes | Dimensions / note |
+| --- | ---: | --- |
+| `game/fonts/font-sources.json` | 2,651 | Typography documentation / provenance |
+| `game/fonts/README.md` | 2,801 | Typography documentation / provenance |
+| `game/fonts/SourceSans3-Bold.ttf` | 428,176 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SourceSans3-BoldIt.ttf` | 318,700 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SourceSans3-It.ttf` | 315,812 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SourceSans3-OFL.txt` | 4,486 | SIL OFL 1.1 notice; manifest checksum verified |
+| `game/fonts/SourceSans3-Regular.ttf` | 431,196 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SourceSans3-Semibold.ttf` | 425,904 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SpaceGrotesk-Bold.ttf` | 116,056 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SpaceGrotesk-Medium.ttf` | 116,664 | Bundled static TTF; manifest checksum verified |
+| `game/fonts/SpaceGrotesk-OFL.txt` | 4,495 | SIL OFL 1.1 notice; manifest checksum verified |
+### game/gui
+
+| File | Bytes | Dimensions / note |
+| --- | ---: | --- |
+| `game/gui/bar/bottom.png` | 838 | 38 × 525; static PNG |
+| `game/gui/bar/left.png` | 522 | 525 × 38; static PNG |
+| `game/gui/bar/right.png` | 522 | 525 × 38; static PNG |
+| `game/gui/bar/top.png` | 838 | 38 × 525; static PNG |
+| `game/gui/bubble.png` | 6,886 | 200 × 155; static PNG |
+| `game/gui/button/check_foreground.png` | 104 | 27 × 49; static PNG |
+| `game/gui/button/check_selected_foreground.png` | 158 | 27 × 49; static PNG |
+| `game/gui/button/choice_hover_background.png` | 1,751 | 1185 × 52; static PNG |
+| `game/gui/button/choice_idle_background.png` | 1,777 | 1185 × 52; static PNG |
+| `game/gui/button/hover_background.png` | 465 | 450 × 49; static PNG |
+| `game/gui/button/idle_background.png` | 465 | 450 × 49; static PNG |
+| `game/gui/button/quick_hover_background.png` | 198 | 150 × 45; static PNG |
+| `game/gui/button/quick_idle_background.png` | 198 | 150 × 45; static PNG |
+| `game/gui/button/radio_foreground.png` | 104 | 27 × 49; static PNG |
+| `game/gui/button/radio_selected_foreground.png` | 158 | 27 × 49; static PNG |
+| `game/gui/button/slot_hover_background.png` | 3,054 | 414 × 309; static PNG |
+| `game/gui/button/slot_idle_background.png` | 2,989 | 414 × 309; static PNG |
+| `game/gui/frame.png` | 7,255 | 900 × 375; static PNG |
+| `game/gui/game_menu.png` | 38,669 | 1920 × 1080; static PNG |
+| `game/gui/main_menu.png` | 38,669 | 1920 × 1080; static PNG |
+| `game/gui/namebox.png` | 503 | 450 × 54; static PNG |
+| `game/gui/notify.png` | 1,889 | 1383 × 64; static PNG |
+| `game/gui/nvl.png` | 40,383 | 1920 × 1080; static PNG |
+| `game/gui/overlay/confirm.png` | 38,668 | 1920 × 1080; static PNG |
+| `game/gui/overlay/game_menu.png` | 39,462 | 1920 × 1080; static PNG |
+| `game/gui/overlay/main_menu.png` | 39,525 | 1920 × 1080; static PNG |
+| `game/gui/phone/bar/bottom.png` | 838 | 38 × 525; static PNG |
+| `game/gui/phone/bar/left.png` | 522 | 525 × 38; static PNG |
+| `game/gui/phone/bar/right.png` | 522 | 525 × 38; static PNG |
+| `game/gui/phone/bar/top.png` | 838 | 38 × 525; static PNG |
+| `game/gui/phone/button/check_foreground.png` | 111 | 27 × 64; static PNG |
+| `game/gui/phone/button/check_selected_foreground.png` | 176 | 27 × 64; static PNG |
+| `game/gui/phone/button/choice_hover_background.png` | 1,751 | 1185 × 52; static PNG |
+| `game/gui/phone/button/choice_idle_background.png` | 1,777 | 1185 × 52; static PNG |
+| `game/gui/phone/button/hover_background.png` | 583 | 450 × 64; static PNG |
+| `game/gui/phone/button/idle_background.png` | 583 | 450 × 64; static PNG |
+| `game/gui/phone/button/radio_foreground.png` | 111 | 27 × 64; static PNG |
+| `game/gui/phone/button/radio_selected_foreground.png` | 176 | 27 × 64; static PNG |
+| `game/gui/phone/button/slot_hover_background.png` | 3,054 | 414 × 309; static PNG |
+| `game/gui/phone/button/slot_idle_background.png` | 2,989 | 414 × 309; static PNG |
+| `game/gui/phone/nvl.png` | 38,668 | 1920 × 1080; static PNG |
+| `game/gui/phone/overlay/game_menu.png` | 39,477 | 1920 × 1080; static PNG |
+| `game/gui/phone/overlay/main_menu.png` | 39,624 | 1920 × 1080; static PNG |
+| `game/gui/phone/scrollbar/horizontal_hover_bar.png` | 462 | 1050 × 18; static PNG |
+| `game/gui/phone/scrollbar/horizontal_hover_thumb.png` | 465 | 1050 × 18; static PNG |
+| `game/gui/phone/scrollbar/horizontal_idle_bar.png` | 464 | 1050 × 18; static PNG |
+| `game/gui/phone/scrollbar/horizontal_idle_thumb.png` | 464 | 1050 × 18; static PNG |
+| `game/gui/phone/scrollbar/vertical_hover_bar.png` | 803 | 18 × 1050; static PNG |
+| `game/gui/phone/scrollbar/vertical_hover_thumb.png` | 805 | 18 × 1050; static PNG |
+| `game/gui/phone/scrollbar/vertical_idle_bar.png` | 804 | 18 × 1050; static PNG |
+| `game/gui/phone/scrollbar/vertical_idle_thumb.png` | 804 | 18 × 1050; static PNG |
+| `game/gui/phone/slider/horizontal_hover_bar.png` | 702 | 525 × 54; static PNG |
+| `game/gui/phone/slider/horizontal_hover_thumb.png` | 141 | 22 × 54; static PNG |
+| `game/gui/phone/slider/horizontal_idle_bar.png` | 703 | 525 × 54; static PNG |
+| `game/gui/phone/slider/horizontal_idle_thumb.png` | 140 | 22 × 54; static PNG |
+| `game/gui/phone/slider/vertical_hover_bar.png` | 1,371 | 54 × 525; static PNG |
+| `game/gui/phone/slider/vertical_hover_thumb.png` | 146 | 54 × 22; static PNG |
+| `game/gui/phone/slider/vertical_idle_bar.png` | 1,373 | 54 × 525; static PNG |
+| `game/gui/phone/slider/vertical_idle_thumb.png` | 145 | 54 × 22; static PNG |
+| `game/gui/phone/textbox.png` | 13,292 | 1920 × 360; static PNG |
+| `game/gui/scrollbar/horizontal_hover_bar.png` | 462 | 1050 × 18; static PNG |
+| `game/gui/scrollbar/horizontal_hover_thumb.png` | 465 | 1050 × 18; static PNG |
+| `game/gui/scrollbar/horizontal_idle_bar.png` | 464 | 1050 × 18; static PNG |
+| `game/gui/scrollbar/horizontal_idle_thumb.png` | 464 | 1050 × 18; static PNG |
+| `game/gui/scrollbar/vertical_hover_bar.png` | 803 | 18 × 1050; static PNG |
+| `game/gui/scrollbar/vertical_hover_thumb.png` | 805 | 18 × 1050; static PNG |
+| `game/gui/scrollbar/vertical_idle_bar.png` | 804 | 18 × 1050; static PNG |
+| `game/gui/scrollbar/vertical_idle_thumb.png` | 804 | 18 × 1050; static PNG |
+| `game/gui/skip.png` | 721 | 360 × 64; static PNG |
+| `game/gui/slider/horizontal_hover_bar.png` | 521 | 525 × 38; static PNG |
+| `game/gui/slider/horizontal_hover_thumb.png` | 114 | 15 × 38; static PNG |
+| `game/gui/slider/horizontal_idle_bar.png` | 522 | 525 × 38; static PNG |
+| `game/gui/slider/horizontal_idle_thumb.png` | 114 | 15 × 38; static PNG |
+| `game/gui/slider/vertical_hover_bar.png` | 836 | 38 × 525; static PNG |
+| `game/gui/slider/vertical_hover_thumb.png` | 111 | 38 × 15; static PNG |
+| `game/gui/slider/vertical_idle_bar.png` | 838 | 38 × 525; static PNG |
+| `game/gui/slider/vertical_idle_thumb.png` | 111 | 38 × 15; static PNG |
+| `game/gui/textbox.png` | 10,916 | 1920 × 277; static PNG |
+| `game/gui/thoughtbubble.png` | 4,215 | 200 × 133; static PNG |
+| `game/gui/window_icon.png` | 18,037 | 250 × 250; static PNG |
+
+Documentation snapshot only: README.md and GAME_POLISH_CHECKLIST.md created, this context replaced. Only those three Markdown files are authorized outputs; source, media, saves, branches and commits remain unchanged.
