@@ -167,27 +167,35 @@ label chapter_1:
 
     scene chapter1_2
     with dissolve
+    voice "audio/narrator/chpt1/voice1.mp3"
     narrator "There was once a little robot. Its name was Opportunity."
 
     scene chapter1_3
     with dissolve
+    voice "audio/narrator/chpt1/voice2.mp3"
     narrator "Its official designation was Mars Exploration Rover-B. But the people who built it had a shorter name."
 
     scene chapter1_4
     with dissolve
+    voice "audio/narrator/chpt1/voice3.mp3"
     narrator "They called it Oppy."
 
     scene chapter1_5
     with dissolve
-    narrator "Opportunity was not built to fight. It was not built to conquer. It was built to answer a question."
+    voice "audio/narrator/chpt1/voice4.mp3"
+    narrator "Opportunity wasn't built to fight. It wasn't built to conquer. It was built to answer a question."
 
     scene chapter1_6
     with dissolve
-    narrator "Long ago, was Mars a world of water? Could this cold, dusty planet once have been a place where life might survive?"
+    voice "audio/narrator/chpt1/voice5.mp3"
+    narrator "Long ago, was Mars a world of water?"
+    voice "audio/narrator/chpt1/voice6.mp3"
+    narrator "Could this cold, dusty planet once have been a place where life might survive?"
 
     scene chapter1_7
     with dissolve
-    narrator "To find out, humans built two explorers. Spirit and Opportunity. They were twins, sent to opposite sides of Mars."
+    voice "audio/narrator/chpt1/voice7.mp3"
+    narrator "To find out, humans built two explorers. Spirit... And Opportunity. They were twins, sent to opposite sides of Mars."
 
     scene chapter1_8
     with dissolve
@@ -220,13 +228,15 @@ label chapter_1:
 
     scene chapter1_15
     with dissolve
-    narrator "Opportunity was designed for a mission lasting just 90 Martian days. Ninety sunrises. Ninety sunsets."
+    voice "audio/narrator/chpt1/voice8.mp3"
+    narrator "Opportunity was designed for a mission lasting just 90 Martian days."
     oppy "Ninety days? What happens after that?"
     earth "We'll see how far you can go."
     oppy "Then I'd better make every day count!"
 
     scene chapter1_16
     with dissolve
+    voice "audio/narrator/chpt1/voice9.mp3"
     narrator "On July 7, 2003, Opportunity left Earth. It would never return. But its journey was only beginning."
     stop music fadeout 2.0
     return
