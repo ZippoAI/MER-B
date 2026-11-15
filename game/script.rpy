@@ -250,7 +250,12 @@ label chapter_2:
 
     scene chapter2_1
     with dissolve
-    narrator "After nearly seven months in space, Opportunity reached Mars. Landing was dangerous. There was no runway. No one waiting below. Just a thin atmosphere, a parachute, rockets, and giant airbags."
+    voice "audio/narrator/chpt2/1.mp3"
+    narrator "After nearly seven months in space, Opportunity reached Mars."
+    voice "audio/narrator/chpt2/2.mp3"
+    narrator "Landing was dangerous. There was no runway."
+    voice "audio/narrator/chpt2/3.mp3"
+    narrator "No one waiting below. Just a thin atmosphere, a parachute, rockets, and giant airbags."
 
     scene chapter2_2
     with dissolve
@@ -266,15 +271,18 @@ label chapter_2:
 
     scene chapter2_5
     with dissolve
+    voice "audio/narrator/chpt2/4.mp3"
     narrator "The rover bounced across the surface before finally coming to rest."
 
     scene chapter2_6
     with dissolve
     oppy "...Did I make it?"
+    voice "audio/narrator/chpt2/5.mp3"
     narrator "The lander petals opened. Opportunity saw Eagle Crater for the first time."
 
     scene chapter2_7
     with dissolve
+    voice "audio/narrator/chpt2/6.mp3"
     narrator "All around it stretched a world of dust, rocks, and distant horizons. A world no human had ever touched."
     oppy "Oh... It's beautiful."
 
@@ -290,14 +298,17 @@ label chapter_2:
     narrator "The player chooses what Opportunity investigates first:"
     menu:
         "Look at the horizon.":
+            voice "audio/narrator/chpt2/7.mp3"
             narrator "Opportunity takes a panoramic image and prepares to study the terrain."
         "Examine the rocks.":
             scene chapter2_10
             with dissolve
+            voice "audio/narrator/chpt2/8.mp3"
             narrator "Opportunity inspects the exposed bedrock and begins the search for ancient water."
         "Look at the ground.":
             scene chapter2_11
             with dissolve
+            voice "audio/narrator/chpt2/9.mp3"
             narrator "Opportunity studies the soil and the small round objects scattered across the landscape."
 
     scene chapter2_12
@@ -305,6 +316,7 @@ label chapter_2:
     oppy "There's so much here! Where do I even begin?"
     earth "One step at a time."
     oppy "I have six wheels. Does that mean I can take six steps?"
+    voice "audio/narrator/chpt2/10.mp3"
     narrator "And just like that, the little explorer began its journey."
     stop music fadeout 2.0
     return
