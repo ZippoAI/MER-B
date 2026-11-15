@@ -526,7 +526,10 @@ label chapter_6:
 
     scene chapter6_1
     with dissolve
-    narrator "By 2007, Opportunity had traveled across the planet for more than three years. Then the sky began to darken. A planet-wide dust storm spread across Mars."
+    voice "audio/narrator/chpt6/voice1.mp3"
+    narrator "By 2007, Opportunity had traveled across the planet for more than three years."
+    voice "audio/narrator/chpt6/voice2.mp3"
+    narrator "Then the sky began to darken. A planet-wide dust storm spread across Mars."
 
     scene chapter6_2
     with dissolve
@@ -547,7 +550,11 @@ label chapter_6:
     scene chapter6_6
     with dissolve
     oppy "All right. I can wait."
-    narrator "The rover suspended its scientific activities. Its power dropped dangerously low. For weeks, the team waited for the skies to clear."
+    voice "audio/narrator/chpt6/voice3.mp3"
+    narrator "The rover suspended its scientific activities. Its power dropped dangerously low."
+    voice "audio/narrator/chpt6/voice4.mp3"
+    narrator "For weeks, the team waited for the skies to clear."
+    voice "audio/narrator/chpt6/voice5.mp3"
     narrator "Then a faint beam of sunlight broke through the dust."
 
     scene chapter6_7
@@ -562,6 +569,7 @@ label chapter_6:
     with dissolve
     oppy "Just one more sunrise?"
     earth "One more sunrise."
+    voice "audio/narrator/chpt6/voice6.mp3"
     narrator "Opportunity survived. And that memory of survival became part of its extraordinary story."
     return
 
