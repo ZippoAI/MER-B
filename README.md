@@ -1,104 +1,94 @@
-# MER-B The Last Signal
+# MER-B: The Last Signal
 
-An illustrated educational visual novel about Opportunity: a little Mars rover built for 90 Martian days whose journey became a story of curiosity, perseverance, and connection across space.
+**A little rover. A distant planet. A journey that was never meant to last this long.**
 
-Developed for the **NASA Space Apps Challenge 2026** (project-owner designation), MER-B invites students, families, and curious players to discover the rover’s purpose, ancient-water clues, engineering challenges, and lasting legacy. The previous project brief specifies a school-age audience and names the challenge **“Abandoned but not Forgotten: Storytelling about NASA’s Discarded Equipment on the Moon and Mars.”** Its official URL, wording, and 2026 eligibility still require owner confirmation; no official challenge specification is included here.
+An emotional, illustrated visual novel inspired by the real journey of NASA's Mars Exploration Rover-B, better known as **Opportunity (Oppy)**.
 
-## About the story
+Developed for the **NASA Space Apps Challenge 2026**.
 
-A fading Martian sky opens a journey back to the beginning. Opportunity—Oppy—has a question to answer: was Mars once a world shaped by water? Across unfamiliar landscapes, difficult terrain, and long-awaited sunrises, a machine becomes an explorer we can care about.
 
-The game combines accessible mission-history narration with imagined conversations between Opportunity, Earth, and Mission Control. Its themes are curiosity, teamwork, endurance, separation, and remembrance. It teaches planetary geology, solar-power vulnerability, and remote engineering while distinguishing evidence of ancient water from proof of life.
+## About the Game
 
-**History and dramatization:** the rover’s speech, emotions, immediate replies from Earth, and imagined final thoughts are fiction, not transcripts or telemetry. Dates, distances, and scientific claims are presented as historical content, but their NASA/JPL bibliography still needs to be supplied and checked. Artwork is illustrative rather than authenticated mission photography or engineering documentation.
+In 2004, NASA's Opportunity rover landed on Mars with a mission designed to last just 90 Martian days.
 
-## Implemented features
+Instead, it explored the Red Planet for more than 14 years.
 
-- A prologue, **nine chapters**, and a tribute epilogue, with one continuous story and one ending.
-- Two three-option menus: choose an initial investigation and a response during sand recovery. Selections change immediate narration and sometimes the illustration, then rejoin the historical journey.
-- **110 illustrated scene files**, dissolves, chapter cards, and a final blackout. Rover expressions and human characters are embedded in static artwork.
-- **78 narrator voice clips**, seven looping music tracks covering the prologue and chapters 1–6, and a dedicated dialogue-reveal keyboard sound. Oppy, Earth, and Mission Control are text-only roles; chapters 7–9 and the epilogue have no music cues.
-- A centered main menu, transparent dialogue presentation, bundled Source Sans 3 and Space Grotesk fonts, and adjustable native text reveal.
-- Save/load pages, quicksave/quickload, history, skipping, auto-forward, audio mixers, and window/fullscreen preferences.
-- Keyboard/mouse Help, conditional gamepad Help, and touch/small-screen UI variants. These variants do not establish a tested mobile release.
+Through vast deserts, ancient craters, incredible discoveries, and devastating dust storms, Opportunity helped humanity uncover evidence of Mars's watery past.
 
-Rollback is disabled, although Back and rollback Help entries remain in the screen source. Use **History** to reread dialogue.
+**MER-B: The Last Signal** brings this remarkable journey to life through emotional storytelling, illustrated scenes, narration, and interactive choices.
 
-## Technology
+Experience the story of a little rover that exceeded every expectation and left a lasting legacy.
 
-The game uses **Ren’Py script and screen language with Python initialization code**. Existing local runtime records identify **Ren’Py 8.5.3.26051504**; use the **8.5.3 SDK** as the development baseline. Other SDK versions have not been validated. The virtual canvas is **1920 × 1080**, game version `1.0`, and distribution basename `MER_B`.
+## Play the Game
 
-All custom fonts are local; no system font installation or runtime network connection is required by authored code. The skip indicator uses Ren’Py’s bundled `DejaVuSans.ttf`. No additional library is installed in `game/libs/`.
+**MER-B: The Last Signal** is available to play directly in your web browser. No downloads or installations required!
 
-## Installation and setup
+🎮 **[Play MER-B: The Last Signal on itch.io](https://iamrealzippo.itch.io/mer-b)**
 
-1. Obtain and extract the **Ren’Py 8.5.3 SDK** through the official [Ren’Py website](https://www.renpy.org/), also linked by the game’s About screen. No SDK was downloaded or installed during this review. On the inspected machine it already exists at `D:\Renpy\renpy-8.5.3-sdk`.
-2. Download and extract the repository through GitHub’s **Code → Download ZIP**, or clone it with Git:
+## Game Features
 
-   ```sh
+- **Nine Story Chapters** — Experience Opportunity's journey from its beginnings to its final mission, including a prologue and tribute epilogue.
+- **Illustrated Storytelling** — Explore Mars through atmospheric, story-driven artwork.
+- **Narrated Experience** — Follow the story with voice narration, background music, and sound effects.
+- **Interactive Choices** — Make decisions during key moments of the journey.
+- **Educational Content** — Discover real scientific findings, engineering challenges, and milestones from Opportunity's mission.
+- **Emotional Narrative** — Experience a story about exploration, perseverance, curiosity, and connection.
+
+## Our Mission
+
+We believe space exploration should be more than facts in a textbook.
+
+Our goal is to inspire the next generation of scientists, engineers, and explorers by making the history of space missions emotionally engaging and accessible.
+
+Through interactive storytelling, players can learn about Opportunity's discoveries, the challenges of exploring Mars, and the extraordinary achievements of the people behind the mission.
+
+We hope this experience sparks curiosity about science, technology, and the possibilities of space exploration.
+
+## Built With
+
+- **Ren'Py** — Visual novel game engine
+- **Python and Ren'Py Script** — Game logic and interactive storytelling
+- **Digital Illustrations** — Characters, environments, and story scenes
+- **Audio and Narration** — Music, sound effects, and narrated dialogue
+
+## Run Locally
+
+To run the game locally:
+
+1. Download or clone the repository:
+
+   ```bash
    git clone https://github.com/ZippoAI/MER-B.git
    ```
 
-3. Locate the folder containing `game/script.rpy`, `game/options.rpy`, and this README. **That is the project root.** In this workspace it is `D:\MER-B-Game\MER-B`, not `D:\MER-B-Game`. A normal clone contains `game/` directly inside the repository folder.
-4. Open the SDK launcher (`renpy.exe` on Windows). In launcher Preferences set the projects directory to the project folder’s **parent**—here, `D:\MER-B-Game`. Return to the project list and select `MER-B`; refresh if needed.
-5. Choose **Launch Project**, then **Start**. This checkout contains source/assets, not a verified packaged release.
-6. Choose **Check Script (Lint)** in the launcher. Resolve reported errors, then play from Start to the tribute, exercise every menu option, and test saves, loads, speed, audio, skip, and auto-forward. Lint alone does not establish playability.
-7. Choose **Build Distributions** after validation. The installed SDK defines desktop packages including Windows/Linux and macOS packaging. Select the targets offered by your launcher and test extracted builds on each target before advertising support. No successful build or tested release platform is established here. Browser/mobile release support is unverified; platform-aware screens alone are insufficient.
+2. Download the [Ren'Py SDK](https://www.renpy.org/).
+3. Open the project using the Ren'Py Launcher.
+4. Select **Launch Project** to start playing.
 
-Launching, linting, and building may generate caches, compiled scripts, logs, saves, and packages. This documentation-only review did not run those operations because output authorization was limited to three Markdown files.
+## Historical Accuracy
 
-## Project structure
+The story is inspired by the real NASA Opportunity mission.
 
-```text
-MER-B/                          # Git repository and Ren’Py root
-├── README.md                   # Public overview and setup
-├── PROJECT_CONTEXT_FOR_CHATGPT.md # Technical/creative handoff; spoilers
-├── GAME_POLISH_CHECKLIST.md     # Prioritized final work
-└── game/
-    ├── script.rpy              # Complete story, image declarations, media cues
-    ├── screens.rpy             # Dialogue, choices, menus, saves, Help
-    ├── gui.rpy                 # Resolution, fonts, colors, layout, variants
-    ├── options.rpy             # Identity, preferences, build/save identifiers
-    ├── typography.rpy          # Bold/italic font mappings
-    ├── typing_audio.rpy        # Reveal-sound channel and callbacks
-    ├── images/scene/
-    │   ├── start/              # 1.png–9.png
-    │   └── chpt1/ … chpt9/     # Chapter illustrations
-    ├── audio/
-    │   ├── bg-music/           # Seven MP3 tracks
-    │   ├── narrator/           # start/, chpt1/–chpt9/, epilogue/
-    │   └── sfx/                # Keyboard-Sound.mp3
-    ├── fonts/                  # Seven TTFs, licenses, provenance/checksums
-    ├── gui/                    # Desktop/phone UI PNGs
-    ├── libs/libs.txt           # Library-loading explanation
-    └── tl/None/common.rpym     # Common UI string scaffold
-```
+Scientific discoveries, mission milestones, and historical events are based on the rover's actual journey. However, Opportunity's dialogue, thoughts, and emotional expressions are fictional interpretations created for storytelling purposes.
 
-Local caches, saves, compiled scripts, `log.txt`, and `traceback.txt` are generated/ignored state.
+The game aims to make real space exploration history engaging while respecting the scientific achievements behind the mission.
 
-## How to play
+## Credits and Acknowledgments
 
-Select **Start**. Left-click, Enter, or Space advances dialogue; click to finish a revealing line before continuing. Click a choice, or navigate with arrows and activate with Enter. Space advances dialogue without selecting choices.
+Created for the **NASA Space Apps Challenge 2026**.
 
-Use **Save**, or Escape/right-click to open the game menu. **Load** resumes saved progress; desktop **Q.Save/Q.Load** provide quick slots. Numbered and automatic/quick pages are supported by the slot screen. Older-save compatibility needs testing: an existing local traceback records a historical save-load failure.
+**Mission Inspiration:** NASA's Mars Exploration Rover-B (Opportunity)
 
-**Preferences/Prefs** adjusts text speed, auto-forward delay, music, sound (including typing), voice, and mute. **Auto** toggles automatic progression; hold Ctrl or use Tab/**Skip** to skip according to preferences. **History** rereads earlier dialogue. H/middle-click hides the interface. Help describes V for engine self-voicing and Shift+A for accessibility controls; these and gamepad behavior still require runtime verification.
+**Game Engine:** [Ren'Py](https://www.renpy.org/)
 
-## Credits, sources, and usage
+**Project Repository:** [GitHub – MER-B](https://github.com/ZippoAI/MER-B)
 
-| Contribution | Confirmed attribution / owner information needed |
-| --- | --- |
-| Mission subject | NASA’s Opportunity (MER-B); Spirit is mentioned as its twin. No mission bibliography, NASA dataset ID, or authenticated photo source is recorded. **Owner: supply NASA/JPL sources actually used.** |
-| Team | Repository: [ZippoAI/MER-B](https://github.com/ZippoAI/MER-B). **Owner: supply team name, members, roles, and submission link.** A repository account is not a complete team credit. |
-| Art, music, narrator voice, typing sound | Assets exist; creators, source URLs, licenses, permissions, and production methods are undocumented. **Owner: supply credits and redistribution permissions.** Filenames do not establish ownership. |
-| Fonts | [Source Sans 3](https://github.com/adobe-fonts/source-sans), Adobe; [Space Grotesk](https://github.com/floriankarsten/space-grotesk), Space Grotesk Project Authors. SIL OFL 1.1; full notices and pinned provenance are bundled in `game/fonts/`. |
-| Engine | [Ren’Py](https://www.renpy.org/); About displays its license information. |
-| AI assistance | These three documentation files were prepared with ChatGPT/Codex assistance. **Owner: confirm AI use in code, story, images, music, or voice and supply the submission disclosure.** Appearance alone does not prove AI origin. |
+**Play Online:** [itch.io – MER-B: The Last Signal](https://iamrealzippo.itch.io/mer-b)
 
-No project-wide license file was found. Public source visibility does not establish permission to redistribute the game/media; font licensing is separately documented. Confirm rights and submission requirements before release. No NASA endorsement is claimed.
+Special thanks to NASA and the scientists and engineers whose work made Opportunity's extraordinary journey possible.
 
-## Validation and next steps
+NASA mission information, third-party assets, and AI-assisted content should be appropriately credited in the final submission.
 
-The 16 November 2026 review read all six authored scripts, inventoried media, decoded all PNGs into an in-memory contact sheet, checked PNG signatures/dimensions and MP3 frame headers, checked literal asset references and label calls, and verified all nine font-manifest entries against byte lengths/SHA-256 values. All story media references resolve. The absent optional `gui/confirm_frame.png` has an existing `gui/frame.png` fallback. These are static checks, not audio listening, Ren’Py lint, build, or playthrough results.
+---
 
-See [complete project context](PROJECT_CONTEXT_FOR_CHATGPT.md) and [the polish checklist](GAME_POLISH_CHECKLIST.md). Priorities are runtime/save validation, historical sources and media rights, readability/audio review, and submission/distribution preparation.
+*Some journeys last longer than anyone imagined. Some stories deserve to be remembered forever.*
