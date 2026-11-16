@@ -53,6 +53,11 @@ define config.has_sound = True
 define config.has_music = True
 define config.has_voice = True
 
+# Shared playback gain for all BGM, independent of the player's Music Volume
+# preference. 0.82 is 18% softer; 1.0 restores the original playback level.
+# This does not change voice, typing/SFX, master volume, or saved preferences.
+define merb_bgm_volume = 0.82
+
 
 ## To allow the user to play a test sound on the sound or voice channel,
 ## uncomment a line below and use it to set a sample sound to play.

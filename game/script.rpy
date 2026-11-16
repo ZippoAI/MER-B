@@ -7,7 +7,7 @@ define oppy = Character("Opportunity", color="#CBE8FF", callback=merb_keyboard_v
 define earth = Character("Earth", color="#86D7FF", callback=merb_keyboard_voice)
 define mission = Character("Mission Control", color="#F9D57B", callback=merb_keyboard_voice)
 
-define config.rollback_enabled = False
+define config.rollback_enabled = True
 
 image opening_1 = Transform("images/scene/start/1.png", xysize=(1920, 1080))
 image opening_2 = Transform("images/scene/start/2.png", xysize=(1920, 1080))
@@ -123,13 +123,73 @@ image chapter9_2 = Transform("images/scene/chpt9/2.png", xysize=(1920, 1080))
 image chapter9_3 = Transform("images/scene/chpt9/3.png", xysize=(1920, 1080))
 image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
+image epilogue_intro = Transform("images/scene/epilogue/mars.png", xysize=(1920, 1080), fit="cover")
+image epilogue_1 = Transform("images/scene/epilogue/1.png", xysize=(1920, 1080))
+image epilogue_2 = Transform("images/scene/epilogue/2.png", xysize=(1920, 1080))
+image epilogue_3 = Transform("images/scene/epilogue/3.png", xysize=(1920, 1080))
+image epilogue_4 = Transform("images/scene/epilogue/4.png", xysize=(1920, 1080))
+image epilogue_5 = Transform("images/scene/epilogue/5.png", xysize=(1920, 1080))
+image epilogue_6 = Transform("images/scene/epilogue/6.png", xysize=(1920, 1080))
+image epilogue_7 = Transform("images/scene/epilogue/7.png", xysize=(1920, 1080))
+
+
+# Opening-only presentation. The opaque, modal screen covers overlays without
+# changing global quick-menu state, Say Screen styles, or chapter cards.
+transform merb_opening_title_reveal:
+    alpha 0.0
+    zoom 0.99
+    linear 1.2 alpha 1.0 zoom 1.0
+    pause 2.2
+    linear 0.8 alpha 0.0
+
+screen merb_opening_title():
+    modal True
+    zorder 200
+
+    add Solid("#010309")
+    # A subtle gradient made from static native displayables; no new assets.
+    for band in range(48):
+        add Solid(Color("#010309").interpolate(Color("#081526"), band / 47.0)):
+            xpos 0
+            ypos int(config.screen_height * band / 48.0)
+            xsize config.screen_width
+            ysize int(config.screen_height / 48.0) + 1
+
+    text "MER-B: The Last Signal":
+        font "fonts/SpaceGrotesk-Medium.ttf"
+        size 104
+        color "#e7f0fa"
+        xalign 0.5
+        yalign 0.5
+        textalign 0.5
+        xmaximum config.screen_width - 160
+        slow_cps False
+        at merb_opening_title_reveal
+
+    # Native manual dismissal/skip remain available; Auto does not drive this.
+    timer (0.05 if renpy.is_skipping() else 4.4) action Return()
+    key "dismiss" action Return()
+    key "skip" action Return()
+    key "toggle_skip" action Return()
+    key "fast_skip" action Return()
+    key "game_menu" action ShowMenu()
+
+
+# Label parameters are dynamically scoped by Ren'Py: the player's existing
+# quick_menu value is restored automatically on return, including rollback.
+label merb_show_opening_title(quick_menu=False):
+    window hide
+    $ merb_keyboard_clear()
+    scene expression Solid("#010309")
+    with fade
+    call screen merb_opening_title
+    window auto
+    return
+
 
 label start:
-    play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop
-    scene expression Solid("#03070d")
-    with fade
-
-    centered "{size=+22}MER-B: The Last Signal{/size}"
+    play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop volume merb_bgm_volume
+    call merb_show_opening_title from merb_opening_title_return
 
     scene opening_1
     with dissolve
@@ -237,7 +297,7 @@ label merb_chapter_intro(card_image):
 
 
 label chapter_1:
-    play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop
+    play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide1.PNG") from merb_chapter_intro_1
 
     scene chapter1_1
@@ -322,7 +382,7 @@ label chapter_1:
 
 
 label chapter_2:
-    play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop
+    play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide2.PNG") from merb_chapter_intro_2
 
     scene chapter2_1
@@ -400,7 +460,7 @@ label chapter_2:
 
 
 label chapter_3:
-    play music "audio/bg-music/ancient.mp3" fadein 2.0 loop
+    play music "audio/bg-music/ancient.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide3.PNG") from merb_chapter_intro_3
 
     scene chapter3_1
@@ -476,7 +536,7 @@ label chapter_3:
 
 
 label chapter_4:
-    play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop
+    play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide4.PNG") from merb_chapter_intro_4
 
     scene chapter4_1
@@ -519,7 +579,7 @@ label chapter_4:
 
 
 label chapter_5:
-    play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop
+    play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide5.PNG") from merb_chapter_intro_5
 
     scene chapter5_1
@@ -574,7 +634,7 @@ label chapter_5:
 
 
 label chapter_6:
-    play music "audio/bg-music/storm.mp3" fadein 2.0 loop
+    play music "audio/bg-music/storm.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide6.PNG") from merb_chapter_intro_6
 
     scene chapter6_1
@@ -629,6 +689,7 @@ label chapter_6:
 
 
 label chapter_7:
+    play music "audio/bg-music/chapter7.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide7.PNG") from merb_chapter_intro_7
 
     scene chapter7_1
@@ -677,10 +738,12 @@ label chapter_7:
     narrator "Students who followed the mission were becoming scientists and engineers."
     voice "audio/narrator/chpt7/voice7.mp3"
     narrator "The little rover had spent almost an entire generation exploring another world."
+    stop music fadeout 2.0
     return
 
 
 label chapter_8:
+    play music "audio/bg-music/chapter8.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide8.PNG") from merb_chapter_intro_8
 
     scene chapter8_1
@@ -783,10 +846,12 @@ label chapter_8:
     with fade
     voice "audio/narrator/chpt8/voice8.mp3"
     narrator "The rover fell silent beneath the dust."
+    stop music fadeout 2.0
     return
 
 
 label chapter_9:
+    play music "audio/bg-music/chapter9.mp3" fadein 2.0 loop volume (merb_bgm_volume * 0.3)
     call merb_chapter_intro("images/ch/Slide9.PNG") from merb_chapter_intro_9
 
     scene chapter9_1
@@ -814,30 +879,51 @@ label chapter_9:
     mission "No signal."
     voice "audio/narrator/chpt9/voice5.mp3"
     narrator "On February 13, 2019, NASA officially declared Opportunity's mission complete."
-    centered "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
+    narrator "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
+    stop music fadeout 2.0
     return
 
 
 label epilogue:
-    scene expression Solid("#d9c5a9")
+    scene epilogue_intro
     with fade
-    centered "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
+    narrator "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
 
+    scene epilogue_1
+    with dissolve
     voice "audio/narrator/epilogue/voice1.mp3"
     narrator "Opportunity was built to survive 90 Martian days. It explored Mars for nearly fifteen years."
+
+    scene epilogue_2
+    with dissolve
     voice "audio/narrator/epilogue/voice2.mp3"
     narrator "It traveled 45.16 kilometers. It studied ancient rocks. It found evidence of water. And it helped us understand that Mars had once been a very different world."
+
+    scene epilogue_3
+    with dissolve
     voice "audio/narrator/epilogue/voice3.mp3"
     narrator "It survived freezing nights, difficult terrain, broken components, and storms that nearly ended its journey. Every time it survived, it gave us another chance to discover something new."
+
+    scene epilogue_4
+    with dissolve
     voice "audio/narrator/epilogue/voice4.mp3"
     narrator "But there was one thing the little explorer could never do. It could never come home."
+
     voice "audio/narrator/epilogue/voice5.mp3"
     narrator "It was never meant to."
+
+    scene epilogue_5
+    with dissolve
     voice "audio/narrator/epilogue/voice6.mp3"
     narrator "We gave it a name. Opportunity. We gave it six wheels. And ninety days. It gave us almost fifteen years."
+
+    scene epilogue_6
+    with dissolve
     voice "audio/narrator/epilogue/voice7.mp3"
     narrator "And somewhere on Mars, under the same sky it studied for so long, our little explorer remains."
 
+    scene epilogue_7
+    with dissolve
     centered "{size=+12}To Opportunity — MER-B{/size}\nJanuary 25, 2004 – June 10, 2018\nDesigned for 90 Martian days.\nExplored for almost 15 years.\n45.16 kilometers traveled.\nOne extraordinary journey."
 
     narrator "Some explorers never return home. But their discoveries bring the universe closer to us."
