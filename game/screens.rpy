@@ -102,7 +102,16 @@ screen say(who, what):
 
     # This screen can be retained by Ren'Py around menus. Only normal say
     # interactions receive the panel or navigation; choices never receive dismiss.
-    if renpy.get_mode() == "say" and not renpy.context()._menu and not main_menu and not _merb_chapter_intro_active:
+    if who is None:
+        window:
+            id "window"
+            style "centered_window"
+
+            text what:
+                id "what"
+                style "centered_text"
+
+    elif renpy.get_mode() == "say" and not renpy.context()._menu and not main_menu and not _merb_chapter_intro_active:
         $ merb_accent = gui.merb_speaker_accents.get(who, "#aabacb")
 
         window:
