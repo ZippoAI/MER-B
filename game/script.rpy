@@ -878,7 +878,7 @@ label chapter_9:
     mission "No signal."
     voice "audio/narrator/chpt9/voice5.mp3"
     narrator "On February 13, 2019, NASA officially declared Opportunity's mission complete."
-    centered "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
+    narrator "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
     stop music fadeout 2.0
     return
 
@@ -886,7 +886,7 @@ label chapter_9:
 label epilogue:
     scene expression Solid("#d9c5a9")
     with fade
-    centered "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
+    narrator "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
 
     scene epilogue_1
     with dissolve
