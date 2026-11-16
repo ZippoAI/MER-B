@@ -100,23 +100,84 @@ screen say(who, what):
     # Stop the dedicated reveal sound whenever dialogue leaves the screen.
     on "hide" action Function(merb_keyboard_clear)
 
-    window:
-        id "window"
+    # This screen can be retained by Ren'Py around menus. Only normal say
+    # interactions receive the panel or navigation; choices never receive dismiss.
+    if renpy.get_mode() == "say" and not renpy.context()._menu and not main_menu and not _merb_chapter_intro_active:
+        $ merb_accent = gui.merb_speaker_accents.get(who, "#aabacb")
 
-        if who is not None and who != "Narrator":
+        window:
+            id "window"
+            # Explicit properties retain precedence over Character-supplied
+            # window styles, without changing the shared global window style.
+            xalign 0.5
+            yalign 1.0
+            yoffset -gui.merb_panel_bottom
+            xfill False
+            xsize gui.merb_panel_width
+            ysize gui.merb_panel_height
+            padding (0, 0)
+            background Frame("gui/dialogue_panel.svg", 18, 18)
 
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
+            fixed:
+                if who is not None and who != "Narrator":
+                    add Solid(merb_accent):
+                        xpos gui.merb_panel_padding
+                        ypos 30
+                        xysize (3, 28)
 
-        text what id "what"
+                    window:
+                        id "namebox"
+                        style "namebox"
+                        xpos gui.merb_panel_padding + 18
+                        ypos 22
+                        padding (12, 4)
+                        background "#172a3bb3"
+                        text who id "who"
 
+                else:
+                    # A quiet neutral rule rather than a narrator nameplate.
+                    add Solid("#8a9bac66"):
+                        xpos gui.merb_panel_padding
+                        ypos 38
+                        xysize (48, 2)
 
-    ## If there's a side image, display it above the text. Do not display on the
-    ## phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
+                text what:
+                    id "what"
+                    xpos gui.merb_panel_padding
+                    ypos gui.merb_panel_text_top
+                    xsize gui.merb_panel_width - 2 * gui.merb_panel_padding
+
+                add Solid("#7f9ab033"):
+                    xpos gui.merb_panel_padding
+                    ypos gui.merb_panel_height - gui.merb_panel_footer - 14
+                    xsize gui.merb_panel_width - 2 * gui.merb_panel_padding
+                    ysize 1
+
+                hbox:
+                    xalign 1.0
+                    xoffset -gui.merb_panel_padding
+                    ypos gui.merb_panel_height - gui.merb_panel_footer
+                    spacing 12
+
+                    textbutton "←":
+                        id "merb_back"
+                        style "merb_nav_button"
+                        action Rollback()
+                        sensitive config.rollback_enabled and renpy.can_rollback()
+                        alt _("Back")
+
+                    textbutton "→":
+                        id "merb_forward"
+                        style "merb_forward_button"
+                        # Queue exactly one native event: complete slow text first,
+                        # then advance on the next activation. No jumps/returns.
+                        # Do not intercept mouse-down or restart the interaction.
+                        # Include the unfocused form because the arrow owns focus.
+                        action QueueEvent(["dismiss", "dismiss_unfocused"])
+                        alt _("Forward")
+
+        if not renpy.variant("small"):
+            add SideImage() xalign 0.0 yalign 1.0
 
 
 ## Make the namebox available for styling through the Character object.
@@ -174,6 +235,31 @@ style say_dialogue:
     outlines [(1, "#07101cdd", 0, 0)]
     adjust_spacing False
 
+
+# Say-only controls leave input, cinematic cards and menu windows unchanged.
+style merb_nav_button is button:
+    xsize gui.merb_nav_width
+    ysize gui.merb_nav_height
+    padding (0, 0)
+    background Solid(gui.merb_nav_idle)
+    hover_background Solid(gui.merb_nav_hover)
+    selected_background Solid(gui.merb_nav_pressed)
+    insensitive_background Solid(gui.merb_nav_disabled)
+
+style merb_nav_button_text is button_text:
+    font gui.text_font
+    size 32
+    xalign 0.5
+    yalign 0.5
+    idle_color "#b4c3d2"
+    hover_color "#ffffff"
+    insensitive_color "#536171"
+
+style merb_forward_button is merb_nav_button:
+    background Solid("#234059")
+
+style merb_forward_button_text is merb_nav_button_text:
+    idle_color "#d8edff"
 
 # Centered chapter/title/tribute cards share the typography, without typing
 # multiline headings or overriding their existing inline size tags and fades.
@@ -296,7 +382,8 @@ screen quick_menu():
             style_prefix "quick"
             style "quick_menu"
 
-            textbutton _("Back") action Rollback()
+            if renpy.get_mode() != "say":
+                textbutton _("Back") action Rollback()
             textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
@@ -1582,7 +1669,8 @@ screen quick_menu():
             style "quick_menu"
             style_prefix "quick"
 
-            textbutton _("Back") action Rollback()
+            if renpy.get_mode() != "say":
+                textbutton _("Back") action Rollback()
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()

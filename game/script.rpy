@@ -7,7 +7,7 @@ define oppy = Character("Opportunity", color="#CBE8FF", callback=merb_keyboard_v
 define earth = Character("Earth", color="#86D7FF", callback=merb_keyboard_voice)
 define mission = Character("Mission Control", color="#F9D57B", callback=merb_keyboard_voice)
 
-define config.rollback_enabled = False
+define config.rollback_enabled = True
 
 image opening_1 = Transform("images/scene/start/1.png", xysize=(1920, 1080))
 image opening_2 = Transform("images/scene/start/2.png", xysize=(1920, 1080))
@@ -124,12 +124,63 @@ image chapter9_3 = Transform("images/scene/chpt9/3.png", xysize=(1920, 1080))
 image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
 
+# Opening-only presentation. The opaque, modal screen covers overlays without
+# changing global quick-menu state, Say Screen styles, or chapter cards.
+transform merb_opening_title_reveal:
+    alpha 0.0
+    zoom 0.99
+    linear 1.2 alpha 1.0 zoom 1.0
+    pause 2.2
+    linear 0.8 alpha 0.0
+
+screen merb_opening_title():
+    modal True
+    zorder 200
+
+    add Solid("#010309")
+    # A subtle gradient made from static native displayables; no new assets.
+    for band in range(48):
+        add Solid(Color("#010309").interpolate(Color("#081526"), band / 47.0)):
+            xpos 0
+            ypos int(config.screen_height * band / 48.0)
+            xsize config.screen_width
+            ysize int(config.screen_height / 48.0) + 1
+
+    text "MER-B: The Last Signal":
+        font "fonts/SpaceGrotesk-Medium.ttf"
+        size 104
+        color "#e7f0fa"
+        xalign 0.5
+        yalign 0.5
+        textalign 0.5
+        xmaximum config.screen_width - 160
+        slow_cps False
+        at merb_opening_title_reveal
+
+    # Native manual dismissal/skip remain available; Auto does not drive this.
+    timer (0.05 if renpy.is_skipping() else 4.4) action Return()
+    key "dismiss" action Return()
+    key "skip" action Return()
+    key "toggle_skip" action Return()
+    key "fast_skip" action Return()
+    key "game_menu" action ShowMenu()
+
+
+# Label parameters are dynamically scoped by Ren'Py: the player's existing
+# quick_menu value is restored automatically on return, including rollback.
+label merb_show_opening_title(quick_menu=False):
+    window hide
+    $ merb_keyboard_clear()
+    scene expression Solid("#010309")
+    with fade
+    call screen merb_opening_title
+    window auto
+    return
+
+
 label start:
     play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop volume merb_bgm_volume
-    scene expression Solid("#03070d")
-    with fade
-
-    centered "{size=+22}MER-B: The Last Signal{/size}"
+    call merb_show_opening_title from merb_opening_title_return
 
     scene opening_1
     with dissolve

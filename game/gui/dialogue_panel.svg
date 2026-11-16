@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Only the surface is translucent; live dialogue stays fully opaque. -->
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="16"
+        fill="#09121d" fill-opacity="0.88"
+        stroke="#7893ad" stroke-opacity="0.48" stroke-width="1.5"/>
+</svg>

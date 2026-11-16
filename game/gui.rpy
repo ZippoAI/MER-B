@@ -103,6 +103,26 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## time.
 
 ## The height of the textbox containing dialogue.
+# Cinematic Say Screen geometry (virtual 1920x1080 pixels).
+# Rounded fill/border colors and opacity are in gui/dialogue_panel.svg.
+define gui.merb_panel_width = 1660
+define gui.merb_panel_height = 340
+define gui.merb_panel_bottom = 52
+define gui.merb_panel_padding = 60
+define gui.merb_panel_text_top = 76
+define gui.merb_panel_footer = 76
+define gui.merb_nav_width = 100
+define gui.merb_nav_height = 52
+define gui.merb_nav_idle = "#16293c"
+define gui.merb_nav_hover = "#29465f"
+define gui.merb_nav_pressed = "#3a5b76"
+define gui.merb_nav_disabled = "#101b29"
+define gui.merb_speaker_accents = {
+    "Opportunity": "#CBE8FF",
+    "Earth": "#86D7FF",
+    "Mission Control": "#F9D57B",
+}
+
 define gui.textbox_height = 340
 
 ## The placement of the textbox vertically on the screen. 0.0 is the top, 0.5 is
@@ -446,6 +466,15 @@ init python:
         gui.label_text_size = 51
 
         ## Adjust the location of the textbox.
+        gui.merb_panel_width = 1800
+        gui.merb_panel_height = 440
+        gui.merb_panel_bottom = 94
+        gui.merb_panel_padding = 56
+        gui.merb_panel_text_top = 88
+        gui.merb_panel_footer = 94
+        gui.merb_nav_width = 136
+        gui.merb_nav_height = 68
+
         gui.textbox_height = 400
         gui.name_xpos = 135
         gui.dialogue_xpos = 135
