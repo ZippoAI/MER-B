@@ -125,7 +125,7 @@ image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
 
 label start:
-    play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop
+    play music "audio/bg-music/The+Quiet+Between+Stars.mp3" fadein 2.0 loop volume merb_bgm_volume
     scene expression Solid("#03070d")
     with fade
 
@@ -237,7 +237,7 @@ label merb_chapter_intro(card_image):
 
 
 label chapter_1:
-    play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop
+    play music "audio/bg-music/Beyond+the+Horizon.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide1.PNG") from merb_chapter_intro_1
 
     scene chapter1_1
@@ -322,7 +322,7 @@ label chapter_1:
 
 
 label chapter_2:
-    play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop
+    play music "audio/bg-music/Beyond+the+Red+Horizon.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide2.PNG") from merb_chapter_intro_2
 
     scene chapter2_1
@@ -400,7 +400,7 @@ label chapter_2:
 
 
 label chapter_3:
-    play music "audio/bg-music/ancient.mp3" fadein 2.0 loop
+    play music "audio/bg-music/ancient.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide3.PNG") from merb_chapter_intro_3
 
     scene chapter3_1
@@ -476,7 +476,7 @@ label chapter_3:
 
 
 label chapter_4:
-    play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop
+    play music "audio/bg-music/sunrise.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide4.PNG") from merb_chapter_intro_4
 
     scene chapter4_1
@@ -519,7 +519,7 @@ label chapter_4:
 
 
 label chapter_5:
-    play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop
+    play music "audio/bg-music/dont-leave-me.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide5.PNG") from merb_chapter_intro_5
 
     scene chapter5_1
@@ -574,7 +574,7 @@ label chapter_5:
 
 
 label chapter_6:
-    play music "audio/bg-music/storm.mp3" fadein 2.0 loop
+    play music "audio/bg-music/storm.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide6.PNG") from merb_chapter_intro_6
 
     scene chapter6_1
@@ -629,6 +629,7 @@ label chapter_6:
 
 
 label chapter_7:
+    play music "audio/bg-music/chapter7.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide7.PNG") from merb_chapter_intro_7
 
     scene chapter7_1
@@ -677,10 +678,12 @@ label chapter_7:
     narrator "Students who followed the mission were becoming scientists and engineers."
     voice "audio/narrator/chpt7/voice7.mp3"
     narrator "The little rover had spent almost an entire generation exploring another world."
+    stop music fadeout 2.0
     return
 
 
 label chapter_8:
+    play music "audio/bg-music/chapter8.mp3" fadein 2.0 loop volume merb_bgm_volume
     call merb_chapter_intro("images/ch/Slide8.PNG") from merb_chapter_intro_8
 
     scene chapter8_1
@@ -783,10 +786,12 @@ label chapter_8:
     with fade
     voice "audio/narrator/chpt8/voice8.mp3"
     narrator "The rover fell silent beneath the dust."
+    stop music fadeout 2.0
     return
 
 
 label chapter_9:
+    play music "audio/bg-music/chapter9.mp3" fadein 2.0 loop volume (merb_bgm_volume * 0.3)
     call merb_chapter_intro("images/ch/Slide9.PNG") from merb_chapter_intro_9
 
     scene chapter9_1
@@ -815,6 +820,7 @@ label chapter_9:
     voice "audio/narrator/chpt9/voice5.mp3"
     narrator "On February 13, 2019, NASA officially declared Opportunity's mission complete."
     centered "{size=+18}MISSION COMPLETE{/size}\nFEBRUARY 13, 2019"
+    stop music fadeout 2.0
     return
 
 
