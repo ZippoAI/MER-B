@@ -123,6 +123,7 @@ image chapter9_2 = Transform("images/scene/chpt9/2.png", xysize=(1920, 1080))
 image chapter9_3 = Transform("images/scene/chpt9/3.png", xysize=(1920, 1080))
 image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
+image epilogue_intro = Transform("images/scene/epilogue/mars.png", xysize=(1920, 1080), fit="cover")
 image epilogue_1 = Transform("images/scene/epilogue/1.png", xysize=(1920, 1080))
 image epilogue_2 = Transform("images/scene/epilogue/2.png", xysize=(1920, 1080))
 image epilogue_3 = Transform("images/scene/epilogue/3.png", xysize=(1920, 1080))
@@ -884,7 +885,7 @@ label chapter_9:
 
 
 label epilogue:
-    scene expression Solid("#d9c5a9")
+    scene epilogue_intro
     with fade
     narrator "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
 
