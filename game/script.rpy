@@ -123,6 +123,14 @@ image chapter9_2 = Transform("images/scene/chpt9/2.png", xysize=(1920, 1080))
 image chapter9_3 = Transform("images/scene/chpt9/3.png", xysize=(1920, 1080))
 image chapter9_4 = Transform("images/scene/chpt9/4.png", xysize=(1920, 1080))
 
+image epilogue_1 = Transform("images/scene/epilogue/1.png", xysize=(1920, 1080))
+image epilogue_2 = Transform("images/scene/epilogue/2.png", xysize=(1920, 1080))
+image epilogue_3 = Transform("images/scene/epilogue/3.png", xysize=(1920, 1080))
+image epilogue_4 = Transform("images/scene/epilogue/4.png", xysize=(1920, 1080))
+image epilogue_5 = Transform("images/scene/epilogue/5.png", xysize=(1920, 1080))
+image epilogue_6 = Transform("images/scene/epilogue/6.png", xysize=(1920, 1080))
+image epilogue_7 = Transform("images/scene/epilogue/7.png", xysize=(1920, 1080))
+
 
 # Opening-only presentation. The opaque, modal screen covers overlays without
 # changing global quick-menu state, Say Screen styles, or chapter cards.
@@ -880,18 +888,38 @@ label epilogue:
     with fade
     centered "{size=+18}EPILOGUE{/size}\nYOU WERE NEVER FORGOTTEN"
 
+    scene epilogue_1
+    with dissolve
     voice "audio/narrator/epilogue/voice1.mp3"
     narrator "Opportunity was built to survive 90 Martian days. It explored Mars for nearly fifteen years."
+
+    scene epilogue_2
+    with dissolve
     voice "audio/narrator/epilogue/voice2.mp3"
     narrator "It traveled 45.16 kilometers. It studied ancient rocks. It found evidence of water. And it helped us understand that Mars had once been a very different world."
+
+    scene epilogue_3
+    with dissolve
     voice "audio/narrator/epilogue/voice3.mp3"
     narrator "It survived freezing nights, difficult terrain, broken components, and storms that nearly ended its journey. Every time it survived, it gave us another chance to discover something new."
+
+    scene epilogue_4
+    with dissolve
     voice "audio/narrator/epilogue/voice4.mp3"
     narrator "But there was one thing the little explorer could never do. It could never come home."
+
+    scene epilogue_5
+    with dissolve
     voice "audio/narrator/epilogue/voice5.mp3"
     narrator "It was never meant to."
+
+    scene epilogue_6
+    with dissolve
     voice "audio/narrator/epilogue/voice6.mp3"
     narrator "We gave it a name. Opportunity. We gave it six wheels. And ninety days. It gave us almost fifteen years."
+
+    scene epilogue_7
+    with dissolve
     voice "audio/narrator/epilogue/voice7.mp3"
     narrator "And somewhere on Mars, under the same sky it studied for so long, our little explorer remains."
 
