@@ -179,6 +179,11 @@ screen say(who, what):
         if not renpy.variant("small"):
             add SideImage() xalign 0.0 yalign 1.0
 
+    else:
+        # Ren'Py requires the say-text widget even during empty-window callbacks.
+        text what at Transform(alpha=0):
+            id "what"
+
 
 ## Make the namebox available for styling through the Character object.
 init python:
