@@ -909,21 +909,21 @@ label epilogue:
     voice "audio/narrator/epilogue/voice4.mp3"
     narrator "But there was one thing the little explorer could never do. It could never come home."
 
-    scene epilogue_5
-    with dissolve
     voice "audio/narrator/epilogue/voice5.mp3"
     narrator "It was never meant to."
 
-    scene epilogue_6
+    scene epilogue_5
     with dissolve
     voice "audio/narrator/epilogue/voice6.mp3"
     narrator "We gave it a name. Opportunity. We gave it six wheels. And ninety days. It gave us almost fifteen years."
 
-    scene epilogue_7
+    scene epilogue_6
     with dissolve
     voice "audio/narrator/epilogue/voice7.mp3"
     narrator "And somewhere on Mars, under the same sky it studied for so long, our little explorer remains."
 
+    scene epilogue_7
+    with dissolve
     centered "{size=+12}To Opportunity — MER-B{/size}\nJanuary 25, 2004 – June 10, 2018\nDesigned for 90 Martian days.\nExplored for almost 15 years.\n45.16 kilometers traveled.\nOne extraordinary journey."
 
     narrator "Some explorers never return home. But their discoveries bring the universe closer to us."
